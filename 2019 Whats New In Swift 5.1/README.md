@@ -1,6 +1,6 @@
 # Abstract
 Swift 5.1 delivers new exciting features and improvements that will affect and enhance every single Swift codebase: 
-this talk highlights every new Swift Evolution (accepted) proposals implemented in 5.1 and other important features as well.
+this talk highlights every new Swift Evolution (accepted) proposal implemented in 5.1 and other important features as well.
 
 Lighting Talk.
 
