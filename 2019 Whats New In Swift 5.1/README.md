@@ -1,0 +1,8 @@
+# Abstract
+Swift 5.1 delivers new exciting features and improvements that will affect and enhance every single Swift codebase: 
+this talk highlights every new Swift Evolution (accepted) proposals implemented in 5.1 and other important features as well.
+
+Lighting Talk.
+
+# SpeakerDeck
+[![SpeakerDeck Presentation](https://speakerd.s3.amazonaws.com/presentations/0133d98d4d9246e9808fa5dae8ce724c/slide_0.jpg?520397)](https://speakerdeck.com/zntfdr/whats-new-in-swift-5-dot-1)
