@@ -46,6 +46,12 @@ add3(10) // => 13
 ^let myStruct = try? JSONDecoder().decode([MyCodableStruct].self, from: data)
 let myStruct = try? JSONDecoder()(decode: [MyCodableStruct].self, from: data)
 
+^func callAsFunction argument labels are required at call sites.
+Multiple func callAsFunction methods on a single type are supported.
+mutating func callAsFunction is supported.
+func callAsFunction works with throws and rethrows.
+func callAsFunction works with trailing closures.
+
 ---
 
 # [fit] Swift 
@@ -91,6 +97,69 @@ class Derived: Base {
 ```
 
 ^A method override is no longer allowed to have a generic signature with requirements not imposed by the base method.
+
+---
+
+# [SR-11298](https://bugs.swift.org/browse/SR-11298)
+__Writable property declaration in a conditional-conforming protocol extension has incorrect mutability__
+_A class-constrained protocol extension, where the extended protocol does not impose a class constraint, will now infer the constraint implicitly._
+
+```swift
+protocol Foo {}
+class Bar: Foo {
+  var someProperty: Int = 0
+}
+
+// Even though 'Foo' does not impose a class constraint, it is automatically
+// inferred due to the Self: Bar constraint.
+extension Foo where Self: Bar {
+  var anotherProperty: Int {
+    get { return someProperty }
+    // As a result, the setter is now implicitly nonmutating, just like it would
+    // be if 'Foo' had a class constraint.
+    set { someProperty = newValue }
+  }
+}
+```
+
+^
+
+---
+
+# [SR-11429](https://bugs.swift.org/browse/SR-11429)
+__Don't look through CoerceExprs in markDirectCallee__
+_`as` operator can now be used to disambiguate a call to a function with argument labels._
+
+```swift
+func foo(x: Int) {}
+func foo(x: UInt) {}
+
+(foo as (Int) -> Void)(5)  // Calls foo(x: Int)
+(foo as (UInt) -> Void)(5) // Calls foo(x: UInt)
+```
+
+^The compiler will now correctly strip argument labels from function references used with the as operator in a function call.
+Previously this was only possible for functions without argument labels.
+
+---
+
+# [SR-2189](https://bugs.swift.org/browse/SR-2189)
+__Nested function with local default value crashes__
+_local functions default arguments can capture outer scope values_
+
+```swift
+func outer(x: Int) -> (Int, Int) {
+  var x = 5
+  //                  ↓ works in Swift 5.2
+  func inner(y: Int = x) -> Int {
+    return y
+  }
+
+  return (inner(), inner(y: 0))
+}
+```
+
+^Previously this would crash the compiler
 
 ---
 
