@@ -46,6 +46,42 @@ add3(10) // => 13
 ^let myStruct = try? JSONDecoder().decode([MyCodableStruct].self, from: data)
 let myStruct = try? JSONDecoder()(decode: [MyCodableStruct].self, from: data)
 
+---
+
+# [fit] Swift 
+# [fit] Report
+
+---
+
+# [SR-6118](https://bugs.swift.org/browse/SR-6118)
+__mechanism to hand through #file/#line in subscripts__
+_Subscripts can now declare default arguments!_
+
+```swift
+struct Subscriptable {
+  //                       ↓ new in Swift 5.2
+  subscript(x: Int, y: Int = 0) { 
+    ...
+  }
+}
+
+let s = Subscriptable()
+print(s[0])
+```
+
+^
+
+---
+
+# [S-]()
+__title__
+_comment_
+
+```swift
+
+```
+
+^
 
 ---
 
