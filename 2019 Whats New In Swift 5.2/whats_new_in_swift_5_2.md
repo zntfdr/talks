@@ -73,6 +73,27 @@ print(s[0])
 
 ---
 
+# [SR-4206](https://bugs.swift.org/browse/SR-4206)
+__Override checking does not properly enforce requirements__
+_No more generic restrictions in overrides_
+
+```swift
+protocol P {}
+
+class Base {
+  func foo<T>(arg: T) {}
+}
+
+class Derived: Base {
+  //                   ↓ error in Swift 5.2
+  override func foo<T: P>(arg: T) {}
+}
+```
+
+^A method override is no longer allowed to have a generic signature with requirements not imposed by the base method.
+
+---
+
 # [S-]()
 __title__
 _comment_
