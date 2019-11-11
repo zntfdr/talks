@@ -20,7 +20,6 @@ build-lists: true
 [.header-emphasis: #ffffff]
 
 ^Today I’m here to talk about Machine Learning:  it’s a topic that I haven’t had a chance to play with much previously, and it has always fascinated me. 
-Since this year my mind wasn’t blown enough already at WWDC, I’ve decided to give it a go.
 You might be asking…at least when I started this journey I did….
 
 ---
@@ -32,8 +31,8 @@ You might be asking…at least when I started this journey I did….
 # [fit] *Why care? 🤔*
 
 ^…why should I care? 
-As devs, most of our daily job is fetching data, make transitions and filling tables.
-However, Machine learning has been used within iOS for many years, exclusively at Apple first, and then, since iOS 11 (2017) Apple has released the the first Machine Learning related framework called Core ML.
+As developers, most of our daily job is fetching data, animate transitions and filling tables.
+However, Machine learning has been used within iOS for many years, exclusively at Apple first, and then, since iOS 11 (2017), Apple has released the first Machine Learning related framework called Core ML.
 It is used across Apple's products including Siri, Camera, the Photos.app, Quick Type, and much more.
 Machine learning is becoming every day more important, but you don’t have to believe me, I’m going to give you a reel of reasons in the upcoming slides: starting with…
 
@@ -48,9 +47,10 @@ Machine learning is becoming every day more important, but you don’t have to b
 # WWDC 2019
 # _**15**_ videos, _**~400**_ minutes
 
-^To make a comparison, ARKit only had 3 sessions this year.
-Combine only two session
-SwiftUI 11 sessions 450 minutes
+^To make a comparison: 
+- ARKit only had 3 sessions this year.
+- Combine only two session.
+- SwiftUI 11 sessions 450 minutes.
 
 ---
 
@@ -58,7 +58,7 @@ SwiftUI 11 sessions 450 minutes
 ![fit original](images/2-A12-die-shot.jpg)
 
 
-^not only software, but since the iPhone X (2017) Apple has shipped devices with a Neural Engine, also known as NPU. This includes the latest Apple watch series 4.
+^not only software, but since the iPhone X (2017, iOS 11) Apple has shipped devices with a Neural Engine, also known as NPU. This includes the latest Apple watch series 4.
 A11 and A12 in the picture.
 A11 stats:
 8-core architecture.
@@ -67,6 +67,16 @@ A12 stats:
 8-core architecture.
 5 trillion operations per second.
 Core ML runs Up to 9x faster than A11 Bionic.
+A13 stats:
+8-core architecture.
+? trillion operations per second.
+Core ML runs Up to 20% faster and uses up to 15% less power than A12 Bionic.
+
+---
+
+![original](images/14-Apple_Keynote-Event_Sri-Santhanam-A13-Bionic_091019.jpg)
+
+^Sri Santhanam Apple VP of Silicon Engineering.
 
 ---
 
@@ -78,6 +88,8 @@ Core ML runs Up to 9x faster than A11 Bionic.
 Butterfly iQ https://apps.apple.com/us/app/butterfly-iq-ultrasound/id1183035589
 Pixelmator Photo https://apps.apple.com/us/app/pixelmator-photo/id1444636541 
 HomeCourt https://apps.apple.com/us/app/homecourt-the-basketball-app/id1258520424 
+
+^Batterfly iQ is a probe used for body ultrasound imaging. The app uses ML to guide the user in taking a diagnosable picture/video of the patient heart.
 
 ---
 
@@ -164,13 +176,12 @@ Basically can measure if the person is chilling or panicking.
 ^Pitch measures the frequency characteristics, voicing determine voiced regions (their wideness).
 Basically can measure if the person is active or tired, length of pauses.
 
-
 ---
 
 ![](images/6-hero-lockup-large_2x.png)
 
 ^
-What can we do it?
+What can we do with these frameworks?
 A lot, it’s important to realize that the real power of ML doesn’t stand in a single framework, but in the integration between multiple frameworks, machine-learning related or not. An example is ARKit and Core ML.
 However the three frameworks just mentioned don’t fit everybody’s needs, what do we in this case?
 We need to go a lever deeper and user Core ML
@@ -179,7 +190,7 @@ We need to go a lever deeper and user Core ML
 
 ![100%](images/5-core-ml-logo.png)
 
-^All of the above is absolutely cool, however those are Domain Specific   Frameworks, applications that Apple has implemented for us to use, but what about other apps needs that don't fit the criterai above? For those there's Core ML.
+^All of the above is absolutely cool, however those are Domain Specific  Frameworks, applications that Apple has implemented for us to use, but what about other apps needs that don't fit the criterai above? For those there's Core ML.
 
 ^Core ML is the foundational machine learning framework from Apple that builds on top of Accelerate, BNNS, and Metal Performance Shaders. It provides machine learning models that can be integrated to iOS applications and supports image analyses, natural language processing, audio to text conversion, and sound analysis. Applications can take advantage of Core ML without the need to have a network connection or API calls because the Core ML framework works using on-device computing.
 
