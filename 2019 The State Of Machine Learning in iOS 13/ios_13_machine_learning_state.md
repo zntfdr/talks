@@ -24,7 +24,7 @@ You might be asking…at least when I started this journey I did….
 
 ---
 
-![fit original](images/13-bangkok-metro-mockup.png)
+![fit original](images/13-bangkok-metro-mockup.jpg)
 
 ---
 
