@@ -74,12 +74,6 @@ Core ML runs Up to 20% faster and uses up to 15% less power than A12 Bionic.
 
 ---
 
-![original](images/14-Apple_Keynote-Event_Sri-Santhanam-A13-Bionic_091019.jpg)
-
-^Sri Santhanam Apple VP of Silicon Engineering.
-
----
-
 ![100%](images/3-awards-Butterfly-iQ_2x.png)
 ![100%](images/3-awards-Pixelmator-Photo_2x.png)
 ![100%](images/3-awards-HomeCourt_2x.png)
