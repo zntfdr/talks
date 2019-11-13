@@ -28,6 +28,28 @@ You might be asking…at least when I started this journey I did….
 
 ---
 
+# [fit] *The State Of*
+# [fit] _**Machine Learning**_
+# [fit] *in iOS 13*
+
+![300% original](images/1-core-ml-logo.png)
+
+## <br>
+## __*Federico Zanetello*__
+
+★★★★★ [_fivestars.blog_](http://fivestars.blog) *•* [_@zntfdr_](http://twitter.com/zntfdr)
+
+[.header-strong: #000]
+[.text-emphasis: #000]
+[.text-strong: #000]
+[.text: #000]
+[.header-emphasis: #ffffff]
+
+^Today I’m here to talk about Machine Learning:  it’s a topic that I haven’t had a chance to play with much previously, and it has always fascinated me. 
+You might be asking…at least when I started this journey I did….
+
+---
+
 # [fit] *Why care? 🤔*
 
 ^…why should I care? 
@@ -35,22 +57,6 @@ As developers, most of our daily job is fetching data, animate transitions and f
 However, Machine learning has been used within iOS for many years, exclusively at Apple first, and then, since iOS 11 (2017), Apple has released the first Machine Learning related framework called Core ML.
 It is used across Apple's products including Siri, Camera, the Photos.app, Quick Type, and much more.
 Machine learning is becoming every day more important, but you don’t have to believe me, I’m going to give you a reel of reasons in the upcoming slides: starting with…
-
----
-
-### WWDC 2017
-### _**4**_ videos, _**~150**_ minutes
-### <br>
-## WWDC 2018
-## _**7**_ videos, _**~250**_ minutes
-## <br>
-# WWDC 2019
-# _**15**_ videos, _**~400**_ minutes
-
-^To make a comparison: 
-- ARKit only had 3 sessions this year.
-- Combine only two session.
-- SwiftUI 11 sessions 450 minutes.
 
 ---
 
@@ -71,6 +77,22 @@ A13 stats:
 8-core architecture.
 ? trillion operations per second.
 Core ML runs Up to 20% faster and uses up to 15% less power than A12 Bionic.
+
+---
+
+### WWDC 2017
+### _**4**_ videos, _**~150**_ minutes
+### <br>
+## WWDC 2018
+## _**7**_ videos, _**~250**_ minutes
+## <br>
+# WWDC 2019
+# _**15**_ videos, _**~400**_ minutes
+
+^To make a comparison: 
+- ARKit only had 3 sessions this year.
+- Combine only two session.
+- SwiftUI 11 sessions 450 minutes.
 
 ---
 
@@ -229,30 +251,43 @@ Well, this year Apple tries to make things easier with the launch of a new app c
 - Object Detector
   Lets you identify multiple objects within an image.
 
+---
+
+![fit](images/9-domains.png)
+
 ^Sounds
 - Sound Classifier
   Determines the most dominant sound within an audio stream.
+
+---
+
+![fit](images/9-domains.png)
 
 ^Activity
 - Activity classifier
   Puts together data from accelerometer and gyroscope to guess the type of activity the user is doing.
 
+---
+
+![fit](images/9-domains.png)
+
 ^Text
  - Text classifier 
    Can be used to label sentences, paragraphs, or even entire articles based on their contents.
-  Can train these for custom topic identification or categorization tasks
-  - Word tagger 
+  Can be trained to recognize ad-hoc topics, identification/categorization tasks.
+
+^  - Word tagger 
   Ideal for labeling tokens or words of interest in text.  General purpose examples of this are things like tagging different parts of speech or recognizing named entities.
 
-^Tabular (the most generic one)
- - Tabular Classifier
-   Classifiers are for categorizing samples based on their features of interest. And features can be a variety of different types such as integers, doubles, strings, so long as your target is a discrete value.
-   What's unique about the Tabular Classifier is it extracts away the underlying algorithm for you. And identifies the best multiple classifiers for your data.
-  - Tabular Regressor
-  A model that will predict a numeric value, such as a rating or a score.
-  -  Recommender 
-  Allows you to recommend content based on user behavior. 
-  The Recommender can be trained on user-item interactions with or without ratings.
+---
+
+![fit](images/9-domains.png)
+
+^Tabular
+- Tabular Regressor
+  Regressors predicts the output value using training data.
+- Classifier/Recommender :
+  A classifier groups the output of your data into classes or labels.
 
 ---
 
