@@ -115,13 +115,6 @@ HomeCourt https://apps.apple.com/us/app/homecourt-the-basketball-app/id125852042
 
 ^As developers we love to delete code, especially untested and undocumented code.
 Machine Learning lets us remove tons of code, both on the client side and the backend side.
-
----
-
-![](images/12-kid.png)
-
-^Always remember that our focus should be to bring our users delight.
-While we as developers think about architectures, and shipping the next version, we should always remember that.
 Using Machine Learning we can easily bring our apps to the next level.
 I will give you examples of this on the talk.
 
