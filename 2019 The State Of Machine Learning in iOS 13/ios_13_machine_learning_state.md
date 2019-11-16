@@ -60,9 +60,8 @@ Machine learning is becoming every day more important, but you don’t have to b
 
 ---
 
-![fit original](images/2-A11-die-shot.jpg)
-![fit original](images/2-A12-die-shot.jpg)
-
+![50% original](images/2-A11-die-shot.jpg)
+![80% original](images/2-A12-die-shot.jpg)
 
 ^not only software, but since the iPhone X (2017, iOS 11) Apple has shipped devices with a Neural Engine, also known as NPU. This includes the latest Apple watch series 4.
 A11 and A12 in the picture.
@@ -77,6 +76,13 @@ A13 stats:
 8-core architecture.
 ? trillion operations per second.
 Core ML runs Up to 20% faster and uses up to 15% less power than A12 Bionic.
+
+^CPU (Central processing unit)
+Scalar processor, you have registers that are single floats or single ints
+GPU (Graphics processing unit)
+Vector processor, where you do multiple operations in parallel across multiple cores and threads
+NPU (Neural processing unit)
+Matrix processor, heavily optimized for 2D matrixes operations
 
 ---
 
@@ -129,6 +135,12 @@ Apple has been using ML for quite a long time, we can't tell exactly since when 
 Every year Apple uses ML more and more, and I don't expect this to change anytime soon. 
 Better yet, Apple every year is making all these features available to 3rd party developers as well. 
 Apple provides four Domain Specific frameworks and one general-purpose framework Let's look at them: (next slide)
+
+^ML gives computers the ability to learn without being explicitly programmed.
+
+^ Traditional software: 
+- easy for repetitive tasks that people have to think about.
+- Very hard to make it do task people do without conscious thought, such as recognizing faces, meaning of words/actions.
 
 ---
 
@@ -234,7 +246,7 @@ Well, this year Apple tries to make things easier with the launch of a new app c
 
 ---
 
-![fit](images/9-domains.png)
+![inline, fit](images/12-image.png) ![inline, 20%](images/11-image.png)
 
 ^What can we create with Create ML?
 
@@ -246,7 +258,7 @@ Well, this year Apple tries to make things easier with the launch of a new app c
 
 ---
 
-![fit](images/9-domains.png)
+![inline, fit](images/12-sound.png) ![inline, 20%](images/11-sound.png)
 
 ^Sounds
 - Sound Classifier
@@ -254,7 +266,7 @@ Well, this year Apple tries to make things easier with the launch of a new app c
 
 ---
 
-![fit](images/9-domains.png)
+![inline, fit](images/12-activity.png) ![inline, 100%](images/11-activity.png)
 
 ^Activity
 - Activity classifier
@@ -262,7 +274,7 @@ Well, this year Apple tries to make things easier with the launch of a new app c
 
 ---
 
-![fit](images/9-domains.png)
+![inline, fit](images/12-text.png) ![inline, 20%](images/11-text.png)
 
 ^Text
  - Text classifier 
@@ -274,23 +286,18 @@ Well, this year Apple tries to make things easier with the launch of a new app c
 
 ---
 
-![fit](images/9-domains.png)
+![inline, fit](images/12-tabular.png) ![inline, 20%](images/11-tabular.png)
 
 ^Tabular
 - Tabular Regressor
   Regressors predicts the output value using training data.
-- Classifier/Recommender :
+- Classifier:
   A classifier groups the output of your data into classes or labels.
+- Recommender :
+  Suggests/Reccomends new items based on the user past activity and rating.
 
 ^A classifier can only predict values provided in its training data, unlike a regressor, which can predict numeric values beyond those in its training data.
-
----
-
-![20%](images/11-image.png)
-![20%](images/11-sound.png)
-![70%](images/11-activity.png)
-![20%](images/11-text.png)
-![20%](images/11-tabular.png)
+^Xcode 11.3 Beta
 
 ---
 
