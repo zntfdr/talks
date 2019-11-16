@@ -282,6 +282,8 @@ Well, this year Apple tries to make things easier with the launch of a new app c
 - Classifier/Recommender :
   A classifier groups the output of your data into classes or labels.
 
+^A classifier can only predict values provided in its training data, unlike a regressor, which can predict numeric values beyond those in its training data.
+
 ---
 
 ![20%](images/11-image.png)
