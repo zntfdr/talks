@@ -246,6 +246,10 @@ Well, this year Apple tries to make things easier with the launch of a new app c
 
 ---
 
+![fit](images/9-domains.png)
+
+---
+
 ![inline, fit](images/12-image.png) ![inline, 20%](images/11-image.png)
 
 ^What can we create with Create ML?
