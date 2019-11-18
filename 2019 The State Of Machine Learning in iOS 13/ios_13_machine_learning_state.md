@@ -115,6 +115,19 @@ HomeCourt https://apps.apple.com/us/app/homecourt-the-basketball-app/id125852042
 
 ---
 
+![40% original](images/14-pixelmator-photo-hero.jpg)
+
+---
+
+![80% original](images/15-homecourt-hero.jpg)
+
+---
+
+![fill original](images/16-butterfly-iq-hero.jpg)
+
+---
+
+
 ## AI _**➡**_ Software _**➡**_ World
 
 ![30% original](images/4-fish.png)
