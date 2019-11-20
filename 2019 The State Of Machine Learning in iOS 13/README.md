@@ -1,7 +1,11 @@
 # Abstract
-Apple's Machine Learning tech stack is getting more and more powerful every year. This talks highlights the current state, where Machine Learning is used in the ecosystem, and how developers can start adapting Machine Learning in their own apps.
+Apple's Machine Learning ecosystem is getting more and more powerful every year. This talk:  
 
-Lighting Talk.
+- takes a look back to Apple's Machine Learning history all the way to the modern days
+- highlights best uses of Machine Learning within iOS, Apple apps, and third party apps
+- helps developers getting started adapting Machine Learning in their own apps
+
+30 minutes talk.
 
 # SpeakerDeck
 [![SpeakerDeck Presentation]()]()
