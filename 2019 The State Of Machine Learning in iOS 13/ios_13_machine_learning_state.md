@@ -26,27 +26,7 @@ You might be asking…at least when I started this journey I did….
 
 ![fit original](images/13-bangkok-metro-mockup.jpg)
 
----
-
-# [fit] *The State Of*
-# [fit] _**Machine Learning**_
-# [fit] *in iOS 13*
-
-![300% original](images/1-core-ml-logo.png)
-
-## <br>
-## __*Federico Zanetello*__
-
-★★★★★ [_fivestars.blog_](http://fivestars.blog) *•* [_@zntfdr_](http://twitter.com/zntfdr)
-
-[.header-strong: #000]
-[.text-emphasis: #000]
-[.text-strong: #000]
-[.text: #000]
-[.header-emphasis: #ffffff]
-
-^Today I’m here to talk about Machine Learning:  it’s a topic that I haven’t had a chance to play with much previously, and it has always fascinated me. 
-You might be asking…at least when I started this journey I did….
+^Bangkok Metro https://itunes.apple.com/app/bangkok-metro/id1095112370?at=1001laCc
 
 ---
 
@@ -117,13 +97,19 @@ HomeCourt https://apps.apple.com/us/app/homecourt-the-basketball-app/id125852042
 
 ![40% original](images/14-pixelmator-photo-hero.jpg)
 
+^Pixelmator Photo
+
 ---
 
 ![80% original](images/15-homecourt-hero.jpg)
 
+^HomeCourt
+
 ---
 
 ![fill original](images/16-butterfly-iq-hero.jpg)
+
+^Butterfly iQ
 
 ---
 
