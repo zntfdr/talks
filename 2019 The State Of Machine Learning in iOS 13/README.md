@@ -7,5 +7,8 @@ Apple's Machine Learning ecosystem is getting more and more powerful every year.
 
 30 minutes talk.
 
-# SpeakerDeck
+# Slides
 [![SpeakerDeck Presentation](https://speakerd.s3.amazonaws.com/presentations/115737d37fc043729b532a8b35753157/slide_0.jpg?575235)](https://speakerdeck.com/zntfdr/the-state-of-machine-learning-in-ios-13)
+
+# Video
+[![Youtube Thumbnail](https://img.youtube.com/vi/DUqScctukMo/maxresdefault.jpg)](https://www.youtube.com/watch?v=DUqScctukMo)
