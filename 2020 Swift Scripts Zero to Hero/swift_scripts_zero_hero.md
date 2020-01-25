@@ -186,7 +186,7 @@ $ swift test # --filter HelloTests
 
 ---
 
-Asynchronous Calls
+# Asynchronous Calls
 
 [.code-highlight: all]
 ^One of the first needs that I had when I got started with scripts was doing things asynchonously.
@@ -227,7 +227,81 @@ RunLoop.current.run()
 
 ---
 
-flags input
+# Simple Input
+
+---
+
+# Input Parameters (1/3)
+
+```swift
+import Basic
+import SPMUtility
+
+// We drop the first argument, which is the name of the current script.
+let arguments: [String] = Array(CommandLine.arguments.dropFirst())
+
+// Initializes and sets up the `ArgumentParser` instance.
+let parser = ArgumentParser(usage: "--name YourName", overview: "Your Name")
+let nameArgument: OptionArgument<String> = parser.add(option: "--name", kind: String.self)
+
+do {
+  let parseResult: ArgumentParser.Result = try parser.parse(arguments)
+  if let name: String = parseResult.get(nameArgument) {
+    print("Hello \(name)")
+  } else {
+    parser.printUsage(on: stdoutStream)
+  }
+} catch {
+  parser.printUsage(on: stdoutStream)
+}
+```
+
+---
+
+# Input Parameters (2/3)
+
+[.code-highlight: 8-9, 14]
+
+```swift
+// swift-tools-version:5.1
+
+import PackageDescription
+
+let package = Package(
+    name: "Hello",
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-package-manager.git",
+                 from: "0.5.0"),
+    ],
+    targets: [
+        .target(
+            name: "Hello",
+            dependencies: ["SPMUtility"]),
+        .testTarget(
+            name: "HelloTests",
+            dependencies: ["Hello"]),
+    ]
+)
+```
+
+---
+
+# Input Parameters (3/3)
+
+```shell
+$ swift run Hello --name World
+Hello World
+```
+
+```shell
+$ swift run Hello
+OVERVIEW: Your Name
+
+USAGE: Hello --name YourName
+
+OPTIONS:
+  --help   Display available options
+```
 
 ---
 
@@ -248,3 +322,4 @@ pipeline
 Resources:
 https://github.com/apple/swift-package-manager
 https://swift.org/getting-started/#using-the-package-manager
+https://rderik.com/blog/command-line-argument-parsing-using-swift-package-manager-s/
