@@ -38,11 +38,14 @@ In fact we're going to build a script using SPM.
 
 # Getting Started
 
-```
+```shell
 $ mkdir Hello
 $ cd Hello
 $ swift package init --type executable
 ```
+
+^Note that creating a package from Xcode defaults to creating a library, not an executable.
+^A target is considered as an executable if it contains a file named main.swift. The package manager will compile that file into a binary executable.
 
 ---
 
@@ -152,6 +155,30 @@ let package = Package(
 ```swift
 print("Hello, world!")
 ```
+
+---
+
+# Build Run Test
+
+[.code-highlight: all]
+
+[.code-highlight: 1]
+^This will download, resolve and compile dependencies mentioned in the manifest file Package.swift.
+
+[.code-highlight: 2]
+^Since there is only one executable in this package, we can omit the executable name from the swift run command.
+^Note that you don't have to build every time before running the script: swift run will also build the script if this hasn't been done
+
+[.code-highlight: 3]
+^and here's how to run the tests, note how it seems like at the moment we can specify a specific target, therefore we have to use a `--filter` flag that "Run test cases matching regular expression".
+
+```shell
+$ swift build # --target Hello
+$ swift run # Hello
+$ swift test # --filter HelloTests
+```
+
+^Alternatively, you can do all of these also from Xcode, the main difference is that you'll need to make sure to set your mac as a Destination, or you won't be happy.
 
 ---
 
