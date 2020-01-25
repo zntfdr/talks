@@ -69,7 +69,7 @@ $ swift package init --type executable
 [.code-highlight: 2]
 ^Lastly, we have the most important file, the `Package.swift` declaration. Let's look at that.
 
-```
+```shell
 ├── .gitignore
 ├── Package.swift
 ├── README.md
@@ -179,6 +179,63 @@ $ swift test # --filter HelloTests
 ```
 
 ^Alternatively, you can do all of these also from Xcode, the main difference is that you'll need to make sure to set your mac as a Destination, or you won't be happy.
+
+---
+
+# [FIT] EXAMPLES
+
+---
+
+Asynchronous Calls
+
+[.code-highlight: all]
+^One of the first needs that I had when I got started with scripts was doing things asynchonously.
+^In this first example we're fetching something from the internet.
+^In an app we just call things like `DispatchQueue.main.async` and we're good, as our app stays alive even when we're not executing anything.
+^However in the executable world our script life ends as soon as we reach the end of the file. Unless...
+
+[.code-highlight: 16]
+^we run this command here.
+^In short what this command does is to tell the current thread to wait for inputs from its loop, making it so that it doesn't terminate immediately.
+
+[.code-highlight: 9, 12]
+^However this really means that our script never terminates until we tell it to do so, therefore **always** remember to terminate the script once your asynchronous call has been executed, or it will stay alive forever.
+^Linux reserved exit codes: http://www.tldp.org/LDP/abs/html/exitcodes.html
+^Note that this is just one of many ways that we can use to keep our script alive, other ways to do so is for example by using [semaphores](https://www.fivestars.blog/code/semaphores.html) or DispatchGroups.
+
+[.code-highlight: all]
+^Note how in here we have imported `Foundation`: all the system frameworks are available to us without the need to add them in our `Package.swift` file!
+
+```swift
+import Foundation
+
+let url: URL = URL(string: "https://api.github.com/users/zntfdr")!
+let request = URLRequest(url: url)
+URLSession.shared.dataTask(with: request) { data, _, error in
+  if let data = data {
+    let responseText = String(data: data, encoding: .utf8)!
+    print(responseText)
+    exit(EXIT_SUCCESS)
+  } else {
+    print(error!.localizedDescription)
+    exit(EXIT_FAILURE)
+  }
+}.resume()
+
+RunLoop.current.run()
+```
+
+---
+
+flags input
+
+---
+
+interact with the user
+
+---
+
+pipeline
 
 ---
 
