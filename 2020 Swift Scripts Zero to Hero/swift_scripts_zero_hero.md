@@ -350,7 +350,25 @@ Hello World
 
 ---
 
-pipeline
+# Pipeline Messages
+
+```swift
+import Foundation
+
+let stdinData: Data = FileHandle.standardInput.readDataToEndOfFile()
+if let stdinString = String(data: stdinData, encoding: .utf8) {
+  print(stdinString)
+}
+```
+
+```shell
+$ ls -l | swift run Hello
+total 16
+-rw-r--r--@ 1 zntfdr  staff  763 Jan 25 22:09 Package.swift
+-rw-r--r--  1 zntfdr  staff   39 Jan 24 22:01 README.md
+drwxr-xr-x  3 zntfdr  staff   96 Jan 24 22:01 Sources
+drwxr-xr-x  4 zntfdr  staff  128 Jan 24 22:01 Tests
+```
 
 ---
 
