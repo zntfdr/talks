@@ -107,9 +107,11 @@ $ swift package init --type executable
 [.code-highlight: 7-8]
 ^Its dependencies.
 ^A package dependency typically consists of a Git URL to the source of the package, and a requirement for the version of the package. We will see an example later on.
+^Dependencies declare other packages that this package depends on.
+^`.package(url: /* package url */, from: "1.0.0"),`
 
 [.code-highlight: 9, 16]
-^The package targets: A target isthe basic building block of a Swift package.
+^The package targets: A target is the basic building block of a Swift package.
 ^Each target contains a set of source files that are compiled into a module or test suite.
 ^A target may depend on other targets within the same package and on products vended by the package's dependencies.
 
@@ -140,11 +142,6 @@ let package = Package(
     ]
 )
 ```
-
-^Dependencies declare other packages that this package depends on.
-^.package(url: /* package url */, from: "1.0.0"),
-^Targets are the basic building blocks of a package. A target can define a module or a test suite.
-^Targets can depend on other targets in this package, and on products in packages which this package depends on.
 
 ---
 
