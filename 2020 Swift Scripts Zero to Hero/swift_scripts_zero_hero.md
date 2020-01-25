@@ -46,7 +46,7 @@ $ swift package init --type executable
 
 ---
 
-# Our Package
+# The Package Structure
 
 [.code-highlight: all]
 ^Once we execute the last command a bunch of files are created in the current directory, this is the complete structure.
@@ -81,6 +81,8 @@ $ swift package init --type executable
 ```
 
 ---
+
+# Package.swift
 
 [.code-highlight: all]
 ^First of all, you can double click on this file to open the whole package in Xcode.
@@ -142,6 +144,18 @@ let package = Package(
     ]
 )
 ```
+
+---
+
+# main.swift
+
+```swift
+print("Hello, world!")
+```
+
+---
+
+![fill original](images/thats-all-folks.png)
 
 ---
 
