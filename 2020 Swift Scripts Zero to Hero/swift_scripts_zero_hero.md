@@ -39,8 +39,8 @@ In fact we're going to build a script using SPM.
 # Getting Started
 
 ```
-$ mkdir toolName
-$ cd toolName
+$ mkdir Hello
+$ cd Hello
 $ swift package init --type executable
 ```
 
@@ -49,36 +49,42 @@ $ swift package init --type executable
 # Our Package
 
 [.code-highlight: all]
-^Once we execute the last command a bunch of files are created in the current directory.
+^Once we execute the last command a bunch of files are created in the current directory, this is the complete structure.
 
-[.code-highlight: 1]
+[.code-highlight: 7-11]
 ^The `Tests` folder is where we will add our tests.
 
-[.code-highlight: 2]
+[.code-highlight: 4-6]
 ^The `Sources` folder is where our script code will be.
 
-[.code-highlight: 3]
+[.code-highlight: 1]
 ^The `.gitignore` is prefilled with directories that we should ignore when saving things on our repositories.
 
-[.code-highlight: 5]
+[.code-highlight: 3]
 ^The `README.md` is there for us to describe the package.
 
-[.code-highlight: 4]
+[.code-highlight: 2]
 ^Lastly, we have the most important file, the `Package.swift` declaration. Let's look at that.
 
 ```
-Tests/
-Sources/
-.gitignore
-Package.swift
-README.md
+├── .gitignore
+├── Package.swift
+├── README.md
+├── Sources
+│   └── Hello
+│       └── main.swift
+└── Tests
+    ├── HelloTests
+    │   ├── HelloTests.swift
+    │   └── XCTestManifests.swift
+    └── LinuxMain.swift
 ```
 
 ---
 
 [.code-highlight: all]
 ^First of all, you can double click on this file to open the whole package in Xcode.
-^The Package is the manifest of our package, regardless of whether it's an executable, a library, a mix of those, etc.
+^The `Package.swift` is the manifest of our package, regardless of whether it's an executable, a library, a mix of those, or else.
 
 ^The Package type is used to configure the name, products, targets, dependencies and various other parts of the package.
 ^Even if it's a swift file, traditionally the properties of a Package are defined in the initializer statement, and not modified after initialization.
@@ -89,8 +95,31 @@ README.md
 ^Even if this appears as a comment, this declaration is required as it states how to interpret the package:
 ^it's similar to how we have a `SWIFT_VERSION` key in our `XCBuildConfiguration` in our Xcode `.xcodeproj`.
 
-[.code-highlight: 2]
-^Then we have an import statement: The `PackageDescription` define the API which is available to the `Package.swift` manifest files.
+[.code-highlight: 3]
+^Then we have an import statement: The `PackageDescription` defines which APIs are available to the `Package.swift` file.
+
+[.code-highlight: 5,17]
+^Then we start with the actual package definition.
+
+[.code-highlight: 6]
+^We have the package name.
+
+[.code-highlight: 7-8]
+^Its dependencies.
+^A package dependency typically consists of a Git URL to the source of the package, and a requirement for the version of the package. We will see an example later on.
+
+[.code-highlight: 9, 16]
+^The package targets: A target isthe basic building block of a Swift package.
+^Each target contains a set of source files that are compiled into a module or test suite.
+^A target may depend on other targets within the same package and on products vended by the package's dependencies.
+
+[.code-highlight: 10-12]
+^For example here we have our main target, that currenly has no dependencies and has name `toolName`.
+
+[.code-highlight: 13-15]
+^Then we have a second, separate target for tests. This target depends on the package that we want to test.
+
+^The difference between `.target`s and `.testTarget`s is that `.testTarget`s are not expected to have any headers. (you can see this by taking a look at `.testTarget` initializer that is missing the `publicHeadersPath` parameter, thet's the only difference as of now.
 
 ```swift
 // swift-tools-version:5.1
@@ -98,16 +127,16 @@ README.md
 import PackageDescription
 
 let package = Package(
-    name: "toolName",
+    name: "Hello",
     dependencies: [
     ],
     targets: [
         .target(
-            name: "toolName",
+            name: "Hello",
             dependencies: []),
         .testTarget(
-            name: "toolNameTests",
-            dependencies: ["toolName"]),
+            name: "HelloTests",
+            dependencies: ["Hello"]),
     ]
 )
 ```
