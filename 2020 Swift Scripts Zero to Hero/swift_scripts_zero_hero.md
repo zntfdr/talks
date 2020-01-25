@@ -229,6 +229,22 @@ RunLoop.current.run()
 
 # Simple Input
 
+```swift
+import Darwin
+
+// We drop the first argument, which is the name of the current script.
+let arguments: [String] = Array(CommandLine.arguments.dropFirst())
+
+guard let name: String = arguments.first else { exit(EXIT_FAILURE) }
+
+print("Hello \(name)")
+```
+
+```shell
+$ swift run Hello World
+Hello World
+```
+
 ---
 
 # Input Parameters (1/3)
@@ -241,7 +257,7 @@ import SPMUtility
 let arguments: [String] = Array(CommandLine.arguments.dropFirst())
 
 // Initializes and sets up the `ArgumentParser` instance.
-let parser = ArgumentParser(usage: "--name YourName", overview: "Your Name")
+let parser = ArgumentParser(usage: "--name YourName", overview: "Tell me your name!")
 let nameArgument: OptionArgument<String> = parser.add(option: "--name", kind: String.self)
 
 do {
@@ -295,7 +311,7 @@ Hello World
 
 ```shell
 $ swift run Hello
-OVERVIEW: Your Name
+OVERVIEW: Tell me your name!
 
 USAGE: Hello --name YourName
 
