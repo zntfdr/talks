@@ -321,7 +321,32 @@ OPTIONS:
 
 ---
 
-interact with the user
+# Interactive
+
+[.column]
+
+```swift
+import Darwin
+
+print("What's your name?")
+
+guard
+  let name = readLine(),
+  !name.isEmpty else {
+    exit(EXIT_FAILURE)
+}
+
+print("Hello \(name)")
+```
+
+[.column]
+
+```shell
+$ swift run Hello
+What's your name?
+World
+Hello World
+```
 
 ---
 
