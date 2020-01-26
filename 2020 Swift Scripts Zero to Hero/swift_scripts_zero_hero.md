@@ -25,7 +25,11 @@ In fact we're going to build a script using SPM.
 
 ---
 
-# Getting Started
+# [fit] Getting Started
+
+---
+
+# Creating an executable
 
 ```shell
 $ mkdir Hello
@@ -485,6 +489,22 @@ for color in colors {
 
 ![inline original](images/colors.png)
 
+---
+
+# [fit] Release 
+
+---
+
+# Use the script from anywhere
+
+```shell
+$ swift build -c release
+$ cd .build/release
+$ cp Hello /usr/local/bin/hello
+
+
+$ hello #from anywhere
+```
 
 ---
 
