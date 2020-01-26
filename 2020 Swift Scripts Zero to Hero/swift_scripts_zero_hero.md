@@ -511,9 +511,9 @@ $ hello #from anywhere
 # [fit] Links
 
 Resources:
-https://github.com/apple/swift-package-manager
-https://swift.org/getting-started/#using-the-package-manager
-https://rderik.com/blog/command-line-argument-parsing-using-swift-package-manager-s/
+[github.com/**apple/swift-package-manager**](https://github.com/apple/swift-package-manager)
+[github.com/**apple/swift-tools-support-core**](https://github.com/apple/swift-tools-support-core/)
+[**rderik.com**/blog/command-line-argument-parsing-using-swift-package-manager-s](https://rderik.com/blog/command-line-argument-parsing-using-swift-package-manager-s/)
 
 ---
 
