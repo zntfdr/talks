@@ -298,29 +298,33 @@ RunLoop.current.run()
 
 ---
 
-# [fit] SPMUtility
+SwiftToolsSupport's
+# [fit] TSCUtility 
+# [fit] & TSCBasic
+
+^Previously known as SPMUtility & Basic
+^Tools-Support-Core
+^They offer an abstractions for common operations.
+^Eventually TSCUtility functions will migrate to TSCBasic.
+^These libraries come under an umbrella called SwiftToolsSupport.
 
 ---
 
 # Adding a Dependency
 
-[.code-highlight: 8-9, 14]
+[.code-highlight: 4-5, 10]
 
 ```swift
-// swift-tools-version:5.1
-
-import PackageDescription
-
 let package = Package(
     name: "Hello",
     dependencies: [
-        .package(url: "https://github.com/apple/swift-package-manager.git",
-                 from: "0.5.0"),
+        .package(url: "https://github.com/apple/swift-tools-support-core.git",
+                 from: "0.0.1"),
     ],
     targets: [
         .target(
             name: "Hello",
-            dependencies: ["SPMUtility"]),
+            dependencies: ["SwiftToolsSupport"]),
         .testTarget(
             name: "HelloTests",
             dependencies: ["Hello"]),
