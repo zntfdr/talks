@@ -455,12 +455,19 @@ animation.complete(success: false)
 [.column]
 
 [.code-highlight: all]
+^And of course we need colors to make our script pretty.
+^The way to do so takes a few steps more than just a standard print, however you please feel free to create your own wrapper around it if you'd like to.
+^Here's how to do it:
 
 [.code-highlight: 3-5]
+^First of all, we need to create a `TerminalController`, this, as the name says, controls the terminal. It allows operations like cursor movement and colored text output on.
 
 [.code-highlight: 7-10]
+^The colors that `TSCBasic` offer us are limited, I suspect these are the standard colors for all scripts, but I might be wrong. 
 
 [.code-highlight: 13-17]
+^Lastly, here's how we print our message in the command line, note how we can also specify the font weight.
+^When we write to the terminal we're just writing to it, it doesn't end the line, so we must do so ourselves by calling `endLine()`.
 
 [.code-highlight: all]
 
