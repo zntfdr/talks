@@ -454,6 +454,16 @@ animation.complete(success: false)
 
 [.column]
 
+[.code-highlight: all]
+
+[.code-highlight: 3-5]
+
+[.code-highlight: 7-10]
+
+[.code-highlight: 13-17]
+
+[.code-highlight: all]
+
 ```swift
 import TSCBasic
 
