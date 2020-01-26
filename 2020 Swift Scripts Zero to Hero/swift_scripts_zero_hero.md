@@ -10,7 +10,7 @@ build-lists: true
 
 ## __*Federico Zanetello*__
 
-★★★★★ [**fivestars.blog**](http://fivestars.blog) *•* [**@zntfdr**](http://twitter.com/zntfdr)
+★★★★★ [**fivestars.blog**][fivestarsblog] *•* [**@zntfdr**][twitterHandle]
 
 ---
 
@@ -514,3 +514,18 @@ Resources:
 https://github.com/apple/swift-package-manager
 https://swift.org/getting-started/#using-the-package-manager
 https://rderik.com/blog/command-line-argument-parsing-using-swift-package-manager-s/
+
+---
+
+# [fit] Swift Scripts:
+
+# [fit] Zero to Hero 🦸🏼‍♀️
+
+## <br>
+
+## __*Federico Zanetello*__
+
+★★★★★ [**fivestars.blog**][fivestarsblog] *•* [**@zntfdr**][twitterHandle]
+
+[fivestarsblog]: http://fivestars.blog/
+[twitterHandle]: http://twitter.com/zntfdr
