@@ -499,10 +499,6 @@ for color in colors {
 
 ---
 
-![fill original](images/thats-all-folks.png)
-
----
-
 # [fit] Links
 
 Resources:
