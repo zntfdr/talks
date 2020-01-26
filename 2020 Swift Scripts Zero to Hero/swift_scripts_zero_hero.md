@@ -406,6 +406,23 @@ OPTIONS:
 
 # Loading State
 
+[.code-highlight: all]
+^Like in our apps, even on the command line we do not want to completely block the interface when we're doing some heavy lifting.
+^Sometimes for scripts this is not possible, as in, we need to finish the work we're currently doing before the user can continue its flow.
+^However, leaving the terminal completely still while we're doing so it's not the best user experience, the user might think that the script is stuck or something.
+^To address this issue we can use one of the many loading states animations that `TSCUtility` gives us, here's an example.
+
+[.code-highlight: 5-7]
+^In here we define the this animation, again this is not the only one that we have.
+
+[.code-highlight: 12-14]
+^In here we update it. Note how we don't need to worry about the presentation at all, in here we just tell at which step we're currently out of how many, and that's all, `TSCUtility` will take care of the rest for us.
+
+[.code-highlight: 16]
+^Lastly, we call animation complete when the work is done.
+
+[.code-highlight: all]
+
 [.column]
 
 ```swift
@@ -420,10 +437,9 @@ let animation = PercentProgressAnimation(
 for i in 0..<100 {
   let second: Double = 1_000_000
   usleep(UInt32(second * 0.05))
-  animation.update(
-    step: i,
-    total: 100,
-    text: "Loading..")
+  animation.update(step: i,
+                   total: 100,
+                   text: "Loading..")
 }
 animation.complete(success: false)
 ```
