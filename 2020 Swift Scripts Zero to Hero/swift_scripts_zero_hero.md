@@ -372,6 +372,38 @@ drwxr-xr-x  4 zntfdr  staff  128 Jan 24 22:01 Tests
 
 ---
 
+# Loading State
+
+[.column]
+```swift
+import Darwin
+import Basic
+import SPMUtility
+
+let animation = PercentProgressAnimation(
+  stream: stdoutStream,
+  header: "Hello World")
+
+for i in 0..<100 {
+  let second: Double = 1_000_000
+  usleep(UInt32(second * 0.05))
+  animation.update(
+    step: i,
+    total: 100,
+    text: "Loading..")
+}
+animation.complete(success: false)
+```
+
+[.column]
+![autoplay loop 80%](videos/PercentProgressAnimation.mov)
+
+---
+
+Colors
+
+---
+
 ![fill original](images/thats-all-folks.png)
 
 ---
