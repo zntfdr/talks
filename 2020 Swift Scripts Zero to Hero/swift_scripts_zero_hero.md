@@ -186,47 +186,6 @@ $ swift test # --filter HelloTests
 
 ---
 
-# Asynchronous Calls
-
-[.code-highlight: all]
-^One of the first needs that I had when I got started with scripts was doing things asynchonously.
-^In this first example we're fetching something from the internet.
-^In an app we just call things like `DispatchQueue.main.async` and we're good, as our app stays alive even when we're not executing anything.
-^However in the executable world our script life ends as soon as we reach the end of the file. Unless...
-
-[.code-highlight: 16]
-^we run this command here.
-^In short what this command does is to tell the current thread to wait for inputs from its loop, making it so that it doesn't terminate immediately.
-
-[.code-highlight: 9, 12]
-^However this really means that our script never terminates until we tell it to do so, therefore **always** remember to terminate the script once your asynchronous call has been executed, or it will stay alive forever.
-^Linux reserved exit codes: http://www.tldp.org/LDP/abs/html/exitcodes.html
-^Note that this is just one of many ways that we can use to keep our script alive, other ways to do so is for example by using [semaphores](https://www.fivestars.blog/code/semaphores.html) or DispatchGroups.
-
-[.code-highlight: all]
-^Note how in here we have imported `Foundation`: all the system frameworks are available to us without the need to add them in our `Package.swift` file!
-
-```swift
-import Foundation
-
-let url: URL = URL(string: "https://api.github.com/users/zntfdr")!
-let request = URLRequest(url: url)
-URLSession.shared.dataTask(with: request) { data, _, error in
-  if let data = data {
-    let responseText = String(data: data, encoding: .utf8)!
-    print(responseText)
-    exit(EXIT_SUCCESS)
-  } else {
-    print(error!.localizedDescription)
-    exit(EXIT_FAILURE)
-  }
-}.resume()
-
-RunLoop.current.run()
-```
-
----
-
 # Simple Input
 
 ```swift
@@ -243,80 +202,6 @@ print("Hello \(name)")
 ```shell
 $ swift run Hello World
 Hello World
-```
-
----
-
-# Input Parameters (1/3)
-
-```swift
-import Basic
-import SPMUtility
-
-// We drop the first argument, which is the name of the current script.
-let arguments: [String] = Array(CommandLine.arguments.dropFirst())
-
-// Initializes and sets up the `ArgumentParser` instance.
-let parser = ArgumentParser(usage: "--name YourName", overview: "Tell me your name!")
-let nameArgument: OptionArgument<String> = parser.add(option: "--name", kind: String.self)
-
-do {
-  let parseResult: ArgumentParser.Result = try parser.parse(arguments)
-  if let name: String = parseResult.get(nameArgument) {
-    print("Hello \(name)")
-  } else {
-    parser.printUsage(on: stdoutStream)
-  }
-} catch {
-  parser.printUsage(on: stdoutStream)
-}
-```
-
----
-
-# Input Parameters (2/3)
-
-[.code-highlight: 8-9, 14]
-
-```swift
-// swift-tools-version:5.1
-
-import PackageDescription
-
-let package = Package(
-    name: "Hello",
-    dependencies: [
-        .package(url: "https://github.com/apple/swift-package-manager.git",
-                 from: "0.5.0"),
-    ],
-    targets: [
-        .target(
-            name: "Hello",
-            dependencies: ["SPMUtility"]),
-        .testTarget(
-            name: "HelloTests",
-            dependencies: ["Hello"]),
-    ]
-)
-```
-
----
-
-# Input Parameters (3/3)
-
-```shell
-$ swift run Hello --name World
-Hello World
-```
-
-```shell
-$ swift run Hello
-OVERVIEW: Tell me your name!
-
-USAGE: Hello --name YourName
-
-OPTIONS:
-  --help   Display available options
 ```
 
 ---
@@ -368,6 +253,125 @@ total 16
 -rw-r--r--  1 zntfdr  staff   39 Jan 24 22:01 README.md
 drwxr-xr-x  3 zntfdr  staff   96 Jan 24 22:01 Sources
 drwxr-xr-x  4 zntfdr  staff  128 Jan 24 22:01 Tests
+```
+
+---
+
+# Asynchronous Calls
+
+[.code-highlight: all]
+^One of the first needs that I had when I got started with scripts was doing things asynchonously.
+^In this first example we're fetching something from the internet.
+^In an app we just call things like `DispatchQueue.main.async` and we're good, as our app stays alive even when we're not executing anything.
+^However in the executable world our script life ends as soon as we reach the end of the file. Unless...
+
+[.code-highlight: 16]
+^we run this command here.
+^In short what this command does is to tell the current thread to wait for inputs from its loop, making it so that it doesn't terminate immediately.
+
+[.code-highlight: 9, 12]
+^However this really means that our script never terminates until we tell it to do so, therefore **always** remember to terminate the script once your asynchronous call has been executed, or it will stay alive forever.
+^Linux reserved exit codes: http://www.tldp.org/LDP/abs/html/exitcodes.html
+^Note that this is just one of many ways that we can use to keep our script alive, other ways to do so is for example by using [semaphores](https://www.fivestars.blog/code/semaphores.html) or DispatchGroups.
+
+[.code-highlight: all]
+^Note how in here we have imported `Foundation`: all the system frameworks are available to us without the need to add them in our `Package.swift` file!
+
+```swift
+import Foundation
+
+let url: URL = URL(string: "https://api.github.com/users/zntfdr")!
+let request = URLRequest(url: url)
+URLSession.shared.dataTask(with: request) { data, _, error in
+  if let data = data {
+    let responseText = String(data: data, encoding: .utf8)!
+    print(responseText)
+    exit(EXIT_SUCCESS)
+  } else {
+    print(error!.localizedDescription)
+    exit(EXIT_FAILURE)
+  }
+}.resume()
+
+RunLoop.current.run()
+```
+
+---
+
+# [fit] SPMUtility
+
+---
+
+# Adding a Dependency
+
+[.code-highlight: 8-9, 14]
+
+```swift
+// swift-tools-version:5.1
+
+import PackageDescription
+
+let package = Package(
+    name: "Hello",
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-package-manager.git",
+                 from: "0.5.0"),
+    ],
+    targets: [
+        .target(
+            name: "Hello",
+            dependencies: ["SPMUtility"]),
+        .testTarget(
+            name: "HelloTests",
+            dependencies: ["Hello"]),
+    ]
+)
+```
+
+---
+
+# ArgumentParser (1/2)
+
+```swift
+import Basic
+import SPMUtility
+
+// We drop the first argument, which is the name of the current script.
+let arguments: [String] = Array(CommandLine.arguments.dropFirst())
+
+// Initializes and sets up the `ArgumentParser` instance.
+let parser = ArgumentParser(usage: "--name YourName", overview: "Tell me your name!")
+let nameArgument: OptionArgument<String> = parser.add(option: "--name", kind: String.self)
+
+do {
+  let parseResult: ArgumentParser.Result = try parser.parse(arguments)
+  if let name: String = parseResult.get(nameArgument) {
+    print("Hello \(name)")
+  } else {
+    parser.printUsage(on: stdoutStream)
+  }
+} catch {
+  parser.printUsage(on: stdoutStream)
+}
+```
+
+---
+
+# ArgumentParser (2/2)
+
+```shell
+$ swift run Hello --name World
+Hello World
+```
+
+```shell
+$ swift run Hello
+OVERVIEW: Tell me your name!
+
+USAGE: Hello --name YourName
+
+OPTIONS:
+  --help   Display available options
 ```
 
 ---
