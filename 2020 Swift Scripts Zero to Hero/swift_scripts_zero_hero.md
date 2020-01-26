@@ -375,6 +375,7 @@ drwxr-xr-x  4 zntfdr  staff  128 Jan 24 22:01 Tests
 # Loading State
 
 [.column]
+
 ```swift
 import Darwin
 import Basic
@@ -396,11 +397,40 @@ animation.complete(success: false)
 ```
 
 [.column]
+
 ![autoplay loop 80%](videos/PercentProgressAnimation.mov)
 
 ---
 
-Colors
+# Colors
+
+[.column]
+
+```swift
+import Basic
+
+let terminalController = TerminalController(
+  stream: stdoutStream
+)
+
+let colors: [TerminalController.Color] = [
+  .noColor, .red, .green, .yellow, 
+  .cyan, .white, .black, .grey
+]
+
+for color in colors {
+  terminalController?.write(
+    "Hello World", 
+    inColor: color, 
+    bold: true)
+  terminalController?.endLine()
+}
+```
+
+[.column]
+
+![inline original](images/colors.png)
+
 
 ---
 
