@@ -14,17 +14,6 @@ build-lists: true
 
 ---
 
-# [fit] 🙋🏻‍♀️🙋🏼‍♀️🙋🏽‍♀️🙋🏾‍♀️🙋🏿‍♀️
-
-# [fit] 🙋🏻‍♂️🙋🏼‍♂️🙋🏽‍♂️🙋🏾‍♂️🙋🏿‍♂️
-
-^Before starting, I would like to ask: 
-- raise your hand if you've ever written a script to automate anything on your mac.
-- raise your hand if you've ever written a script in Swift.
-- raise your hand if you've ever written a Swift script as an executable package.
-
----
-
 # [fit] WHY? 🤔
 
 ^The main reasons for an iOS developer to write a swift script is familiarity: writing a script is very similar to write an app or a library. 
