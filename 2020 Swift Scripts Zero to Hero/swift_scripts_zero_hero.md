@@ -334,21 +334,49 @@ let package = Package(
 
 ---
 
-# ArgumentParser (1/2)
+# ArgumentParser
+
+[.column]
+
+[.code-highlight: all]
+^This is the most complex example of the whole presentation please bare with me.
+^Previously we saw how to parse a single input. Which was nice and easy, however if you used any other command line tool before you know that most of them come with an help, and you can pass multiple parameters and flags to them.
+This is exactly what the `ArgumentParser` is for.
+^In this example we just ask for the user name, however you can easily imagine how much more complicated you can make this.
+
+[.code-highlight: 1,2]
+^First of all, as promised, these are the two libraries that we've just added as a depenency.
+
+[.code-highlight: 6-8]
+^In here we define our parser, which we can think of our command line interface to the user.
+
+[.code-highlight: 10-12]
+^In this case I'm asking the user to pass the name via a value argument identified with the `--name` flag.
+^Note that in here I'm already telling the parser which type I'm expecting to get back.
+^In this case I'm using a primitive however, like for `Decodable`, we can also make our own types parsable, and this is done by making our types conform to the `ArgumentKind` protocol.
+
+[.code-highlight: 15-20]
+^Lastly in here we're doing the actual parsing and then print the outcome
+
+[.code-highlight: all]
+^Note how, in case of any failure, I'm telling the parser to print the command line usage. This is done for free with our utilities, we don't have to do anything to get this behaviour.
 
 ```swift
-import Basic
-import SPMUtility
+import TSCBasic
+import TSCUtility
 
-// We drop the first argument, which is the name of the current script.
 let arguments: [String] = Array(CommandLine.arguments.dropFirst())
 
-// Initializes and sets up the `ArgumentParser` instance.
-let parser = ArgumentParser(usage: "--name YourName", overview: "Tell me your name!")
-let nameArgument: OptionArgument<String> = parser.add(option: "--name", kind: String.self)
+let parser = ArgumentParser(
+  usage: "--name YourName", 
+  overview: "Tell me your name 😊")
+
+let nameArgument: OptionArgument<String> = parser.add(
+  option: "--name", 
+  kind: String.self)
 
 do {
-  let parseResult: ArgumentParser.Result = try parser.parse(arguments)
+  let parseResult = try parser.parse(arguments)
   if let name: String = parseResult.get(nameArgument) {
     print("Hello \(name)")
   } else {
@@ -359,9 +387,7 @@ do {
 }
 ```
 
----
-
-# ArgumentParser (2/2)
+[.column]
 
 ```shell
 $ swift run Hello --name World
@@ -370,7 +396,7 @@ Hello World
 
 ```shell
 $ swift run Hello
-OVERVIEW: Tell me your name!
+OVERVIEW: Tell me your name 😊
 
 USAGE: Hello --name YourName
 
@@ -415,7 +441,7 @@ animation.complete(success: false)
 [.column]
 
 ```swift
-import Basic
+import TSCBasic
 
 let terminalController = TerminalController(
   stream: stdoutStream
