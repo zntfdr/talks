@@ -184,7 +184,7 @@ $ swift test # --filter HelloTests
 ```swift
 import Darwin
 
-// We drop the first argument, which is the name of the current script.
+// We drop the first argument, which is the execution path of the script.
 let arguments: [String] = Array(CommandLine.arguments.dropFirst())
 
 guard let name: String = arguments.first else { exit(EXIT_FAILURE) }
