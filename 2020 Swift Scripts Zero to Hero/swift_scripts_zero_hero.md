@@ -392,9 +392,7 @@ do {
 ```shell
 $ swift run Hello --name World
 Hello World
-```
 
-```shell
 $ swift run Hello
 OVERVIEW: Tell me your name 😊
 
@@ -412,8 +410,8 @@ OPTIONS:
 
 ```swift
 import Darwin
-import Basic
-import SPMUtility
+import TSCBasic
+import TSCUtility
 
 let animation = PercentProgressAnimation(
   stream: stdoutStream,
