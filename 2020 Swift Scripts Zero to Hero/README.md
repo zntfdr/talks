@@ -4,7 +4,7 @@ in this talk we will dive into how we can build our own Swift scripts.
 
 The talk has four sections: 
 
-1. A brief introduction to the Swift Package Manager, package executables, and how they differ from package libraries.
+1. A brief introduction to the Swift Package Manager, (package) executables, and how they differ from (package) libraries.
 2. Examples on how to solve things that are trivial on apps but more tricky on scripts.
 3. More advanced examples on scripts features.
 4. A brief look to what’s next for scripting in Swift.
