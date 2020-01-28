@@ -508,6 +508,14 @@ $ hello #from anywhere
 
 ---
 
+# [fit] Evolution
+
+---
+
+![50%](images/macBook-air.png)
+
+---
+
 # [fit] Links
 
 Resources:
