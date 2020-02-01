@@ -553,11 +553,13 @@ for color in colors {
 
 # Use the script from anywhere
 
+^-c flag is the configuration flag, which defaults to debug, however in this case we're setting it to release.
+^once run we can find the executable under the folder `.build/release`, and copy it to the user binary folder and then we can run our command from everywhre
+
 ```shell
 $ swift build -c release
 $ cd .build/release
-$ cp Hello /usr/local/bin/hello
-
+$ cp hello /usr/local/bin/hello
 
 $ hello #from anywhere
 ```
@@ -574,7 +576,6 @@ $ hello #from anywhere
 
 # [fit] Links
 
-Resources:
 [github.com/**apple/swift-package-manager**](https://github.com/apple/swift-package-manager)
 [github.com/**apple/swift-tools-support-core**](https://github.com/apple/swift-tools-support-core/)
 [**rderik.com**/blog/command-line-argument-parsing-using-swift-package-manager-s](https://rderik.com/blog/command-line-argument-parsing-using-swift-package-manager-s/)
