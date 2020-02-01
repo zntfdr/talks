@@ -179,7 +179,7 @@ $ swift test # --filter helloTests
 
 ---
 
-# Simple Input
+# Launch Input(s)
 
 [.column]
 
@@ -237,6 +237,14 @@ $ swift run hello World
 
 [.column]
 
+[.code-highlight: all]
+
+[.code-highlight: 6]
+^returns a string read from standard input through the end of the current line or until EOF is reached.
+^This line is synchronous, and your script will continue running after the user has hit the return key.
+
+[.code-highlight: all]
+
 ```swift
 import Darwin
 
@@ -253,33 +261,42 @@ print("Hello \(name)")
 
 [.column]
 
-```shell
-$ swift run Hello
-What's your name?
-World
-Hello World
+```
+$ swift run hello
+> What's your name?
+> World
+> Hello World
 ```
 
 ---
 
 # Pipeline Messages
 
+[.column]
+
 ```swift
 import Foundation
 
-let stdinData: Data = FileHandle.standardInput.readDataToEndOfFile()
-if let stdinString = String(data: stdinData, encoding: .utf8) {
-  print(stdinString)
+let standardInput: FileHandle = .standardInput
+
+let stdinData: Data = standardInput.availableData
+
+if let inputString = String(
+  data: stdinData,
+  encoding: .utf8
+) {
+  print(inputString)
 }
 ```
 
+[.column]
+
 ```shell
-$ ls -l | swift run Hello
-total 16
--rw-r--r--@ 1 zntfdr  staff  763 Jan 25 22:09 Package.swift
--rw-r--r--  1 zntfdr  staff   39 Jan 24 22:01 README.md
-drwxr-xr-x  3 zntfdr  staff   96 Jan 24 22:01 Sources
-drwxr-xr-x  4 zntfdr  staff  128 Jan 24 22:01 Tests
+$ ls -1 | swift run Hello
+> Package.swift
+> README.md
+> Sources
+> Tests
 ```
 
 ---
