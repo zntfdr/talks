@@ -204,6 +204,9 @@ if we are reading the input sent along with the script, we want to get rid of th
 ^You can think of it as the foundation of the Foundation framework.
 ^In this case I'm using it as it defines the two values for a succesful exit or, as the case here for an unsuccessful exit.
 ^You can also just type exit(0) for success and exit(1) for failure, I just try to avoid having undocumented magic numbers in the code.
+^However this really means that our script never terminates until we tell it to do so, therefore **always** remember to terminate the script once your asynchronous call has been executed, or it will stay alive forever.
+^Linux reserved exit codes: http://www.tldp.org/LDP/abs/html/exitcodes.html
+^Note that this is just one of many ways that we can use to keep our script alive, other ways to do so is for example by using [semaphores](https://www.fivestars.blog/code/semaphores.html) or DispatchGroups.
 
 [.code-highlight: all]
 ^Now that we have seen how it works, we can see the big picture..
@@ -318,14 +321,9 @@ $ ls -1 | swift run hello
 ^In an app we just call things like `DispatchQueue.main.async` and we're good, as our app stays alive even when we're not executing anything.
 ^However in the executable world our script life ends as soon as we reach the end of the file. Unless...
 
-[.code-highlight: 16]
+[.code-highlight: 9,12,16]
 ^we run this command here.
 ^In short what this command does is to tell the current thread to wait for inputs from its loop, making it so that it doesn't terminate immediately.
-
-[.code-highlight: 9, 12]
-^However this really means that our script never terminates until we tell it to do so, therefore **always** remember to terminate the script once your asynchronous call has been executed, or it will stay alive forever.
-^Linux reserved exit codes: http://www.tldp.org/LDP/abs/html/exitcodes.html
-^Note that this is just one of many ways that we can use to keep our script alive, other ways to do so is for example by using [semaphores](https://www.fivestars.blog/code/semaphores.html) or DispatchGroups.
 
 [.code-highlight: all]
 ^Note how in here we have imported `Foundation`: all the system frameworks are available to us without the need to add them in our `Package.swift` file!
