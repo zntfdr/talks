@@ -32,8 +32,8 @@ In fact we're going to build a script using SPM.
 # Creating an executable
 
 ```shell
-$ mkdir Hello
-$ cd Hello
+$ mkdir hello
+$ cd hello
 $ swift package init --type executable
 ```
 
@@ -67,11 +67,11 @@ $ swift package init --type executable
 ├── Package.swift
 ├── README.md
 ├── Sources
-│   └── Hello
+│   └── hello
 │       └── main.swift
 └── Tests
-    ├── HelloTests
-    │   ├── HelloTests.swift
+    ├── helloTests
+    │   ├── helloTests.swift
     │   └── XCTestManifests.swift
     └── LinuxMain.swift
 ```
@@ -127,16 +127,16 @@ $ swift package init --type executable
 import PackageDescription
 
 let package = Package(
-    name: "Hello",
+    name: "hello",
     dependencies: [
     ],
     targets: [
         .target(
-            name: "Hello",
+            name: "hello",
             dependencies: []),
         .testTarget(
-            name: "HelloTests",
-            dependencies: ["Hello"]),
+            name: "helloTests",
+            dependencies: ["hello"]),
     ]
 )
 ```
@@ -166,9 +166,9 @@ print("Hello, world!")
 ^and here's how to run the tests, note how it seems like at the moment we can specify a specific target, therefore we have to use a `--filter` flag that "Run test cases matching regular expression".
 
 ```shell
-$ swift build # --target Hello
-$ swift run # Hello
-$ swift test # --filter HelloTests
+$ swift build # --target hello
+$ swift run # hello
+$ swift test # --filter helloTests
 ```
 
 ^Alternatively, you can do all of these also from Xcode, the main difference is that you'll need to make sure to set your mac as a Destination, or you won't be happy.
@@ -181,20 +181,54 @@ $ swift test # --filter HelloTests
 
 # Simple Input
 
+[.column]
+
+[.code-highlight: all]
+^If this is your first script, even if it's small there's a lot going on, so we will introduce every player one by one.
+
+[.code-highlight: 6]
+^First we have the CommandLine object, this is our script launch arguments container. 
+^If you do UI Testing in your apps, you might have used them to pass flags into your app:
+^```
+^let app = XCUIApplication()
+^app.launchArguments = ["UI-TESTING"]
+^app.launch()
+^```
+
+[.code-highlight: 3-7]
+^The first argument is always the script execution path: 
+if we are reading the input sent along with the script, we want to get rid of this path and read only what's after that.
+
+[.code-highlight: 1, 10]
+^Then we have Darwin module, which is Apple’s UNIX-based core of every Apple OS. 
+^You can think of it as the foundation of the Foundation framework.
+^In this case I'm using it as it defines the two values for a succesful exit or, as the case here for an unsuccessful exit.
+^You can also just type exit(0) for success and exit(1) for failure, I just try to avoid having undocumented magic numbers in the code.
+
+[.code-highlight: all]
+^Now that we have seen how it works, we can see the big picture..
+
 ```swift
 import Darwin
 
-// We drop the first argument, which is the execution path of the script.
-let arguments: [String] = Array(CommandLine.arguments.dropFirst())
+let arguments: [String] = Array(
+  // We drop the first argument, 
+  // which is the script execution path.
+  CommandLine.arguments.dropFirst()
+)
 
-guard let name: String = arguments.first else { exit(EXIT_FAILURE) }
+guard let name: String = arguments.first else { 
+  exit(EXIT_FAILURE) 
+}
 
 print("Hello \(name)")
 ```
 
+[.column]
+
 ```shell
-$ swift run Hello World
-Hello World
+$ swift run hello World
+> Hello World
 ```
 
 ---
