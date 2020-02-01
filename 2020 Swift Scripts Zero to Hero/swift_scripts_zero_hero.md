@@ -274,15 +274,24 @@ $ swift run hello
 
 [.column]
 
+[.code-highlight: all]
+^In case we need to work with pipelines, then we can use Foundation's FileHandle.
+
+[.code-highlight: 3, 6]
+^as the name says, it handles objects to access data associated with files, sockets, pipes, and devices.
+^In our case we use it to get the `standardInput` terminal, and then read the available data at launch.
+
+[.code-highlight: all]
+^Note that this specific script expects data once launched, if there's no data, 
+^it's going to hang until data is given to the script.
+
 ```swift
 import Foundation
 
 let standardInput: FileHandle = .standardInput
 
-let stdinData: Data = standardInput.availableData
-
 if let inputString = String(
-  data: stdinData,
+  data: standardInput.availableData,
   encoding: .utf8
 ) {
   print(inputString)
@@ -292,7 +301,7 @@ if let inputString = String(
 [.column]
 
 ```shell
-$ ls -1 | swift run Hello
+$ ls -1 | swift run hello
 > Package.swift
 > README.md
 > Sources
