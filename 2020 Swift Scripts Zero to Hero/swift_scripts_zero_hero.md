@@ -440,15 +440,15 @@ if let name: String = parseResult.get(nameArgument) {
 
 ```shell
 $ swift run hello --name World
-Hello World
+> Hello World
 
 $ swift run hello
-OVERVIEW: Tell me your name 😊
-
-USAGE: hello --name YourName
-
-OPTIONS:
-  --help   Display available options
+> OVERVIEW: Tell me your name 😊
+> 
+> USAGE: hello --name YourName
+> 
+> OPTIONS:
+>   --help   Display available options
 ```
 
 ---
@@ -462,7 +462,7 @@ OPTIONS:
 ^To address this issue we can use one of the many loading states animations that `TSCUtility` gives us, here's an example.
 
 [.code-highlight: 5-7]
-^In here we define the this animation, again this is not the only one that we have.
+^In here we define this animation, again this is not the only one that we have.
 
 [.code-highlight: 12-14]
 ^In here we update it. Note how we don't need to worry about the presentation at all, in here we just tell at which step we're currently out of how many, and that's all, `TSCUtility` will take care of the rest for us.
