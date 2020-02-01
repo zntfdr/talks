@@ -367,25 +367,25 @@ SwiftToolsSupport's
 
 ```swift
 let package = Package(
-    name: "Hello",
+    name: "hello",
     dependencies: [
         .package(url: "https://github.com/apple/swift-tools-support-core.git",
                  from: "0.0.1"),
     ],
     targets: [
         .target(
-            name: "Hello",
+            name: "hello",
             dependencies: ["SwiftToolsSupport"]),
         .testTarget(
-            name: "HelloTests",
-            dependencies: ["Hello"]),
+            name: "helloTests",
+            dependencies: ["hello"]),
     ]
 )
 ```
 
 ---
 
-# ArgumentParser
+# Parse Arguments
 
 [.column]
 
@@ -398,15 +398,15 @@ This is exactly what the `ArgumentParser` is for.
 [.code-highlight: 1,2]
 ^First of all, as promised, these are the two libraries that we've just added as a depenency.
 
-[.code-highlight: 6-8]
+[.code-highlight: 8-10]
 ^In here we define our parser, which we can think of our command line interface to the user.
 
-[.code-highlight: 10-12]
+[.code-highlight: 12-14]
 ^In this case I'm asking the user to pass the name via a value argument identified with the `--name` flag.
 ^Note that in here I'm already telling the parser which type I'm expecting to get back.
 ^In this case I'm using a primitive however, like for `Decodable`, we can also make our own types parsable, and this is done by making our types conform to the `ArgumentKind` protocol.
 
-[.code-highlight: 15-20]
+[.code-highlight: 16-22]
 ^Lastly in here we're doing the actual parsing and then print the outcome
 
 [.code-highlight: all]
@@ -416,24 +416,22 @@ This is exactly what the `ArgumentParser` is for.
 import TSCBasic
 import TSCUtility
 
-let arguments: [String] = Array(CommandLine.arguments.dropFirst())
+let arguments: [String] = Array(
+  CommandLine.arguments.dropFirst()
+)
 
 let parser = ArgumentParser(
-  usage: "--name YourName", 
+  usage: "--name YourName",
   overview: "Tell me your name 😊")
 
 let nameArgument: OptionArgument<String> = parser.add(
-  option: "--name", 
+  option: "--name",
   kind: String.self)
 
-do {
-  let parseResult = try parser.parse(arguments)
-  if let name: String = parseResult.get(nameArgument) {
-    print("Hello \(name)")
-  } else {
-    parser.printUsage(on: stdoutStream)
-  }
-} catch {
+let parseResult = try! parser.parse(arguments)
+if let name: String = parseResult.get(nameArgument) {
+  print("Hello \(name)")
+} else {
   parser.printUsage(on: stdoutStream)
 }
 ```
@@ -441,13 +439,13 @@ do {
 [.column]
 
 ```shell
-$ swift run Hello --name World
+$ swift run hello --name World
 Hello World
 
-$ swift run Hello
+$ swift run hello
 OVERVIEW: Tell me your name 😊
 
-USAGE: Hello --name YourName
+USAGE: hello --name YourName
 
 OPTIONS:
   --help   Display available options
