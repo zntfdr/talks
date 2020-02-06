@@ -57,7 +57,7 @@ func callAsFunction works with trailing closures.
 
 # [SE-0249](https://github.com/apple/swift-evolution/blob/master/proposals/0249-key-path-literal-function-expressions.md)
 __Key Path Expressions as Functions__
-_Even more use of keypaths!_
+_Even more uses of keypaths!_
 
 ```swift
 struct User {
