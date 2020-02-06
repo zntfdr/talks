@@ -175,7 +175,9 @@ let evens = (1...10).lazy
     .filter { $0.isMultiple(of: 2) }
     .filter { print($0); return true }
 _ = evens.count
-// Prints 2, 4, 6, 8, and 10 on separate lines
+
+// Swift <5.2: Prints 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 on separate lines
+// Swift 5.2: Prints 2, 4, 6, 8, 10 on separate lines
 ```
 
 ^When chaining calls to `filter(_:)` on a lazy sequence or collection, the filtering predicates will now be called in the same order as eager filters.
