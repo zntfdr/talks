@@ -163,6 +163,53 @@ func outer(x: Int) -> (Int, Int) {
 
 ---
 
+# [SR-2790](https://bugs.swift.org/browse/SR-2790)
+__Reject UnsafePointer initialization via implicit pointer conversion__
+_safer temporary pointer management_
+
+```swift
+struct S {
+  var ptr: UnsafePointer<Int8>
+}
+
+func foo() {
+  var i: Int8 = 0
+  let ptr = UnsafePointer(&i)
+  // warning: initialization of 'UnsafePointer<Int8>' results in a 
+  // dangling pointer
+  
+  let s1 = S(ptr: [1, 2, 3]) 
+  // warning: passing '[Int8]' to parameter, but argument 'ptr' should be a
+  // pointer that outlives the call to 'init(ptr:)'
+  
+  let s2 = S(ptr: "hello")
+  // warning: passing 'String' to parameter, but argument 'ptr' should be a
+  // pointer that outlives the call to 'init(ptr:)'
+}
+
+```
+
+^All 3 of the above examples are unsound because each argument produces a temporary pointer only valid for the duration of the call they are passed to. Therefore the returned value in each case references a dangling pointer.
+
+---
+
+# [SR-11841](https://bugs.swift.org/browse/SR-11841)
+__Lazy filter runs in unexpected order__
+_Lazy filters now run the other (right) way_
+
+```swift
+let evens = (1...10).lazy
+    .filter { $0.isMultiple(of: 2) }
+    .filter { print($0); return true }
+_ = evens.count
+// Prints 2, 4, 6, 8, and 10 on separate lines
+```
+
+^When chaining calls to `filter(_:)` on a lazy sequence or collection, the filtering predicates will now be called in the same order as eager filters.
+^ Previously, the predicates were called in reverse order.
+
+---
+
 # [S-]()
 __title__
 _comment_
