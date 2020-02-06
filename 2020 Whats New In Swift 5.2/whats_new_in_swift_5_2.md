@@ -183,6 +183,9 @@ _ = evens.count
 ^When chaining calls to `filter(_:)` on a lazy sequence or collection, the filtering predicates will now be called in the same order as eager filters.
 ^ Previously, the predicates were called in reverse order.
 
+^When lazy is not used, filter processes the entire array and stores the results into a new array.
+^When lazy is used, the values in the sequence or collection are produced on demand from the downstream functions
+
 ---
 
 # [S-]()
