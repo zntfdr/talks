@@ -55,6 +55,27 @@ func callAsFunction works with trailing closures.
 
 ---
 
+# [SE-0249](https://github.com/apple/swift-evolution/blob/master/proposals/0249-key-path-literal-function-expressions.md)
+__Key Path Expressions as Functions__
+_Even more use of keypaths!_
+
+```swift
+struct User {
+    let email: String
+    let isAdmin: Bool
+}
+
+let users: [User] = [...]
+
+//                                  ↓ new in Swift 5.2
+let allEmails: [String] = users.map(\.email)
+let adminsOnly: [User] = users.filter(\.isAdmin)
+```
+
+^
+
+---
+
 # [fit] Swift 
 # [fit] Report
 
@@ -185,18 +206,6 @@ _ = evens.count
 
 ^When lazy is not used, filter processes the entire array and stores the results into a new array.
 ^When lazy is used, the values in the sequence or collection are produced on demand from the downstream functions
-
----
-
-# [S-]()
-__title__
-_comment_
-
-```swift
-
-```
-
-^
 
 ---
 
