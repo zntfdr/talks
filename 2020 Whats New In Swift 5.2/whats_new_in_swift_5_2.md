@@ -26,17 +26,17 @@ __Callable values of user-defined nominal types__
 _Introducing "statically" callable values_
 
 ```swift
-struct Adder {
-    var base: Int
+struct Incrementer {
+    var value: Int
 
     // new in Swift 5.2
-    func callAsFunction(_ x: Int) -> Int {
-        return base + x
+    mutating func callAsFunction() {
+        value += 1
     }
 }
 
-let add3 = Adder(base: 3)
-add3(10) // => 13
+var inc = Incrementer(value: 5)
+inc() // inc.value = 6
 ```
 
 ^Callable values are values that define function-like behavior and can be called using function call syntax
