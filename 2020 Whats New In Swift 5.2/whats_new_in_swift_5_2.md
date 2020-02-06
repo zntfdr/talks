@@ -37,6 +37,7 @@ struct Incrementer {
 
 var inc = Incrementer(value: 5)
 inc() // inc.value = 6
+inc() // inc.value = 7
 ```
 
 ^Callable values are values that define function-like behavior and can be called using function call syntax
@@ -100,32 +101,6 @@ class Derived: Base {
 
 ---
 
-# [SR-11298](https://bugs.swift.org/browse/SR-11298)
-__Writable property declaration in a conditional-conforming protocol extension has incorrect mutability__
-_A class-constrained protocol extension, where the extended protocol does not impose a class constraint, will now infer the constraint implicitly._
-
-```swift
-protocol Foo {}
-class Bar: Foo {
-  var someProperty: Int = 0
-}
-
-// Even though 'Foo' does not impose a class constraint, it is automatically
-// inferred due to the Self: Bar constraint.
-extension Foo where Self: Bar {
-  var anotherProperty: Int {
-    get { return someProperty }
-    // As a result, the setter is now implicitly nonmutating, just like it would
-    // be if 'Foo' had a class constraint.
-    set { someProperty = newValue }
-  }
-}
-```
-
-^
-
----
-
 # [SR-11429](https://bugs.swift.org/browse/SR-11429)
 __Don't look through CoerceExprs in markDirectCallee__
 _`as` operator can now be used to disambiguate a call to a function with argument labels._
@@ -165,7 +140,7 @@ func outer(x: Int) -> (Int, Int) {
 
 # [SR-2790](https://bugs.swift.org/browse/SR-2790)
 __Reject UnsafePointer initialization via implicit pointer conversion__
-_safer temporary pointer management_
+_Safer temporary pointers management with new warnings_
 
 ```swift
 struct S {
@@ -174,20 +149,18 @@ struct S {
 
 func foo() {
   var i: Int8 = 0
-  let ptr = UnsafePointer(&i)
-  // warning: initialization of 'UnsafePointer<Int8>' results in a 
-  // dangling pointer
+  let ptr = UnsafePointer(&i) // dangling pointer warning
   
-  let s1 = S(ptr: [1, 2, 3]) 
-  // warning: passing '[Int8]' to parameter, but argument 'ptr' should be a
-  // pointer that outlives the call to 'init(ptr:)'
+  let s1 = S(ptr: [1, 2, 3]) // argument should be a pointer that outlives the call
   
-  let s2 = S(ptr: "hello")
-  // warning: passing 'String' to parameter, but argument 'ptr' should be a
-  // pointer that outlives the call to 'init(ptr:)'
+  let s2 = S(ptr: "hello") // argument should be a pointer that outlives the call
 }
-
 ```
+
+
+^ // warning: initialization of 'UnsafePointer<Int8>' results in a dangling pointer
+^ // warning: passing '[Int8]' to parameter, but argument 'ptr' should be a pointer that outlives the call to 'init(ptr:)'
+^ // warning: passing 'String' to parameter, but argument 'ptr' should be a pointer that outlives the call to 'init(ptr:)'
 
 ^All 3 of the above examples are unsound because each argument produces a temporary pointer only valid for the duration of the call they are passed to. Therefore the returned value in each case references a dangling pointer.
 
