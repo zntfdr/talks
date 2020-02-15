@@ -211,6 +211,9 @@ _ = evens.count
 
 # [fit] Links
 
+Slides:
+[_github.com/zntfdr/talks_](https://github.com/zntfdr/talks/)
+
 Resources:
 [_github.com/apple/swift-evolution_](https://github.com/apple/swift-evolution)
 [_github.com/apple/swift_](https://github.com/apple/swift)
