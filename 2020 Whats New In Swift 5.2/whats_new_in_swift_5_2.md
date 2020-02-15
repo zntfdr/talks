@@ -13,6 +13,26 @@ build-lists: true
 
 ---
 
+# [fit] Xcode 11.4 🎉
+
+[.column]
+
+- iOS/macOS/tvOS/watchOS universal apps 🚀
+- View debugger enhancements 👀
+- Xcode Previews canvas enhancements 🖼
+
+
+[.column]
+
+- simctl improvements 🖥
+- Xcode Simulators enhancements 📲
+- All the Swift 5.2 goodies 🏎
+- XCTest improvements 🤖
+
+^ https://developer.apple.com/documentation/xcode_release_notes/xcode_11_4_beta_release_notes
+
+---
+
 # [fit] Swift 
 # [fit] Evolution
 
