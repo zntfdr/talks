@@ -72,8 +72,6 @@ let allEmails: [String] = users.map(\.email)
 let adminsOnly: [User] = users.filter(\.isAdmin)
 ```
 
-^
-
 ---
 
 # [fit] Swift 
@@ -83,7 +81,7 @@ let adminsOnly: [User] = users.filter(\.isAdmin)
 
 # [SR-6118](https://bugs.swift.org/browse/SR-6118)
 __mechanism to hand through #file/#line in subscripts__
-_Subscripts can now declare default arguments!_
+_Subscripts default arguments!_
 
 ```swift
 struct Subscriptable {
@@ -94,7 +92,7 @@ struct Subscriptable {
 }
 
 let s = Subscriptable()
-print(s[0])
+print(s[2])
 ```
 
 ^
@@ -132,10 +130,13 @@ func foo(x: UInt) {}
 
 (foo as (Int) -> Void)(5)  // Calls foo(x: Int)
 (foo as (UInt) -> Void)(5) // Calls foo(x: UInt)
+
+// Swift <5.2: Error: Ambiguous reference to member 'foo(x:)'
 ```
 
 ^The compiler will now correctly strip argument labels from function references used with the as operator in a function call.
 Previously this was only possible for functions without argument labels.
+
 
 ---
 
@@ -155,7 +156,7 @@ func outer(x: Int) -> (Int, Int) {
 }
 ```
 
-^Previously this would crash the compiler
+^Previously this would crash the compiler.
 
 ---
 
@@ -170,7 +171,7 @@ struct S {
 
 func foo() {
   var i: Int8 = 0
-  let ptr = UnsafePointer(&i) // dangling pointer warning
+  let ptr = UnsafePointer(&i) // dangling pointer
   
   let s1 = S(ptr: [1, 2, 3]) // argument should be a pointer that outlives the call
   
@@ -184,6 +185,7 @@ func foo() {
 ^ // warning: passing 'String' to parameter, but argument 'ptr' should be a pointer that outlives the call to 'init(ptr:)'
 
 ^All 3 of the above examples are unsound because each argument produces a temporary pointer only valid for the duration of the call they are passed to. Therefore the returned value in each case references a dangling pointer.
+^ Previously this was going to compile without any warnings around the dangling pointer.
 
 ---
 
