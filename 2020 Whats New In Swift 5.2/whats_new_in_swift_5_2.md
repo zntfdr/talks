@@ -36,36 +36,39 @@ build-lists: true
 # [fit] Swift 
 # [fit] Evolution
 
-^Swift is growing and evolving, guided by a community-driven process referred to as the "Swift Evolution" process.
-Swift Evolution is the process used by the Swift Comminunity to bring new features and changes into the language.
+^Swift is always growing and evolving:
+Swift Evolution is the process used by the Swift Community to bring new features and changes into the language.
 
 ---
 
 # [SE-0253](https://github.com/apple/swift-evolution/blob/master/proposals/0253-callable.md)
 __Callable values of user-defined nominal types__
-_Introducing "statically" callable values_
+_Call functions directly from the instance name_
 
 ```swift
 struct Incrementer {
     var value: Int
 
     // new in Swift 5.2
-    mutating func callAsFunction() {
-        value += 1
+    mutating func callAsFunction(add number: Int) {
+        value += number
     }
 }
 
 var inc = Incrementer(value: 5)
-inc() // inc.value = 6
-inc() // inc.value = 7
+inc(add: 1) // inc.value = 6
+inc(add: 4) // inc.value = 10
 ```
 
-^Callable values are values that define function-like behavior and can be called using function call syntax
+^This change introduces new special functions called `callAsFunction`: 
+what's special about them is that, on the call site, we can skip the function name and directly pass the parameters on the instance name.
+
+^we can now apply the call syntax directly on the instance name, without having to explicitly call a declared function.
+
+^Callable values are values that define function-like behavior and can be called using function call syntax.
 
 ^Values that have a method whose base name is `callAsFunction` can be called like a function.
-
-^let myStruct = try? JSONDecoder().decode([MyCodableStruct].self, from: data)
-let myStruct = try? JSONDecoder()(decode: [MyCodableStruct].self, from: data)
+^call by skipping the function name and call id directly on the instance name.
 
 ^func callAsFunction argument labels are required at call sites.
 Multiple func callAsFunction methods on a single type are supported.
