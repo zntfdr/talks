@@ -13,7 +13,7 @@ build-lists: true
 
 ---
 
-# [fit] Xcode 11.4 🎉
+# [fit] Xcode _**11.4**_ 🎉
 
 [.column]
 
@@ -29,14 +29,26 @@ build-lists: true
 - All the Swift 5.2 goodies 🏎
 - XCTest improvements 🤖
 
+^ Today I'm not going to cover all the points but I'm going to cover just one, which is..
 ^ https://developer.apple.com/documentation/xcode_release_notes/xcode_11_4_beta_release_notes
+
+---
+
+# [fit] All the Swift _**5.2**_ goodies 
+
+# [fit] 🏎
+
+^ A piece of trivia for you in case you didn't notice already: 
+the swift logo is in the racing car emoji. 
+And the word swift is marked in the wheels. 
+It's been there since iOS 10!
 
 ---
 
 # [fit] Swift 
 # [fit] Evolution
 
-^Swift is always growing and evolving:
+^Swift is always growing and moving forward:
 Swift Evolution is the process used by the Swift Community to bring new features and changes into the language.
 
 ---
@@ -49,7 +61,7 @@ _Call functions directly from the instance name_
 struct Incrementer {
     var value: Int
 
-    // new in Swift 5.2
+    //                 ↓ new in Swift 5.2
     mutating func callAsFunction(add number: Int) {
         value += number
     }
@@ -60,6 +72,8 @@ inc(add: 1) // inc.value = 6
 inc(add: 4) // inc.value = 10
 ```
 
+^Slide template intro!
+
 ^This change introduces new special functions called `callAsFunction`: 
 what's special about them is that, on the call site, we can skip the function name and directly pass the parameters on the instance name.
 
@@ -67,7 +81,7 @@ what's special about them is that, on the call site, we can skip the function na
 
 ^Callable values are values that define function-like behavior and can be called using function call syntax.
 
-^Values that have a method whose base name is `callAsFunction` can be called like a function.
+^Instances of Types that expose one or more `callAsFunction` methods are named Callable values.
 ^call by skipping the function name and call id directly on the instance name.
 
 ^func callAsFunction argument labels are required at call sites.
@@ -95,10 +109,15 @@ let allEmails: [String] = users.map(\.email)
 let adminsOnly: [User] = users.filter(\.isAdmin)
 ```
 
+^Wherever Swift allows `(Root) -> Value` functions, it now allows `\Root.value` key path expressions.
+
 ---
 
 # [fit] Swift 
 # [fit] Report
+
+^ Beside the Swift Evolution process, Swift also has another process called Swift Report, you can think about is as your Jira or ticket management you use.
+In here the Swift community discusses about unexpected, inconsistend behaviour and more.
 
 ---
 
@@ -117,8 +136,6 @@ struct Subscriptable {
 let s = Subscriptable()
 print(s[2])
 ```
-
-^
 
 ---
 
@@ -159,7 +176,6 @@ func foo(x: UInt) {}
 
 ^The compiler will now correctly strip argument labels from function references used with the as operator in a function call.
 Previously this was only possible for functions without argument labels.
-
 
 ---
 
@@ -202,6 +218,11 @@ func foo() {
 }
 ```
 
+^ You might have already heard that one effort of Swift 5.2 and later is in the diagnostics, this is very obvious while writing SwiftUI but that's not all, this swift report is an example of that.
+
+^ An `UnsafePointer` instance is a pointer to memory, the pointer is just a pointer, it has no role in whatever it's pointing memory management, which means that it can be deallocated at any point without prior notice.
+
+^ When this happens, we have a dangling pointer, which is a pointer to dead memory.
 
 ^ // warning: initialization of 'UnsafePointer<Int8>' results in a dangling pointer
 ^ // warning: passing '[Int8]' to parameter, but argument 'ptr' should be a pointer that outlives the call to 'init(ptr:)'
@@ -246,6 +267,21 @@ Resources:
 
 Slides Style:
 [_jessesquires.com_](http://jessesquires.com) *•* [_@jesse\_squires_](https://twitter.com/jesse_squires)
+
+---
+
+# [fit] Demo time 🤩
+
+---
+
+# [fit] Toolchain
+
+- Compiler
+- Indexer
+- Debugger
+
+^ A tool chain is a set of tools that Xcode needs to build and debug code
+^ https://swift.org/download/#snapshots
 
 ---
 
