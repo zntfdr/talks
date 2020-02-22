@@ -179,7 +179,7 @@ $ swift test # --filter helloTests
 
 ---
 
-# Launch Input(s)
+# Launch Arguments
 
 [.column]
 
@@ -220,7 +220,7 @@ let arguments: [String] = Array(
   CommandLine.arguments.dropFirst()
 )
 
-guard let name: String = arguments.first else { 
+guard let name = arguments.first else { 
   exit(EXIT_FAILURE) 
 }
 
@@ -273,22 +273,23 @@ $ swift run hello
 
 ---
 
-Environment Variables
+# Environment Variables
 
 [.column]
 
 ```swift
 import Foundation
 
-let environment: [String: String] = ProcessInfo.processInfo.environment
+let processInfo = ProcessInfo.processInfo
+let environment = processInfo.environment
 
-print(environment["MYSECRET", default: "not found"])
+print(environment["MYSECRET"]!)
 ```
 
 [.column]
 
 ```
-$ MYSECRET=ToKeN swift run hello
+$ MYSECRET=ToKeN swift run
 > ToKeN
 ```
 
@@ -474,7 +475,7 @@ $ swift run hello
 
 ---
 
-# Loading State
+# Progress State
 
 [.code-highlight: all]
 ^Like in our apps, even on the command line we do not want to completely block the interface when we're doing some heavy lifting.
@@ -579,8 +580,7 @@ for color in colors {
 
 ```shell
 $ swift build -c release
-$ cd .build/release
-$ cp hello /usr/local/bin/hello
+$ cp .build/release/hello /usr/local/bin/hello
 
 $ hello #from anywhere
 ```
@@ -599,7 +599,8 @@ $ hello #from anywhere
 
 [github.com/**apple/swift-package-manager**](https://github.com/apple/swift-package-manager)
 [github.com/**apple/swift-tools-support-core**](https://github.com/apple/swift-tools-support-core/)
-[**rderik.com**/blog/command-line-argument-parsing-using-swift-package-manager-s](https://rderik.com/blog/command-line-argument-parsing-using-swift-package-manager-s/)
+[github.com/**zntfdr/talks**](https://github.com/zntfdr/talks/)
+[fivestars.blog/**..**](https://fivestars.blog)
 
 ---
 
