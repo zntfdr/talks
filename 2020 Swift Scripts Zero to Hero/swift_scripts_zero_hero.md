@@ -273,6 +273,27 @@ $ swift run hello
 
 ---
 
+Environment Variables
+
+[.column]
+
+```swift
+import Foundation
+
+let environment: [String: String] = ProcessInfo.processInfo.environment
+
+print(environment["MYSECRET", default: "not found"])
+```
+
+[.column]
+
+```
+$ MYSECRET=ToKeN swift run hello
+> ToKeN
+```
+
+---
+
 # Pipeline Messages
 
 [.column]
