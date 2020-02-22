@@ -258,15 +258,15 @@ _ = evens.count
 # [fit] Links
 
 Slides:
-[_github.com/zntfdr/talks_](https://github.com/zntfdr/talks/)
+[github.com/_zntfdr/talks_](https://github.com/zntfdr/talks/)
 
 Resources:
-[_github.com/apple/swift-evolution_](https://github.com/apple/swift-evolution)
-[_github.com/apple/swift_](https://github.com/apple/swift)
-[_forums.swift.org_](https://forums.swift.org)
+[github.com/_apple/swift-evolution_](https://github.com/apple/swift-evolution)
+[github.com/_apple/swift_](https://github.com/apple/swift)
+[_forums_.swift.org](https://forums.swift.org)
 
 Slides Style:
-[_jessesquires.com_](http://jessesquires.com) *•* [_@jesse\_squires_](https://twitter.com/jesse_squires)
+[jessesquires.com](http://jessesquires.com) *•* [_@jesse\_squires_](https://twitter.com/jesse_squires)
 
 ---
 
@@ -274,7 +274,9 @@ Slides Style:
 
 ---
 
-# [fit] Toolchain
+# [fit] Toolchain 🔗
+
+[swift.org/_download/_](https://swift.org/download/)
 
 - Compiler
 - Indexer
@@ -282,6 +284,17 @@ Slides Style:
 
 ^ A tool chain is a set of tools that Xcode needs to build and debug code
 ^ https://swift.org/download/#snapshots
+
+---
+
+# [fit] Standard Library 
+# [fit] Preview Package 📦
+
+[github.com/_apple/swift-standard-library-preview_](https://github.com/apple/swift-standard-library-preview)
+
+- Swift Package
+- Doesn't preview 100% of what's new
+- Can release apps with it
 
 ---
 
