@@ -1,10 +1,10 @@
-theme: Letters from Sweden, 2
+theme: Letters from Sweden, 4
 autoscale: true
 build-lists: true
 
 # [fit] *What's New in*
 
-# [fit] *Swift* _**5.x**_
+# [fit] *Swift* _**5.3**_
 
 ## <br>
 ## __*Federico Zanetello*__
@@ -17,7 +17,7 @@ build-lists: true
 # [fit] Evolution
 
 ^Swift is growing and evolving, guided by a community-driven process referred to as the "Swift Evolution" process.
-Swift Evolution is the process used by the Swift Comminunity to bring new features and changes into the language.
+Swift Evolution is the process used by the Swift Community to bring new features and changes into the language.
 
 ---
 
@@ -54,7 +54,7 @@ Slides Style:
 
 # [fit] *What's New in*
 
-# [fit] *Swift* _**5.x**_
+# [fit] *Swift* _**5.3**_
 
 ## <br>
 ## __*Federico Zanetello*__
