@@ -600,7 +600,7 @@ $ hello #from anywhere
 [github.com/**apple/swift-package-manager**](https://github.com/apple/swift-package-manager)
 [github.com/**apple/swift-tools-support-core**](https://github.com/apple/swift-tools-support-core/)
 [github.com/**zntfdr/talks**](https://github.com/zntfdr/talks/)
-[fivestars.blog/**..**](https://fivestars.blog)
+[fivestars.blog/**ultimate-guide-swift-executables.html**](https://www.fivestars.blog/code/ultimate-guide-swift-executables.html)
 
 ---
 
