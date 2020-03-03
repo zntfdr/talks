@@ -82,7 +82,8 @@ what's special about them is that, on the call site, we can skip the function na
 ^Callable values are values that define function-like behavior and can be called using function call syntax.
 
 ^Instances of Types that expose one or more `callAsFunction` methods are named Callable values.
-^call by skipping the function name and call id directly on the instance name.
+
+^call by skipping the function name and call it directly on the instance name.
 
 ^func callAsFunction argument labels are required at call sites.
 Multiple func callAsFunction methods on a single type are supported.
@@ -128,7 +129,7 @@ _Subscripts default arguments!_
 ```swift
 struct Subscriptable {
   //                       ↓ new in Swift 5.2
-  subscript(x: Int, y: Int = 0) { 
+  subscript(x: Int, y: Int = 0) -> Int { 
     ...
   }
 }
@@ -255,21 +256,6 @@ _ = evens.count
 
 ---
 
-# [fit] Links
-
-Slides:
-[github.com/_zntfdr/talks_](https://github.com/zntfdr/talks/)
-
-Resources:
-[github.com/_apple/swift-evolution_](https://github.com/apple/swift-evolution)
-[github.com/_apple/swift_](https://github.com/apple/swift)
-[_forums_.swift.org](https://forums.swift.org)
-
-Slides Style:
-[jessesquires.com](http://jessesquires.com) *•* [_@jesse\_squires_](https://twitter.com/jesse_squires)
-
----
-
 # [fit] Demo time 🤩
 
 ---
@@ -295,6 +281,21 @@ Slides Style:
 - Swift Package
 - Doesn't preview 100% of what's new
 - Can release apps with it
+
+---
+
+# [fit] Links
+
+Slides:
+[github.com/_zntfdr/talks_](https://github.com/zntfdr/talks/)
+
+Resources:
+[github.com/_apple/swift-evolution_](https://github.com/apple/swift-evolution)
+[github.com/_apple/swift_](https://github.com/apple/swift)
+[_forums_.swift.org](https://forums.swift.org)
+
+Slides Style:
+[jessesquires.com](http://jessesquires.com) *•* [_@jesse\_squires_](https://twitter.com/jesse_squires)
 
 ---
 
