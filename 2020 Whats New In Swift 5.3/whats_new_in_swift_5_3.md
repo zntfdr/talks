@@ -124,6 +124,63 @@ _comment_
 
 ---
 
+# [fit] & More!
+*Function Builders ❤️
+
+---
+
+# [#30045](https://github.com/apple/swift/pull/30045)
+__Support if let / if case in function builders.__
+
+```swift
+struct ContentView: View {
+
+  var body: some View {
+    if let ... {
+      ...
+    }
+    if case let ... {
+      ...
+    }
+  }
+}
+``` 
+
+---
+
+# [#30174](https://github.com/apple/swift/pull/30174)
+__Implement switch support for function builders.__
+
+```swift
+struct ContentView: View {
+
+  var body: some View {
+    switch ... {
+      case ...
+      case ...
+    }
+  }
+}
+```
+
+---
+
+# [#29419](https://github.com/apple/swift/pull/29419)
+__[Function builders] Add support for "if #available"__
+
+```swift
+struct ContentView: View {
+
+  var body: some View {
+    if #available(OSX 10.51, *) {
+      ...
+    }
+  }
+}
+```
+
+---
+
 # [fit] Links
 
 Resources:
