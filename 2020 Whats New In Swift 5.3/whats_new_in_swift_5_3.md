@@ -181,6 +181,36 @@ struct ContentView: View {
 
 ---
 
+# [#28606](https://github.com/apple/swift/pull/28606)
+__[Function builders] Handle #warning and #error__
+
+```swift
+struct ContentView: View {
+
+  var body: some View {
+    #warning("🤫")
+    ...
+    #error("💥")
+  }
+}
+```
+
+---
+
+# [#29786](https://github.com/apple/swift/pull/29786)
+__Allow initialized let/var declarations in function builders__
+
+```swift
+struct ContentView: View {
+
+  var body: some View {
+    let a = ...
+    ... // no need return
+  }
+}
+```
+
+
 # [fit] Links
 
 Resources:
