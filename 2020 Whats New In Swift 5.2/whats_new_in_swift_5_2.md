@@ -256,34 +256,6 @@ _ = evens.count
 
 ---
 
-# [fit] Demo time 🤩
-
----
-
-# [fit] Toolchain 🔗
-
-[swift.org/_download/_](https://swift.org/download/)
-
-- Compiler
-- Indexer
-- Debugger
-
-^ A tool chain is a set of tools that Xcode needs to build and debug code
-^ https://swift.org/download/#snapshots
-
----
-
-# [fit] Standard Library 
-# [fit] Preview Package 📦
-
-[github.com/_apple/swift-standard-library-preview_](https://github.com/apple/swift-standard-library-preview)
-
-- Swift Package
-- Doesn't preview 100% of what's new
-- Can release apps with it
-
----
-
 # [fit] Links
 
 Slides:
