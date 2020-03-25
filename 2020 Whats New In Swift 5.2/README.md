@@ -5,4 +5,4 @@ this talk highlights the main new features and other important changes.
 Lighting Talk.
 
 # SpeakerDeck
-[![SpeakerDeck Presentation](...)](https://speakerdeck.com/zntfdr/whats-new-in-swift-5-dot-2)
+[![SpeakerDeck Presentation](https://speakerd.s3.amazonaws.com/presentations/ab1a4cee288d41ada37da931132960c4/slide_0.jpg?15192884)](https://speakerdeck.com/zntfdr/whats-new-in-swift-5-dot-2)
