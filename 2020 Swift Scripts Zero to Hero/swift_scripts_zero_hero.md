@@ -123,7 +123,7 @@ $ swift package init --type executable
 ^The difference between `.target`s and `.testTarget`s is that `.testTarget`s are not expected to have any headers. (you can see this by taking a look at `.testTarget` initializer that is missing the `publicHeadersPath` parameter, thet's the only difference as of now.
 
 ```swift
-// swift-tools-version:5.1
+// swift-tools-version:5.2
 
 import PackageDescription
 
