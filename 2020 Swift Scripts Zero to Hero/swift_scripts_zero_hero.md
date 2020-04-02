@@ -231,8 +231,8 @@ print("Hello \(name)")
 [.column]
 
 ```shell
-$ swift run hello World
-> Hello World
+$ swift run hello Federico
+> Hello Federico
 ```
 
 ---
@@ -268,8 +268,8 @@ print("Hello \(name)")
 ```
 $ swift run hello
 > What's your name?
-> World
-> Hello World
+> Federico
+> Hello Federico
 ```
 
 ---
@@ -372,33 +372,30 @@ RunLoop.current.run()
 
 ---
 
-SwiftToolsSupport's
-# [fit] TSCUtility 
-# [fit] & TSCBasic
-
-^Previously known as SPMUtility & Basic
-^Tools-Support-Core
-^They offer an abstractions for common operations.
-^Eventually TSCUtility functions will migrate to TSCBasic.
-^These libraries come under an umbrella called SwiftToolsSupport.
+# [fit] Argument
+# [fit] Parser
 
 ---
 
 # Adding a Dependency
 
-[.code-highlight: 4-5, 10]
+[.code-highlight: 4-5, 11-12]
 
 ```swift
 let package = Package(
     name: "hello",
     dependencies: [
-        .package(url: "https://github.com/apple/swift-tools-support-core.git",
+        .package(url: "https://github.com/apple/swift-argument-parser.git",
                  from: "0.0.1"),
     ],
     targets: [
         .target(
             name: "hello",
-            dependencies: ["SwiftToolsSupport"]),
+            dependencies: [
+                .product(name: "ArgumentParser", 
+                         package: "swift-argument-parser")
+            ]
+        ),
         .testTarget(
             name: "helloTests",
             dependencies: ["hello"]),
@@ -408,7 +405,8 @@ let package = Package(
 
 ---
 
-# Parse Arguments
+
+# ArgumentParser
 
 [.column]
 
@@ -436,42 +434,76 @@ This is exactly what the `ArgumentParser` is for.
 ^Note how, in case of any failure, I'm telling the parser to print the command line usage. This is done for free with our utilities, we don't have to do anything to get this behaviour.
 
 ```swift
-import TSCBasic
-import TSCUtility
+import ArgumentParser
 
-let arguments: [String] = Array(
-  CommandLine.arguments.dropFirst()
-)
+struct Hello: ParsableCommand {
+  @Argument(help: "Specify your name.")
+  var name: String
 
-let parser = ArgumentParser(
-  usage: "--name YourName",
-  overview: "Tell me your name 😊")
-
-let nameArgument: OptionArgument<String> = parser.add(
-  option: "--name",
-  kind: String.self)
-
-let parseResult = try! parser.parse(arguments)
-if let name: String = parseResult.get(nameArgument) {
-  print("Hello \(name)")
-} else {
-  parser.printUsage(on: stdoutStream)
+  func run() throws {
+    print("Hello \(name)")
+  }
 }
+
+Hello.main()
 ```
 
 [.column]
 
 ```shell
-$ swift run hello --name World
-> Hello World
+$ swift run hello Federico
+> Hello Federico
 
 $ swift run hello
-> OVERVIEW: Tell me your name 😊
-> 
-> USAGE: hello --name YourName
-> 
+> Error: Missing expected argument '<name>'
+> Usage: hello <name>
+
+$ swift run hello --help
+> USAGE: hello <name>
+>
 > OPTIONS:
->   --help   Display available options
+>   <name>         Specify your name.
+>   -h, --help     Show help information.
+```
+
+---
+
+SwiftToolsSupport's
+# [fit] TSCUtility 
+# [fit] & TSCBasic
+
+^Previously known as SPMUtility & Basic
+^Tools-Support-Core
+^They offer an abstractions for common operations.
+^Eventually TSCUtility functions will migrate to TSCBasic.
+^These libraries come under an umbrella called SwiftToolsSupport.
+
+---
+
+# Adding a Dependency
+
+[.code-highlight: 4-5, 11-12]
+
+```swift
+let package = Package(
+    name: "hello",
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-tools-support-core.git",
+                 from: "0.0.1"),
+    ],
+    targets: [
+        .target(
+            name: "hello",
+            dependencies: [
+                .product(name: "SwiftToolsSupport", 
+                         package: "swift-tools-support-core")
+            ]
+        ),
+        .testTarget(
+            name: "helloTests",
+            dependencies: ["hello"]),
+    ]
+)
 ```
 
 ---
@@ -513,7 +545,7 @@ for i in 0..<100 {
                    total: 100,
                    text: "Loading..")
 }
-animation.complete(success: false)
+animation.complete(success: true)
 ```
 
 [.column]
@@ -556,10 +588,9 @@ let colors: [TerminalController.Color] = [
 ]
 
 for color in colors {
-  terminalController?.write(
-    "Hello World", 
-    inColor: color, 
-    bold: true)
+  terminalController?.write("Hello World", 
+                            inColor: color, 
+                            bold: true)
   terminalController?.endLine()
 }
 ```
@@ -600,6 +631,7 @@ $ hello #from anywhere
 
 [fivestars.blog/**ultimate-guide-swift-executables.html**](https://www.fivestars.blog/code/ultimate-guide-swift-executables.html)
 [github.com/**apple/swift-package-manager**](https://github.com/apple/swift-package-manager)
+[github.com/**apple/swift-argument-parser**](https://github.com/apple/swift-argument-parser)
 [github.com/**apple/swift-tools-support-core**](https://github.com/apple/swift-tools-support-core/)
 [github.com/**zntfdr/talks**](https://github.com/zntfdr/talks/)
 
