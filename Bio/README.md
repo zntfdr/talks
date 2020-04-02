@@ -1,4 +1,5 @@
-<img src="federico-zanetello.jpg" style="border-radius: 50%;" max-width=200>
+<img src="federico-zanetello.jpg" height="auto" width="200" style="border-radius:50%">
+
 
 **Short**  
 Swift iOS Engineer and [fivestars.blog](https://www.fivestars.blog) writer.
