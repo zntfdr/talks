@@ -25,7 +25,8 @@ In fact we're going to build a script using SPM.
 
 ---
 
-# [fit] Getting Started
+# [fit] Getting 
+# [fit] Started
 
 ---
 
@@ -597,10 +598,10 @@ $ hello #from anywhere
 
 # [fit] Links
 
+[fivestars.blog/**ultimate-guide-swift-executables.html**](https://www.fivestars.blog/code/ultimate-guide-swift-executables.html)
 [github.com/**apple/swift-package-manager**](https://github.com/apple/swift-package-manager)
 [github.com/**apple/swift-tools-support-core**](https://github.com/apple/swift-tools-support-core/)
 [github.com/**zntfdr/talks**](https://github.com/zntfdr/talks/)
-[fivestars.blog/**ultimate-guide-swift-executables.html**](https://www.fivestars.blog/code/ultimate-guide-swift-executables.html)
 
 ---
 
