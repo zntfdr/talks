@@ -12,21 +12,27 @@ build-lists: true
 
 ★★★★★ [**fivestars.blog**][fivestarsblog] *•* [**@zntfdr**][twitterHandle]
 
+^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭, in here it's ... which is well past my usual bed time, however today I'm very very pleased to be with all of you for this awesome conference.
+
+^My presentation topic is Swift scripting, and you might be wondering...
+
 ---
 
 # [fit] WHY? 🤔
 
-^The main reasons for an iOS developer to write a swift script is familiarity: writing a script is very similar to write an app or a library. 
-In fact we're going to build a script using SPM.
+^ As developers we use tons of scripts everyday such as fastlane, swiftlint, xcodegen and many more. Those are great, but what if we could automate even more things, maybe tailored for our own projects? That's why Swift scripting is important.
 
-^Furthermore, if we're already writing in Swift, having to change to ruby, bash, python etc requires us to make a context switch, this might seem reasonable, however making this context switch everytime is not easy.
+^Why Swift? One mine reason familiarity: 
 
-^And since we're all working in teams with multiple developers, just because one developer is fluent in python, this doesn't mean that other people in the team might be able to understand and/or even update the script if needed in the future. Using Swift is a safe bet.
+^.. for you, as writing a script is very similar to write an app or a library. 
+^.. for your team, even if you're familiar with  etc, if tou're adding a script in your team project, canchges are everybody knows Swift, while you might be the only one familar with python or other.
 
 ---
 
 # [fit] Getting 
 # [fit] Started
+
+^Time to get started!
 
 ---
 
@@ -167,9 +173,9 @@ print("Hello, world!")
 ^and here's how to run the tests, note how it seems like at the moment we can specify a specific target, therefore we have to use a `--filter` flag that "Run test cases matching regular expression".
 
 ```shell
-$ swift build # --target hello
-$ swift run # hello
-$ swift test # --filter helloTests
+$ swift build
+$ swift run hello
+$ swift test
 ```
 
 ^Alternatively, you can do all of these also from Xcode, the main difference is that you'll need to make sure to set your mac as a Destination, or you won't be happy.
@@ -480,7 +486,7 @@ SwiftToolsSupport's
 
 ---
 
-# Adding a Dependency
+# Adding a Dependency (again!)
 
 [.code-highlight: 4-5, 11-12]
 
@@ -605,7 +611,7 @@ for color in colors {
 
 ---
 
-# Use the script from anywhere
+# Use the script anywhere
 
 ^-c flag is the configuration flag, which defaults to debug, however in this case we're setting it to release.
 ^once run we can find the executable under the folder `.build/release`, and copy it to the user binary folder and then we can run our command from everywhre
@@ -614,9 +620,10 @@ for color in colors {
 $ swift build -c release
 $ cp .build/release/hello /usr/local/bin/hello
 
-$ hello #from anywhere
+$ hello
 ```
 
+<!--
 ---
 
 # [fit] Evolution
@@ -625,6 +632,7 @@ $ hello #from anywhere
 
 ![50%](images/macBook-air.png)
 
+-->
 ---
 
 # [fit] Links
