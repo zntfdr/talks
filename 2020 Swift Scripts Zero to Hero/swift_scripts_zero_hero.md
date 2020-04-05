@@ -53,18 +53,18 @@ $ swift package init --type executable
 
 [.code-highlight: all]
 ^Once we execute the last command a bunch of files are created in the current directory, this is the complete structure.
+I'm going to highlight the main components here.
 
 [.code-highlight: 7-11]
-^The `Tests` folder is where we will add our tests.
+^The `Tests` folder contains our test targets.
 
 [.code-highlight: 4-6]
-^The `Sources` folder is where our script code will be.
+^The `Sources` folder contains our real targets. 
 
-[.code-highlight: 1]
-^The `.gitignore` is prefilled with directories that we should ignore when saving things on our repositories.
-
-[.code-highlight: 3]
-^The `README.md` is there for us to describe the package.
+[.code-highlight: 5, 8]
+^Each target representation is a folder:
+all files within that folder belongs to that specific target, and every file can access to all other declarations within that folder.
+^As you can see we have one target, hello, in our sources folder and one target, helloTests, in the test folders.
 
 [.code-highlight: 2]
 ^Lastly, we have the most important file, the `Package.swift` declaration. Let's look at that.
@@ -88,32 +88,17 @@ $ swift package init --type executable
 # Package.swift
 
 [.code-highlight: all]
-^First of all, you can double click on this file to open the whole package in Xcode.
-^The `Package.swift` is the manifest of our package, regardless of whether it's an executable, a library, a mix of those, or else.
-
-^The Package type is used to configure the name, products, targets, dependencies and various other parts of the package.
-^Even if it's a swift file, traditionally the properties of a Package are defined in the initializer statement, and not modified after initialization.
-
-[.code-highlight: 1]
-^The Swift tools version declares the version of the `PackageDescription` library, the minimum version of the Swift tools and Swift language compatibility version to process the manifest, and the minimum version of the Swift tools that are needed to use the Swift package. 
-^Each version of Swift can introduce updates to the PackageDescription library, but the previous API version will continue to be available to packages which declare a prior tools version. This behavior lets you take advantage of new releases of Swift, the Swift tools, and the PackageDescription library, without having to update your package's manifest or losing access to existing packages.
-^Even if this appears as a comment, this declaration is required as it states how to interpret the package:
-^it's similar to how we have a `SWIFT_VERSION` key in our `XCBuildConfiguration` in our Xcode `.xcodeproj`.
-
-[.code-highlight: 3]
-^Then we have an import statement: The `PackageDescription` defines which APIs are available to the `Package.swift` file.
+^The file is the manifest of our package.
 
 [.code-highlight: 5,17]
-^Then we start with the actual package definition.
+^The Package type declares the whole package declaration.
+^If something is not declared here, it doesn't exist. 
 
 [.code-highlight: 6]
-^We have the package name.
+^we have the name
 
 [.code-highlight: 7-8]
 ^Its dependencies.
-^A package dependency typically consists of a Git URL to the source of the package, and a requirement for the version of the package. We will see an example later on.
-^Dependencies declare other packages that this package depends on.
-^`.package(url: /* package url */, from: "1.0.0"),`
 
 [.code-highlight: 9, 16]
 ^The package targets: A target is the basic building block of a Swift package.
@@ -121,12 +106,10 @@ $ swift package init --type executable
 ^A target may depend on other targets within the same package and on products vended by the package's dependencies.
 
 [.code-highlight: 10-12]
-^For example here we have our main target, that currenly has no dependencies and has name `toolName`.
+^For example here we have our main target, that currently has no dependencies and has name `toolName`.
 
 [.code-highlight: 13-15]
 ^Then we have a second, separate target for tests. This target depends on the package that we want to test.
-
-^The difference between `.target`s and `.testTarget`s is that `.testTarget`s are not expected to have any headers. (you can see this by taking a look at `.testTarget` initializer that is missing the `publicHeadersPath` parameter, thet's the only difference as of now.
 
 ```swift
 // swift-tools-version:5.2
@@ -166,11 +149,9 @@ print("Hello, world!")
 ^This will download, resolve and compile dependencies mentioned in the manifest file Package.swift.
 
 [.code-highlight: 2]
-^Since there is only one executable in this package, we can omit the executable name from the swift run command.
-^Note that you don't have to build every time before running the script: swift run will also build the script if this hasn't been done
+^swift run will also build the script if this hasn't been done
 
 [.code-highlight: 3]
-^and here's how to run the tests, note how it seems like at the moment we can specify a specific target, therefore we have to use a `--filter` flag that "Run test cases matching regular expression".
 
 ```shell
 $ swift build
@@ -178,11 +159,15 @@ $ swift run hello
 $ swift test
 ```
 
-^Alternatively, you can do all of these also from Xcode, the main difference is that you'll need to make sure to set your mac as a Destination, or you won't be happy.
+---
+
+..or use Xcode!
 
 ---
 
 # [FIT] EXAMPLES
+
+^
 
 ---
 
@@ -191,35 +176,24 @@ $ swift test
 [.column]
 
 [.code-highlight: all]
-^If this is your first script, even if it's small there's a lot going on, so we will introduce every player one by one.
 
 [.code-highlight: 6]
-^First we have the CommandLine object, this is our script launch arguments container. 
-^If you do UI Testing in your apps, you might have used them to pass flags into your app:
-^```
-^let app = XCUIApplication()
-^app.launchArguments = ["UI-TESTING"]
-^app.launch()
-^```
+^First we have the CommandLine, which is an object that gives us access to the arguments of the current process.
+
+^If you do UI Testing in your apps, this is kind of what we're doing when we pass launch arguments with XCUIApplication.
 
 [.code-highlight: 3-7]
 ^The first argument is always the script execution path: 
 if we are reading the input sent along with the script, we want to get rid of this path and read only what's after that.
 
 [.code-highlight: 1, 10]
-^Then we have Darwin module, which is Apple’s UNIX-based core of every Apple OS. 
-^You can think of it as the foundation of the Foundation framework.
-^In this case I'm using it as it defines the two values for a succesful exit or, as the case here for an unsuccessful exit.
-^You can also just type exit(0) for success and exit(1) for failure, I just try to avoid having undocumented magic numbers in the code.
-^However this really means that our script never terminates until we tell it to do so, therefore **always** remember to terminate the script once your asynchronous call has been executed, or it will stay alive forever.
-^Linux reserved exit codes: http://www.tldp.org/LDP/abs/html/exitcodes.html
-^Note that this is just one of many ways that we can use to keep our script alive, other ways to do so is for example by using [semaphores](https://www.fivestars.blog/code/semaphores.html) or DispatchGroups.
+^Then we have the exit command, which terminates the current process with either a successful state or a failure.
 
 [.code-highlight: all]
 ^Now that we have seen how it works, we can see the big picture..
 
 ```swift
-import Darwin
+import Foundation
 
 let arguments: [String] = Array(
   // We drop the first argument, 
@@ -250,13 +224,13 @@ $ swift run hello Federico
 [.code-highlight: all]
 
 [.code-highlight: 6]
-^returns a string read from standard input through the end of the current line or until EOF is reached.
-^This line is synchronous, and your script will continue running after the user has hit the return key.
+^gets a string from standard, which means that waits until a return key is hit.
+^synchronous.
 
 [.code-highlight: all]
 
 ```swift
-import Darwin
+import Foundation
 
 print("What's your name?")
 
@@ -282,7 +256,16 @@ $ swift run hello
 
 # Environment Variables
 
+^CI
+
 [.column]
+
+[.code-highlight: all]
+
+[.code-highlight: 3, 4]
+^ProcessInfo is a collection of information of the current process, and among this information we get to access to the process environment dictionary
+
+[.code-highlight: all]
 
 ```swift
 import Foundation
@@ -304,18 +287,17 @@ $ MYSECRET=ToKeN swift run
 
 # Pipeline Messages
 
+^Another important aspect of scripting
+
 [.column]
 
 [.code-highlight: all]
-^In case we need to work with pipelines, then we can use Foundation's FileHandle.
 
 [.code-highlight: 3, 6]
-^as the name says, it handles objects to access data associated with files, sockets, pipes, and devices.
+^handles data access for files, sockets, pipes, and more.
 ^In our case we use it to get the `standardInput` terminal, and then read the available data at launch.
 
 [.code-highlight: all]
-^Note that this specific script expects data once launched, if there's no data, 
-^it's going to hang until data is given to the script.
 
 ```swift
 import Foundation
@@ -352,7 +334,7 @@ $ ls -1 | swift run hello
 
 [.code-highlight: 9,12,16]
 ^we run this command here.
-^In short what this command does is to tell the current thread to wait for inputs from its loop, making it so that it doesn't terminate immediately.
+^In short we're telling the current loop to wait for more inputs, stopping it from terminate immediately.
 
 [.code-highlight: all]
 ^Note how in here we have imported `Foundation`: all the system frameworks are available to us without the need to add them in our `Package.swift` file!
@@ -410,7 +392,6 @@ let package = Package(
 ```
 
 ---
-
 
 # ArgumentParser
 
@@ -516,11 +497,9 @@ let package = Package(
 
 # Progress State
 
+^leaving terminal completely blocked bad UX
+
 [.code-highlight: all]
-^Like in our apps, even on the command line we do not want to completely block the interface when we're doing some heavy lifting.
-^Sometimes for scripts this is not possible, as in, we need to finish the work we're currently doing before the user can continue its flow.
-^However, leaving the terminal completely still while we're doing so it's not the best user experience, the user might think that the script is stuck or something.
-^To address this issue we can use one of the many loading states animations that `TSCUtility` gives us, here's an example.
 
 [.code-highlight: 5-7]
 ^In here we define this animation, again this is not the only one that we have.
@@ -536,7 +515,7 @@ let package = Package(
 [.column]
 
 ```swift
-import Darwin
+import Foundation
 import TSCBasic
 import TSCUtility
 
@@ -559,6 +538,8 @@ animation.complete(success: true)
 ![autoplay loop 80%](videos/PercentProgressAnimation.mov)
 
 ---
+
+<!--
 
 # Colors
 
@@ -606,6 +587,8 @@ for color in colors {
 ![inline original](images/colors.png)
 
 ---
+
+-->
 
 # [fit] Release 
 
