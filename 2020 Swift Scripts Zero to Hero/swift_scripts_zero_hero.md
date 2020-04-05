@@ -20,7 +20,8 @@ build-lists: true
 
 # [fit] WHY? 🤔
 
-^ As developers we use tons of scripts everyday such as fastlane, swiftlint, xcodegen and many more. Those are great, but what if we could automate even more things, maybe tailored for our own projects? That's why Swift scripting is important.
+^ As developers we use tons of scripts everyday: fastlane, swiftlint, XcodeGen, sourcery you name it.
+^Those are great, but our need for automation doesn't end there, and there are plenty of opportunities to make our projects and our flows better via scripting. That's why Swift scripting is important.
 
 ^Why Swift? One mine reason familiarity: 
 
