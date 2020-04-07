@@ -23,7 +23,7 @@ build-lists: true
 ^ As developers we use tons of scripts everyday: fastlane, swiftlint, XcodeGen, sourcery you name it.
 ^Those are great, but our need for automation doesn't end there, and there are plenty of opportunities to make our projects and our flows better via scripting. That's why Swift scripting is important.
 
-^Why Swift? One mine reason familiarity: 
+^Why Swift? The main reason is familiarity: 
 
 ^.. for you, as writing a script is very similar to write an app or a library. 
 ^.. for your team, even if you're familiar with  etc, if tou're adding a script in your team project, canchges are everybody knows Swift, while you might be the only one familar with python or other.
@@ -134,6 +134,27 @@ let package = Package(
 
 ---
 
+# The Package Structure
+
+[.code-highlight: 6]
+^Lastly, we have the most important file, the `Package.swift` declaration. Let's look at that.
+
+```shell
+├── .gitignore
+├── Package.swift
+├── README.md
+├── Sources
+│   └── hello
+│       └── main.swift
+└── Tests
+    ├── helloTests
+    │   ├── helloTests.swift
+    │   └── XCTestManifests.swift
+    └── LinuxMain.swift
+```
+
+---
+
 # main.swift
 
 ```swift
@@ -145,14 +166,8 @@ print("Hello, world!")
 # Build Run Test
 
 [.code-highlight: all]
-
-[.code-highlight: 1]
-^This will download, resolve and compile dependencies mentioned in the manifest file Package.swift.
-
-[.code-highlight: 2]
-^swift run will also build the script if this hasn't been done
-
-[.code-highlight: 3]
+^build: download, resolve and compile dependencies
+^run: will build if needed
 
 ```shell
 $ swift build
@@ -162,11 +177,12 @@ $ swift test
 
 ---
 
-..or use Xcode!
+### ..or use Xcode!
 
 ---
 
-# [FIT] EXAMPLES
+# [fit] The Missing 
+# 🔗
 
 ^
 
@@ -325,36 +341,26 @@ $ ls -1 | swift run hello
 
 ---
 
-# Asynchronous Calls
+# Asynchronous Work
 
 [.code-highlight: all]
-^One of the first needs that I had when I got started with scripts was doing things asynchonously.
-^In this first example we're fetching something from the internet.
 ^In an app we just call things like `DispatchQueue.main.async` and we're good, as our app stays alive even when we're not executing anything.
 ^However in the executable world our script life ends as soon as we reach the end of the file. Unless...
 
-[.code-highlight: 9,12,16]
+[.code-highlight: 9]
 ^we run this command here.
 ^In short we're telling the current loop to wait for more inputs, stopping it from terminate immediately.
 
-[.code-highlight: all]
-^Note how in here we have imported `Foundation`: all the system frameworks are available to us without the need to add them in our `Package.swift` file!
+[.code-highlight: 6]
 
 ```swift
 import Foundation
 
-let url: URL = URL(string: "https://api.github.com/users/zntfdr")!
-let request = URLRequest(url: url)
-URLSession.shared.dataTask(with: request) { data, _, error in
-  if let data = data {
-    let responseText = String(data: data, encoding: .utf8)!
-    print(responseText)
-    exit(EXIT_SUCCESS)
-  } else {
-    print(error!.localizedDescription)
-    exit(EXIT_FAILURE)
-  }
-}.resume()
+DispatchQueue.global(qos: .default).async {
+  // long task here...
+  print("✅ done!")
+  exit(EXIT_SUCCESS)
+}
 
 RunLoop.current.run()
 ```
@@ -399,27 +405,13 @@ let package = Package(
 [.column]
 
 [.code-highlight: all]
-^This is the most complex example of the whole presentation please bare with me.
-^Previously we saw how to parse a single input. Which was nice and easy, however if you used any other command line tool before you know that most of them come with an help, and you can pass multiple parameters and flags to them.
-This is exactly what the `ArgumentParser` is for.
-^In this example we just ask for the user name, however you can easily imagine how much more complicated you can make this.
 
-[.code-highlight: 1,2]
-^First of all, as promised, these are the two libraries that we've just added as a depenency.
+[.code-highlight: 4-5]
+^Property wrappers
 
-[.code-highlight: 8-10]
-^In here we define our parser, which we can think of our command line interface to the user.
-
-[.code-highlight: 12-14]
-^In this case I'm asking the user to pass the name via a value argument identified with the `--name` flag.
-^Note that in here I'm already telling the parser which type I'm expecting to get back.
-^In this case I'm using a primitive however, like for `Decodable`, we can also make our own types parsable, and this is done by making our types conform to the `ArgumentKind` protocol.
-
-[.code-highlight: 16-22]
-^Lastly in here we're doing the actual parsing and then print the outcome
+[.code-highlight: 8]
 
 [.code-highlight: all]
-^Note how, in case of any failure, I'm telling the parser to print the command line usage. This is done for free with our utilities, we don't have to do anything to get this behaviour.
 
 ```swift
 import ArgumentParser
@@ -468,7 +460,7 @@ SwiftToolsSupport's
 
 ---
 
-# Adding a Dependency (again!)
+# Adding a Dependency 2
 
 [.code-highlight: 4-5, 11-12]
 
