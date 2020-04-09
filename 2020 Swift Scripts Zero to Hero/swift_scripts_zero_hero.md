@@ -91,7 +91,6 @@ all files within that folder belongs to that specific target, and every file can
 [.code-highlight: all]
 ^The file is the manifest of our package.
 
-[.code-highlight: 5,17]
 ^The Package type declares the whole package declaration.
 ^If something is not declared here, it doesn't exist. 
 
@@ -181,10 +180,25 @@ $ swift test
 
 ---
 
-# [fit] The Missing 
-# 🔗
+^if you've been following until now, congratulations! You now know exactly how things work!
 
-^
+# [fit] We're done! 
+# 🙌🏻
+
+---
+
+^ Well...
+
+### *Almost
+
+---
+
+# [fit] GUI -> TUI
+
+^The truth is..
+^scripts are apps without a GUI, a Graphical User Interface, but with a TUI, Text User Interface.
+
+^Which means that the way we interact with them is different, the way the data flows is different, so I hope you're ready because from now on is all code!
 
 ---
 
@@ -203,7 +217,7 @@ $ swift test
 ^The first argument is always the script execution path: 
 if we are reading the input sent along with the script, we want to get rid of this path and read only what's after that.
 
-[.code-highlight: 1, 10]
+[.code-highlight: 10]
 ^Then we have the exit command, which terminates the current process with either a successful state or a failure.
 
 [.code-highlight: all]
