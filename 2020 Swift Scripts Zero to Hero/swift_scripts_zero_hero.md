@@ -423,7 +423,7 @@ let package = Package(
 [.code-highlight: 4-5]
 ^Property wrappers
 
-[.code-highlight: 8]
+[.code-highlight: 7-9]
 
 [.code-highlight: all]
 
