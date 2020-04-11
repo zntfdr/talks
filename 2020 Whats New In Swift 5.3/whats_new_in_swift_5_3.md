@@ -13,6 +13,10 @@ build-lists: true
 
 ---
 
+![](wwdc20.jpg)
+
+---
+
 # [fit] Swift 
 # [fit] Evolution
 
