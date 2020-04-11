@@ -102,17 +102,150 @@ arr.sorted()
 ]
 ```
 
+^
+
+---
+
+
+# [SE-0267](https://github.com/apple/swift-evolution/blob/master/proposals/0267-where-on-contextually-generic.md)
+__where clauses on contextually generic declarations__
+_no need to put these declarations on extensions any longer!_
+
+```swift
+struct Box<Wrapped> {
+  func boxes() -> [Box<Wrapped.Element>] where Wrapped: Sequence { ... }
+  //                                      ^ New in Swift 5.3
+}
+
+// Swift 5.2 <= approach:
+struct Box<Wrapped> {}
+
+extension Box where Wrapped: Sequence {
+  func boxes() -> [Box<Wrapped.Element>] { ... }
+}
+```
+
+^'where' clause cannot be attached error will be relaxed for most declarations nested inside generic contexts
+^Non-generic members that support a generic parameter list, including nested type declarations, are now allowed to carry a contextual where clause against outer generic parameters.
+
+---
+
+
+# [SE-0280](https://github.com/apple/swift-evolution/blob/master/proposals/0280-enum-cases-as-protocol-witnesses.md)
+__Enum cases as protocol witnesses__
+_Enum cases can now satisfy static protocol requirements_
+
+```swift
+protocol P {
+  static var foo: Self { get }
+  static func bar(value: Int) -> Self
+}
+
+enum E: P {
+  case foo // matches 'static var foo'
+  case bar(value: Int) // matches 'static func bar(value:)'
+}
+```
 
 ^
 
 ---
 
+# [SE-0276](https://github.com/apple/swift-evolution/blob/master/proposals/0276-multi-pattern-catch-clauses.md)
+__Multi-Pattern Catch Clauses__
+_Paving the road for typed throws_
+
+```swift
+do {
+  try performTask()
+} catch TaskError.someRecoverableError { // Swift <= 5.2
+  ...
+} catch TaskError.someFailure(let msg),
+        TaskError.anotherFailure(let msg) { // New in Swift 5.3
+  ...
+}
+```
+
+^
+
+---
+
+# [SE-0268](https://github.com/apple/swift-evolution/blob/master/proposals/0268-didset-semantics.md)
+__Refine didSet Semantics__
+_more efficient didSet property observers 🏎_
+
+[.column]
+
+```swift
+class Foo {
+  var bar = 0 {
+    didSet { print("didSet called") }
+  }
+
+  var baz = 0 {
+    didSet { print(oldValue) }
+  }
+}
+
+let foo = Foo()
+foo.bar = 1 // Won't fetch oldValue.
+foo.baz = 2 // Will fetch oldValue.
+```
+
+[.column]
+
+```swift
+class Foo2 {
+  var bar = 0 {
+    // When willSet isn't declared, 
+    // in-place modifications are allowed.
+    didSet { bar += bar }
+  }
+}
+
+let foo = Foo()
+foo.bar = 1 // foo.bar = 2
+foo.bar = 7 // foo.bar = 8
+```
+
+^
+
+---
+
+# [SE-]()
+__title__
+_comment_
+
+```swift
+
+```
+
+^
+
+---
 # [fit] Swift 
 # [fit] Report
 
 ---
 
-# [S-]()
+# [SR-75](https://bugs.swift.org/browse/SR-75)
+__Referencing a protocol function crashes the compiler__
+_partially-applied method references now behave as normal closures_
+
+```swift
+protocol Cat {
+  func play(catToy: Toy)
+}
+
+let fn = Cat.play(catToy:) // = { (cat: Cat) in cat.play(catToy:) }
+fn(myCat)(myToy)
+```
+
+^Filed on December 2015
+
+---
+
+# [SR-]()
 __title__
 _comment_
 
