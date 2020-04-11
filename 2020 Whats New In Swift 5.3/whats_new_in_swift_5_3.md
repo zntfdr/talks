@@ -21,6 +21,31 @@ Swift Evolution is the process used by the Swift Community to bring new features
 
 ---
 
+# [SE-270](https://github.com/apple/swift-evolution/blob/master/proposals/0270-rangeset-and-collection-operations.md)
+__Add Collection Operations on Noncontiguous Elements__
+_Welcome RangeSet!_
+
+```swift
+var numbers = Array(1...15)
+
+// Find the indices of all the even numbers
+let indicesOfEvens = numbers.subranges(where: { $0.isMultiple(of: 2) })
+
+// Perform an operation with just the even numbers
+let sumOfEvens = numbers[indicesOfEvens].reduce(0, +)
+// sumOfEvens == 56
+
+// You can gather the even numbers at the beginning
+let rangeOfEvens = numbers.moveSubranges(indicesOfEvens, to: numbers.startIndex)
+// numbers == [2, 4, 6, 8, 10, 12, 14, 1, 3, 5, 7, 9, 11, 13, 15]
+// numbers[rangeOfEvens] == [2, 4, 6, 8, 10, 12, 14]
+```
+
+^Range<Index> to refer to a group of consecutive positions in a collection
+^RangeSet<Index> to refer to discontiguous positions in an arbitrary collection
+
+---
+
 # [SE-0269](https://github.com/apple/swift-evolution/blob/master/proposals/0269-implicit-self-explicit-capture.md)
 __Increase availability of implicit self in @escaping closures when reference cycles are unlikely to occur__
 _No more self. self. self._
@@ -223,6 +248,7 @@ _comment_
 ^
 
 ---
+
 # [fit] Swift 
 # [fit] Report
 
