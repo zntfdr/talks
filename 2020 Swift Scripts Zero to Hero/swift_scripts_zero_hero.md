@@ -14,14 +14,15 @@ build-lists: true
 
 ^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭, in here it's ... which is well past my usual bed time, however today I'm very very pleased to be with all of you for this awesome conference.
 
-^My presentation topic is Swift scripting, and you might be wondering...
+^My presentation topic is Swift scripting, and you might be wondering, we're iOS Developers at UIKonf, ...
 
 ---
 
 # [fit] WHY? 🤔
 
-^ As developers we use tons of scripts everyday: fastlane, swiftlint, XcodeGen, sourcery you name it.
-^Those are great, but our need for automation doesn't end there, and there are plenty of opportunities to make our projects and our flows better via scripting. That's why Swift scripting is important.
+^..why should we care about Swift scripting?
+^As developers we use tons of scripts everyday: fastlane, swiftlint, XcodeGen, sourcery you name it.
+^Those are great, however our need for automation doesn't end there, there are always plenty of opportunities to make our projects and our flows even better. That's why Swift scripting is important.
 
 ^Why Swift? The main reason is familiarity: 
 
@@ -176,14 +177,16 @@ $ swift test
 
 ---
 
-### ..or use Xcode!
+### ..or use Xcode
 
 ---
 
-^if you've been following until now, congratulations! You now know exactly how things work!
-
 # [fit] We're done! 
 # 🙌🏻
+
+^if you've been following until now, congratulations! You now know exactly how to build and run your scripts!
+^I'm not going to show you how to write scripts, because that's like saying I'm going to teach you to develop an app:
+you already know how to code apps, therefore you know how to code scripts.
 
 ---
 
@@ -355,6 +358,8 @@ $ ls -1 | swift run hello
 
 ---
 
+<!--
+
 # Asynchronous Work
 
 [.code-highlight: all]
@@ -380,6 +385,7 @@ RunLoop.current.run()
 ```
 
 ---
+-->
 
 # [fit] Argument
 # [fit] Parser
