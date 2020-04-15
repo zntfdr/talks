@@ -27,7 +27,7 @@ build-lists: true
 ^Why Swift? The main reason is familiarity: 
 
 ^.. for you, as writing a script is very similar to write an app or a library. 
-^.. for your team, even if you're familiar with  etc, if tou're adding a script in your team project, canchges are everybody knows Swift, while you might be the only one familar with python or other.
+^.. for your team, even if you're familiar with  etc, if you're adding a script in your team project, chances are everybody knows Swift, while you might be the only one familiar with python or other.
 
 ---
 
