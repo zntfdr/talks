@@ -221,16 +221,11 @@ you already know how to code apps, therefore you know how to code scripts.
 
 [.code-highlight: all]
 
-[.code-highlight: 6]
+[.code-highlight: 3-4]
 ^First we have the CommandLine, which is an object that gives us access to the arguments of the current process.
+^The first argument is always the script execution path
 
-^If you do UI Testing in your apps, this is kind of what we're doing when we pass launch arguments with XCUIApplication.
-
-[.code-highlight: 3-7]
-^The first argument is always the script execution path: 
-if we are reading the input sent along with the script, we want to get rid of this path and read only what's after that.
-
-[.code-highlight: 10]
+[.code-highlight: 9]
 ^Then we have the exit command, which terminates the current process with either a successful state or a failure.
 
 [.code-highlight: all]
@@ -239,17 +234,16 @@ if we are reading the input sent along with the script, we want to get rid of th
 ```swift
 import Foundation
 
-let arguments: [String] = Array(
-  // We drop the first argument, 
-  // which is the script execution path.
-  CommandLine.arguments.dropFirst()
-)
+// The first argument is the script execution path.
+let arguments = CommandLine.arguments.dropFirst()
 
-guard let name = arguments.first else { 
-  exit(EXIT_FAILURE) 
+if let name = arguments.first {
+  print("Hello \(name)")
+} else {
+  exit(EXIT_FAILURE)
 }
 
-print("Hello \(name)")
+
 ```
 
 [.column]
