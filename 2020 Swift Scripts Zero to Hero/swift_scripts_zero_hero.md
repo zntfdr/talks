@@ -38,6 +38,16 @@ build-lists: true
 
 ---
 
+```shell
+hello
+```
+
+^Today we're going to build a script called hello. 
+^Its main function is to greet you. 
+^I know it sounds simple, however we will see many ways to do.
+
+---
+
 # Creating an executable
 
 ```shell
@@ -170,7 +180,7 @@ print("Hello, world!")
 ^run: will build if needed
 
 ```shell
-$ swift build
+$ swift build hello
 $ swift run hello
 $ swift test
 ```
@@ -307,14 +317,18 @@ import Foundation
 let processInfo = ProcessInfo.processInfo
 let environment = processInfo.environment
 
-print(environment["MYSECRET"]!)
+if let name = environment["MYNAME"] {
+  print("Hello \(name)")
+} else {
+  exit(EXIT_FAILURE)
+}
 ```
 
 [.column]
 
 ```
-$ MYSECRET=ToKeN swift run
-> ToKeN
+$ MYNAME=Federico swift run
+> Hello Federico
 ```
 
 ---
@@ -342,18 +356,17 @@ if let inputString = String(
   data: standardInput.availableData,
   encoding: .utf8
 ) {
-  print(inputString)
+  print("Hello \(inputString)")
+} else {
+  exit(EXIT_FAILURE)
 }
 ```
 
 [.column]
 
 ```shell
-$ ls -1 | swift run hello
-> Package.swift
-> README.md
-> Sources
-> Tests
+$ echo Federico | swift run hello
+> Hello Federico
 ```
 
 ---
@@ -534,16 +547,17 @@ import TSCUtility
 
 let animation = PercentProgressAnimation(
   stream: stdoutStream,
-  header: "Hello World")
+  header: "Loading Greeting")
 
 for i in 0..<100 {
   let second: Double = 1_000_000
   usleep(UInt32(second * 0.05))
   animation.update(step: i,
                    total: 100,
-                   text: "Loading..")
+                   text: "Almost there...")
 }
-animation.complete(success: true)
+
+print("Hello UIKonf!")
 ```
 
 [.column]
