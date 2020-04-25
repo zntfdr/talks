@@ -590,12 +590,13 @@ for i in 0..<100 {
                    text: "Almost there...")
 }
 
-print("Hello UIKonf!")
+animation.complete(success: true)
+print("Hello UIKonf! 🎉")
 ```
 
 [.column]
 
-![autoplay loop 80%](videos/PercentProgressAnimation.mov)
+![autoplay loop 60%](videos/PercentProgressAnimation.mov)
 
 ---
 
