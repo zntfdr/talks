@@ -187,6 +187,18 @@ $ swift test
 
 ---
 
+# Build Run Test
+
+[.code-highlight: all]
+^build: download, resolve and compile dependencies
+^run: will build if needed
+
+```shell
+$ swift build hello
+$ swift run hello
+$ swift test
+```
+
 ### ..or use Xcode
 
 ---
@@ -198,11 +210,13 @@ $ swift test
 ^I'm not going to show you how to write scripts, because that's like saying I'm going to teach you to develop an app:
 you already know how to code apps, therefore you know how to code scripts.
 
+<!--
 ---
 
 ^ Well...
 
 ### *Almost
+-->
 
 ---
 
@@ -225,7 +239,7 @@ you already know how to code apps, therefore you know how to code scripts.
 ^First we have the CommandLine, which is an object that gives us access to the arguments of the current process.
 ^The first argument is always the script execution path
 
-[.code-highlight: 9]
+[.code-highlight: 6-10]
 ^Then we have the exit command, which terminates the current process with either a successful state or a failure.
 
 [.code-highlight: all]
@@ -242,7 +256,6 @@ if let name = arguments.first {
 } else {
   exit(EXIT_FAILURE)
 }
-
 
 ```
 
@@ -303,6 +316,8 @@ $ swift run hello
 [.code-highlight: 3, 4]
 ^ProcessInfo is a collection of information of the current process, and among this information we get to access to the process environment dictionary
 
+[.code-highlight: 6-10]
+
 [.code-highlight: all]
 
 ```swift
@@ -335,9 +350,11 @@ $ MYNAME=Federico swift run
 
 [.code-highlight: all]
 
-[.code-highlight: 3, 6]
+[.code-highlight: 3,4]
 ^handles data access for files, sockets, pipes, and more.
 ^In our case we use it to get the `standardInput` terminal, and then read the available data at launch.
+
+[.code-highlight: 5-12]
 
 [.code-highlight: all]
 
@@ -345,9 +362,10 @@ $ MYNAME=Federico swift run
 import Foundation
 
 let standardInput: FileHandle = .standardInput
+let data = standardInput.availableData
 
 if let inputString = String(
-  data: standardInput.availableData,
+  data: data,
   encoding: .utf8
 ) {
   print("Hello \(inputString)")
@@ -359,13 +377,28 @@ if let inputString = String(
 [.column]
 
 ```shell
-$ echo Federico | swift run hello
+$ printf Federico | swift run hello
 > Hello Federico
 ```
 
 ---
 
 <!--
+
+# [fit] We're done! 
+# 🙌🏻
+
+^if you've been following until now, congratulations! You now know exactly how to build and run your scripts!
+^I'm not going to show you how to write scripts, because that's like saying I'm going to teach you to develop an app:
+you already know how to code apps, therefore you know how to code scripts.
+
+---
+
+^ Well...
+
+### *Almost
+
+---
 
 # Asynchronous Work
 
@@ -457,6 +490,15 @@ Hello.main()
 
 [.column]
 
+[.code-highlight: all]
+
+[.code-highlight: 1-2]
+
+[.code-highlight: 4-6]
+
+[.code-highlight: 8-13]
+
+
 ```shell
 $ swift run hello Federico
 > Hello Federico
@@ -526,9 +568,6 @@ let package = Package(
 
 [.code-highlight: 12-14]
 ^In here we update it. Note how we don't need to worry about the presentation at all, in here we just tell at which step we're currently out of how many, and that's all, `TSCUtility` will take care of the rest for us.
-
-[.code-highlight: 16]
-^Lastly, we call animation complete when the work is done.
 
 [.code-highlight: all]
 
@@ -637,6 +676,12 @@ $ hello
 ![50%](images/macBook-air.png)
 
 -->
+
+---
+
+# [fit] We're done! 
+## *Really 🥳
+
 ---
 
 # [fit] Links
@@ -648,6 +693,8 @@ $ hello
 [github.com/**zntfdr/talks**](https://github.com/zntfdr/talks/)
 
 ---
+
+^I want to thank the UIKonf organizers for this awesome opportunity, thank you all for listening and I hope you enjoy the rest conference!
 
 # [fit] Swift Scripts:
 
