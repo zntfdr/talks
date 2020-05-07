@@ -466,6 +466,8 @@ let package = Package(
 
 [.code-highlight: all]
 
+[.code-highlight: 3,10]
+
 [.code-highlight: 4-5]
 ^Property wrappers
 
@@ -568,6 +570,8 @@ let package = Package(
 
 [.code-highlight: 12-14]
 ^In here we update it. Note how we don't need to worry about the presentation at all, in here we just tell at which step we're currently out of how many, and that's all, `TSCUtility` will take care of the rest for us.
+
+[.code-highlight: 17]
 
 [.code-highlight: all]
 
@@ -687,10 +691,10 @@ $ hello
 
 # [fit] Links
 
-[fivestars.blog/**ultimate-guide-swift-executables.html**](https://www.fivestars.blog/code/ultimate-guide-swift-executables.html)
 [github.com/**apple/swift-package-manager**](https://github.com/apple/swift-package-manager)
 [github.com/**apple/swift-argument-parser**](https://github.com/apple/swift-argument-parser)
 [github.com/**apple/swift-tools-support-core**](https://github.com/apple/swift-tools-support-core/)
+[fivestars.blog/**ultimate-guide-swift-executables.html**](https://www.fivestars.blog/code/ultimate-guide-swift-executables.html)
 [github.com/**zntfdr/talks**](https://github.com/zntfdr/talks/)
 
 ---
