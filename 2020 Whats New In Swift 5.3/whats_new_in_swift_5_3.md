@@ -275,6 +275,45 @@ fn(myCat)(myToy)
 
 ---
 
+# [SR-11700](https://bugs.swift.org/browse/SR-11700)
+__Diagnose exclusivity violations with Dictionary.subscript._modify__
+_can't write bad code anymore!_
+
+```swift
+struct Container {
+   static let defaultKey = 0
+
+   var dictionary = [defaultKey:0]
+
+   mutating func incrementValue(at key: Int) {
+     dictionary[key, default: dictionary[Container.defaultKey]!] += 1
+                                        ^ 
+    // error: overlapping accesses to 'self.dictionary', but modification requires exclusive access
+   }
+}
+```
+
+^We shouldn't access to the dictionary in the `default` argument when assigning. Modification requires exclusive access.
+
+---
+
+# [SR-7083](https://bugs.swift.org/browse/SR-7083)
+__lazy properties can't have observers__
+_willSet and didSet ❤️ lazy_
+
+```swift
+class C {
+  lazy var property: Int = 0 {
+    willSet { print("willSet called!") } // Okay
+    didSet { print("didSet called!") } // Okay
+  }
+}
+```
+
+^
+
+---
+
 # [SR-]()
 __title__
 _comment_
