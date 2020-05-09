@@ -25,7 +25,7 @@ Swift Evolution is the process used by the Swift Community to bring new features
 
 ---
 
-# [SE-270](https://github.com/apple/swift-evolution/blob/master/proposals/0270-rangeset-and-collection-operations.md)
+# [SE-0270](https://github.com/apple/swift-evolution/blob/master/proposals/0270-rangeset-and-collection-operations.md)
 __Add Collection Operations on Noncontiguous Elements__
 _Welcome RangeSet!_
 
@@ -235,6 +235,34 @@ class Foo2 {
 let foo = Foo()
 foo.bar = 1 // foo.bar = 2
 foo.bar = 7 // foo.bar = 8
+```
+
+^
+
+---
+
+# [SE-0277](https://github.com/apple/swift-evolution/blob/master/proposals/0277-float16.md)
+__Float16__
+_Say hello to Float16_
+
+```swift
+@available(macOS 10.16, iOS 14, tvOS 14, watchOS 7, *)
+@frozen
+public struct Float16: BinaryFloatingPoint, SIMDScalar, CustomStringConvertible { }
+```
+
+^The last decade has seen a dramatic increase in the use of floating-point types smaller than (32-bit) Float. The most widely implemented is Float16, which is used extensively on mobile GPUs for computation, as a pixel format for HDR images, and as a compressed format for weights in ML applications.
+
+^Introducing the type to Swift is especially important for interoperability with shader-language programs; users frequently need to set up data structures on the CPU to pass to their GPU programs. Without the type available in Swift, they are forced to use unsafe mechanisms to create these structures.
+
+---
+
+# [SE-]()
+__title__
+_comment_
+
+```swift
+
 ```
 
 ^
