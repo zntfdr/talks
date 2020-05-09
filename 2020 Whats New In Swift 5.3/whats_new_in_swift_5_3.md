@@ -350,6 +350,24 @@ struct ContentView: View {
 
 ---
 
+# [#29409](https://github.com/apple/swift/pull/29409)
+__Support multiple Boolean conditions in 'if' statements.__
+
+```swift
+struct ContentView: View {
+
+  var body: some View {
+    if a, 
+       b, 
+       c { 
+      ... 
+    }
+  }
+}
+``` 
+
+---
+
 # [#30174](https://github.com/apple/swift/pull/30174)
 __Implement switch support for function builders.__
 
