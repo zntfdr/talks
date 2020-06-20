@@ -295,7 +295,7 @@ struct MyProgram: ApplicationRoot {
 
 # [SE-279](https://github.com/apple/swift-evolution/blob/master/proposals/0279-multiple-trailing-closures.md)
 __Multiple Trailing Closures__
-_TODO_
+_Write even less code_
 
 [.column]
 
@@ -374,13 +374,20 @@ _TODO_
 
 # [SE-0263](https://github.com/apple/swift-evolution/blob/master/proposals/0263-string-uninitialized-initializer.md)
 __Add a String Initializer with Access to Uninitialized Storage__
-_TODO_
+_Performance Boost with a new String initializer_
 
 ```swift
-
+extension String {
+  public init(
+    unsafeUninitializedCapacity capacity: Int,
+    initializingUTF8With initializer: (
+      _ buffer: UnsafeMutableBufferPointer<UInt8>,
+    ) throws -> Int
+  ) rethrows
+}
 ```
 
-^
+^Used in lowercased uppercased, also when bridging NSString and the likes, also public
 
 ---
 
