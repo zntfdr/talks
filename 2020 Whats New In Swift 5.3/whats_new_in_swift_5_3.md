@@ -23,6 +23,7 @@ build-lists: true
 ^Swift is growing and evolving, guided by a community-driven process referred to as the "Swift Evolution" process.
 Swift Evolution is the process used by the Swift Community to bring new features and changes into the language.
 
+<!--
 ---
 
 # [SE-0270](https://github.com/apple/swift-evolution/blob/master/proposals/0270-rangeset-and-collection-operations.md)
@@ -47,7 +48,7 @@ let rangeOfEvens = numbers.moveSubranges(indicesOfEvens, to: numbers.startIndex)
 
 ^Range<Index> to refer to a group of consecutive positions in a collection
 ^RangeSet<Index> to refer to discontiguous positions in an arbitrary collection
-
+-->
 ---
 
 # [SE-0269](https://github.com/apple/swift-evolution/blob/master/proposals/0269-implicit-self-explicit-capture.md)
