@@ -258,9 +258,44 @@ public struct Float16: BinaryFloatingPoint, SIMDScalar, CustomStringConvertible 
 
 ---
 
-# [SE-]()
-__title__
-_comment_
+# [SE-0281](https://github.com/apple/swift-evolution/blob/master/proposals/0281-main-attribute.md)
+__@main: Type-Based Program Entry Points__
+_Preferred execution entry point definition_
+
+[.column]
+
+```swift
+@main 
+struct MyProgram: ApplicationRoot {
+    public static func main() {
+        // ...
+    }
+}
+```
+
+[.column]
+
+```swift
+struct MyProgram: ApplicationRoot {
+    public static func main() {
+        // ...
+    }
+}
+
+MyProgram.main()
+```
+
+
+^Swift programs start execution at the beginning of a file. 
+^@main have a single implicit requirement: declaring a static main() method
+^The compiler will ensure that the author of a program only specifies one entry point. One unique entrypoint
+^@main can be applied to either a type declaration or to an extension of an existing type. The @main-designated type can be declared in the application target or in an imported module. @main can be applied to the base type of a class hierarchy, but is not inherited — only the specific annotated type is treated as the entry point.
+
+---
+
+# [SE-279](https://github.com/apple/swift-evolution/blob/master/proposals/0279-multiple-trailing-closures.md)
+__Multiple Trailing Closures__
+_TODO_
 
 ```swift
 
@@ -270,7 +305,67 @@ _comment_
 
 ---
 
-# [SE-]()
+# [SE-0278](https://github.com/apple/swift-evolution/blob/master/proposals/0278-package-manager-localized-resources.md)
+__Package Manager Localized Resources__
+_TODO_
+
+```swift
+
+```
+
+^
+
+---
+
+# [SE-0273](https://github.com/apple/swift-evolution/blob/master/proposals/0273-swiftpm-conditional-target-dependencies.md)
+__Package Manager Conditional Target Dependencies__
+_TODO_
+
+```swift
+
+```
+
+^
+
+---
+
+# [SE-0272](https://github.com/apple/swift-evolution/blob/master/proposals/0272-swiftpm-binary-dependencies.md)
+__Package Manager Binary Dependencies__
+_TODO_
+
+```swift
+
+```
+
+^
+
+---
+
+# [SE-0271](https://github.com/apple/swift-evolution/blob/master/proposals/0271-package-manager-resources.md)
+__Package Manager Resources__
+_TODO_
+
+```swift
+
+```
+
+^
+
+---
+
+# [SE-0263](https://github.com/apple/swift-evolution/blob/master/proposals/0263-string-uninitialized-initializer.md)
+__Add a String Initializer with Access to Uninitialized Storage__
+_TODO_
+
+```swift
+
+```
+
+^
+
+---
+
+# [SE-0]()
 __title__
 _comment_
 
