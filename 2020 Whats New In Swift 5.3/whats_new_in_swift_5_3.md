@@ -265,6 +265,16 @@ _Preferred execution entry point definition_
 [.column]
 
 ```swift
+struct MyProgram: ApplicationRoot {
+    public static func main() {
+        // ...
+    }
+}
+
+MyProgram.main()
+```
+
+```swift
 @main 
 struct MyProgram: ApplicationRoot {
     public static func main() {
@@ -274,16 +284,6 @@ struct MyProgram: ApplicationRoot {
 ```
 
 [.column]
-
-```swift
-struct MyProgram: ApplicationRoot {
-    public static func main() {
-        // ...
-    }
-}
-
-MyProgram.main()
-```
 
 
 ^Swift programs start execution at the beginning of a file. 
@@ -297,12 +297,31 @@ MyProgram.main()
 __Multiple Trailing Closures__
 _TODO_
 
-```swift
+[.column]
 
+```swift
+UIView.animate(withDuration: 0.3, animations: {
+  self.view.alpha = 0
+}, completion: { _ in
+  self.view.removeFromSuperview()
+})
+```
+
+[.column]
+
+```swift
+UIView.animate(withDuration: 0.3) {
+  self.view.alpha = 0
+} completion: { _ in
+  self.view.removeFromSuperview()
+}
 ```
 
 ^
+- The first trailing closure drops its argument label (like today).
+- Subsequent trailing closures require argument labels.
 
+<!-- spm SE
 ---
 
 # [SE-0278](https://github.com/apple/swift-evolution/blob/master/proposals/0278-package-manager-localized-resources.md)
@@ -350,7 +369,7 @@ _TODO_
 ```
 
 ^
-
+-->
 ---
 
 # [SE-0263](https://github.com/apple/swift-evolution/blob/master/proposals/0263-string-uninitialized-initializer.md)
