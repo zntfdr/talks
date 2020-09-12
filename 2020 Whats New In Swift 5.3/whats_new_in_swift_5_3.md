@@ -321,6 +321,26 @@ UIView.animate(withDuration: 0.3) {
 - The first trailing closure drops its argument label (like today).
 - Subsequent trailing closures require argument labels.
 
+---
+
+
+# [SE-286](https://github.com/apple/swift-evolution/blob/master/proposals/0286-forward-scan-trailing-closures.md)
+__Forward-scan matching for trailing closures__
+_Goodbye backward-scan, hello forward scan_
+
+
+
+```swift
+func takesClosures(first: () -> Void, second: (Int) -> Void = { _ in }) {}
+
+takesClosures {
+  print("First")
+}
+// ^ In 5.3 this trailing closure matches parameter `first`, whereas pre-Swift-5.3 it would have matched second.
+```
+
+^
+
 <!-- spm SE
 ---
 
