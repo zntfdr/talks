@@ -265,6 +265,9 @@ _Preferred execution entry point definition_
 [.column]
 
 ```swift
+// Swift <=5.2
+
+
 struct MyProgram: ApplicationRoot {
     public static func main() {
         // ...
@@ -274,7 +277,11 @@ struct MyProgram: ApplicationRoot {
 MyProgram.main()
 ```
 
+[.column]
+
 ```swift
+// Swift 5.3
+
 @main 
 struct MyProgram: ApplicationRoot {
     public static func main() {
@@ -474,8 +481,8 @@ _willSet and didSet ❤️ lazy_
 ```swift
 class C {
   lazy var property: Int = 0 {
-    willSet { print("willSet called!") } // Okay
-    didSet { print("didSet called!") } // Okay
+    willSet { print("willSet called!") } // Allowed
+    didSet { print("didSet called!") } // Allowed
   }
 }
 ```
