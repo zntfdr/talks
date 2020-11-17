@@ -1,4 +1,4 @@
-theme: Libre, 2
+theme: Libre, 4
 autoscale: true
 build-lists: true
 
@@ -54,11 +54,52 @@ build-lists: true
 
 ---
 
-# [fit] Add the Swift Package to your App
+# [fit] Create a Swift Package (1/2)
 
-1. Open your project
-2. File > New > Swift Package...
-3. Name it and add it to your project
+![inline original](images/spm-how-to-1.png)
+
+---
+
+# [fit] Create a Swift Package (2/2)
+
+![inline original](images/spm-how-to-2.png)
+
+---
+
+# [fit] Done! 🤩
+
+![inline original](images/spm-how-to-3.png)
+
+---
+
+# [fit] Add Package to your App
+
+1. Open app Project Editor 
+2. Add the package under `Frameworks, Libraries, and Embedded Content`
+
+^ At this point our Project navigator should look like this
+^ Awesome! Now we have an app and a package, however we need to tell Xcode that we want to add this new package as a dependency to our app
+^ From the `project navigator` click on the project name on the top left, which opens the `project editor` in the `editor area`.
+^ In the editor area make sure to have selected the only target currently in the project and, under `Frameworks, Libraries, and Embedded Content` click the plus button as show in the slide
+^ after clicking the plus button, select the library that we've just created and we're done!
+
+---
+
+# [fit] Add Package to your App (1/2)
+
+![inline original](images/spm-how-to-4.png)
+
+---
+
+# [fit] Add Package to your App (2/2)
+
+![inline original](images/spm-how-to-5.png)
+
+---
+
+# [fit] Done! 🤩
+
+![inline original](images/spm-how-to-6.png)
 
 ---
 
@@ -87,11 +128,11 @@ all files within that folder belongs to that specific target, and every file can
 ├── Package.swift
 ├── README.md
 ├── Sources
-│   └── hello
-│       └── main.swift
+│   └── MyLibrary
+│       └── MyLibrary.swift
 └── Tests
-    ├── helloTests
-    │   ├── helloTests.swift
+    ├── MyLibraryTests
+    │   ├── MyLibraryTests.swift
     │   └── XCTestManifests.swift
     └── LinuxMain.swift
 ```
@@ -103,43 +144,42 @@ all files within that folder belongs to that specific target, and every file can
 [.code-highlight: all]
 ^The file is the manifest of our package.
 
-^The Package type declares the whole package declaration.
+^The Package.swift declares the whole package declaration.
 ^If something is not declared here, it doesn't exist. 
 
 [.code-highlight: 6]
 ^we have the name
 
-[.code-highlight: 7-8]
+[.code-highlight: 8]
+^then we have the products, declaration, which is what this package exposes
+
+[.code-highlight: 10]
 ^Its dependencies.
 
-[.code-highlight: 9, 16]
+[.code-highlight: 12-13]
 ^The package targets: A target is the basic building block of a Swift package.
 ^Each target contains a set of source files that are compiled into a module or test suite.
 ^A target may depend on other targets within the same package and on products vended by the package's dependencies.
 
-[.code-highlight: 10-12]
 ^For example here we have our main target, that currently has no dependencies and has name `toolName`.
 
-[.code-highlight: 13-15]
 ^Then we have a second, separate target for tests. This target depends on the package that we want to test.
 
 ```swift
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
-    name: "hello",
-    dependencies: [
-    ],
-    targets: [
-        .target(
-            name: "hello",
-            dependencies: []),
-        .testTarget(
-            name: "helloTests",
-            dependencies: ["hello"]),
-    ]
+  name: "MyLibrary",
+  products: [
+    .library(name: "MyLibrary", targets: ["MyLibrary"]),
+  ],
+  dependencies: [],
+  targets: [
+    .target(name: "MyLibrary", dependencies: []),
+    .testTarget(name: "MyLibraryTests", dependencies: ["MyLibrary"]),
+  ]
 )
 ```
 
@@ -155,21 +195,23 @@ let package = Package(
 ├── Package.swift
 ├── README.md
 ├── Sources
-│   └── hello
-│       └── main.swift
+│   └── MyLibrary
+│       └── MyLibrary.swift
 └── Tests
-    ├── helloTests
-    │   ├── helloTests.swift
+    ├── MyLibraryTests
+    │   ├── MyLibraryTests.swift
     │   └── XCTestManifests.swift
     └── LinuxMain.swift
 ```
 
 ---
 
-# main.swift
+# MyLibrary.swift
 
 ```swift
-print("Hello, world!")
+struct MyLibrary {
+    var text = "Hello, World!"
+}
 ```
 
 ---
