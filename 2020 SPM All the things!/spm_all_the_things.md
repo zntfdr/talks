@@ -46,26 +46,19 @@ build-lists: true
 
 ---
 
-```shell
-hello
-```
+# [fit] Create a Swift Package
 
-^Today we're going to build a script called hello. 
-^Its main function is to greet you. 
-^I know it sounds simple, however we will see many ways to do.
+1. Open your project
+2. File > New > Swift Package...
+3. Name it and add it to your project
 
 ---
 
-# Creating an executable
+# [fit] Add the Swift Package to your App
 
-```shell
-$ mkdir hello
-$ cd hello
-$ swift package init --type executable
-```
-
-^Note that creating a package from Xcode defaults to creating a library, not an executable.
-^A target is considered as an executable if it contains a file named main.swift. The package manager will compile that file into a binary executable.
+1. Open your project
+2. File > New > Swift Package...
+3. Name it and add it to your project
 
 ---
 
