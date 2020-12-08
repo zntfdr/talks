@@ -2,10 +2,12 @@ theme: Libre, 4
 autoscale: true
 build-lists: true
 
+## <br>
+
 # [fit] Swift Package 
 # [fit] all the things! 📦
 
-## <br><br><br><br><br><br><br>
+## <br><br><br>
 
 ## __*Federico Zanetello*__
 
@@ -17,18 +19,31 @@ build-lists: true
 
 ---
 
+# <br>
+# <br>
+
+# [fit] fivestars.blog ⭐️
+
+# [fit] WWDCNotes.com 📝
+
+# [fit] Bangkok Metro 🚇
+
+^I'm the writer behind five stars blog, where I share about SwiftUI and other things ^I'm also behind wwdc notes, a community driven collection of wwdc notes from all years. ^Lastly I'm also a indie developer building the metro app for the city where I live in, Bangkok. ^The workshop is about navigation but it lasts two hours, so if you have any question about any of these, I'll be happy to answer
+
+---
+
 # [fit] What's a Swift Package?
 
 - Reusable component
 - Swift, Objective-C, Objective-C++, C, or C++
-- Can bundle source files, binaries, assets
+- Can bundle code, binaries, assets, ...
 
 ^in short it's the new way to build frameworks
 ^SPM has been out since 2015, last year iOS app support has been added
 
 ---
 
-# [fit] Why should we use Swift Packages?
+# [fit] Why should we use one?
 
 - modularization
 - single-responsibility
@@ -36,6 +51,8 @@ build-lists: true
 - share between different projects/platforms
 - blessed by 
 - ...much more
+
+^Every package can have its own suit of tests
 
 ---
 
@@ -88,6 +105,8 @@ build-lists: true
 # [fit] Add Package to your App (1/2)
 
 ![inline original](images/spm-how-to-4.png)
+
+^Select the right target
 
 ---
 
