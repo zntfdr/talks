@@ -13,9 +13,7 @@ build-lists: true
 
 ## ★★★★★ [**fivestars.blog**][fivestarsblog] *•* [**@zntfdr**][twitterHandle]
 
-^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭, in here it's ... which is well past my usual bed time, however today I'm very very pleased to be with all of you for this awesome conference.
-
-^My presentation topic is Swift scripting, and you might be wondering, we're iOS Developers at UIKonf, ...
+^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭.
 
 ---
 
@@ -28,7 +26,9 @@ build-lists: true
 
 # [fit] Bangkok Metro 🚇
 
-^I'm the writer behind five stars blog, where I share about SwiftUI and other things ^I'm also behind wwdc notes, a community driven collection of wwdc notes from all years. ^Lastly I'm also a indie developer building the metro app for the city where I live in, Bangkok. ^The workshop is about navigation but it lasts two hours, so if you have any question about any of these, I'll be happy to answer
+^I have a blog called .., where I share about interesting things on SwiftUI and other things
+^I'm also part of the wwdc notes, a community driven collection of wwdc notes from all years.
+^Lastly I'm also a indie developer building Bangkok metro, I know some of you use it daily, thank you very much for that!
 
 ---
 
@@ -39,7 +39,8 @@ build-lists: true
 - Can bundle code, binaries, assets, ...
 
 ^in short it's the new way to build frameworks
-^SPM has been out since 2015, last year iOS app support has been added
+SPM has been out since 2015
+Xcode 11 add iOS support
 
 ---
 
@@ -50,16 +51,19 @@ build-lists: true
 - testability
 - share between different projects/platforms
 - blessed by 
+- fun
+- easy to use
 - ...much more
 
-^Every package can have its own suit of tests
+^The gains are similar to frameworks, without their complexity
+Every package can have its own suit of tests
 
 ---
 
 # [fit] Getting 
 # [fit] Started
 
-^Time to get started!
+^Alright! Hope to have convinced you! Time to get started!
 
 ---
 
@@ -68,6 +72,8 @@ build-lists: true
 1. Open your project
 2. File > New > Swift Package...
 3. Name it and add it to your project
+
+^3 steps
 
 ---
 
@@ -81,11 +87,17 @@ build-lists: true
 
 ![inline original](images/spm-how-to-2.png)
 
+^A new window will show up
+
 ---
 
 # [fit] Done! 🤩
 
 ![inline original](images/spm-how-to-3.png)
+
+^ Awesome! At this point our Project navigator should look like this
+Now we have an app and a package
+we need to tell Xcode that we want to add this new package as a dependency to our app
 
 ---
 
@@ -94,11 +106,7 @@ build-lists: true
 1. Open app Project Editor 
 2. Add the package under `Frameworks, Libraries, and Embedded Content`
 
-^ At this point our Project navigator should look like this
-^ Awesome! Now we have an app and a package, however we need to tell Xcode that we want to add this new package as a dependency to our app
-^ From the `project navigator` click on the project name on the top left, which opens the `project editor` in the `editor area`.
-^ In the editor area make sure to have selected the only target currently in the project and, under `Frameworks, Libraries, and Embedded Content` click the plus button as show in the slide
-^ after clicking the plus button, select the library that we've just created and we're done!
+^two steps
 
 ---
 
@@ -106,7 +114,9 @@ build-lists: true
 
 ![inline original](images/spm-how-to-4.png)
 
-^Select the right target
+^Select the project name in the project navigator
+Select the right target into the project editor
+Click + on the `Frameworks, Libraries, and Embedded Content` section
 
 ---
 
@@ -120,24 +130,25 @@ build-lists: true
 
 ![inline original](images/spm-how-to-6.png)
 
+^Now that everything is ready, let's have a look at what this package is
+
 ---
 
 # The Package Structure
 
 [.code-highlight: all]
-^Once we execute the last command a bunch of files are created in the current directory, this is the complete structure.
-I'm going to highlight the main components here.
+
 
 [.code-highlight: 7-11]
 ^The `Tests` folder contains our test targets.
 
 [.code-highlight: 4-6]
-^The `Sources` folder contains our real targets. 
+^The `Sources` folder contains our products targets. 
 
 [.code-highlight: 5, 8]
-^Each target representation is a folder:
+^Two default targets
+Each target representation is a folder:
 all files within that folder belongs to that specific target, and every file can access to all other declarations within that folder.
-^As you can see we have one target, hello, in our sources folder and one target, helloTests, in the test folders.
 
 [.code-highlight: 2]
 ^Lastly, we have the most important file, the `Package.swift` declaration. Let's look at that.
@@ -161,10 +172,9 @@ all files within that folder belongs to that specific target, and every file can
 # Package.swift
 
 [.code-highlight: all]
-^The file is the manifest of our package.
-
-^The Package.swift declares the whole package declaration.
-^If something is not declared here, it doesn't exist. 
+^manifest of our package
+equivalent of a project configuration.
+If something is not declared here, it doesn't exist. 
 
 [.code-highlight: 6]
 ^we have the name
@@ -177,10 +187,7 @@ all files within that folder belongs to that specific target, and every file can
 
 [.code-highlight: 12-13]
 ^The package targets: A target is the basic building block of a Swift package.
-^Each target contains a set of source files that are compiled into a module or test suite.
 ^A target may depend on other targets within the same package and on products vended by the package's dependencies.
-
-^For example here we have our main target, that currently has no dependencies and has name `toolName`.
 
 ^Then we have a second, separate target for tests. This target depends on the package that we want to test.
 
@@ -207,7 +214,6 @@ let package = Package(
 # The Package Structure
 
 [.code-highlight: 6]
-^Lastly, we have the most important file, the `Package.swift` declaration. Let's look at that.
 
 ```shell
 ├── .gitignore
@@ -233,16 +239,20 @@ struct MyLibrary {
 }
 ```
 
+^This is boring, let's remove this declaration and define a new cool SwiftUI view instead.
+
 ---
 
 # MyLibrary.swift
 
 [.code-highlight: all]
+^Much better
 
 [.code-highlight: 3,5,7]
-^remember to put public otherwise we cannot use it
+^remember to add the public attribute otherwise we cannot use this view outside the library
 
 [.code-highlight: all]
+^now we try to build and we get an error, telling SwiftUI is not available for all platforms
 
 ```swift
 import SwiftUI
@@ -289,11 +299,6 @@ let package = Package(
 
 [.code-highlight: all]
 
-[.code-highlight: 3,5,7]
-^remember to put public otherwise we cannot use it
-
-[.code-highlight: all]
-
 ```swift
 import SwiftUI
 
@@ -307,8 +312,8 @@ public struct MyCoolView: View {
 }
 ```
 
-^allright we can now go back to our view and everything will build fine
-^But this view is a bit boring, what about adding an image?
+^now we can now go back to our view and everything will build fine
+^But this view is not really cool yet, what about adding an image?
 
 ---
 
@@ -341,6 +346,8 @@ public struct MyCoolView: View {
 [.code-highlight: 6]
 ^All assets will be automatically visible within the module
 
+^no need to update the package file
+
 ```shell
 ├── .gitignore
 ├── Package.swift
@@ -358,9 +365,29 @@ public struct MyCoolView: View {
 
 ---
 
+```swift
+import SwiftUI
+
+public struct MyCoolView: View {
+
+  public init() {}
+
+  public var body: some View {
+    VStack {
+      Image("coolImage", bundle: .module)
+      Text("This view is totally cool")
+    }
+  }
+}
+```
+
+^all right, now we have a cool view. 
+^but it's only cool if you speak English, what about localization?
+
+---
+
 # Add localization
 
-[.code-highlight: all]
 [.code-highlight: 10]
 
 ```swift
@@ -379,12 +406,15 @@ public struct MyCoolView: View {
 }
 ```
 
+^similar to assets, we declare the bundle for localization strings as well
+^unless we want to keep localizations within the app
+
 ---
 
 # Package.swift
 
 [.code-highlight: 7]
-^By default Swift package support iOS 8
+^If we want our package to support localizations, we need to declare the default language in the manifest file
 
 ```swift
 // swift-tools-version:5.3
@@ -438,7 +468,6 @@ let package = Package(
 # Testing a package
 
 [.code-highlight: 15]
-^By default Swift package support iOS 8
 
 ```swift
 // swift-tools-version:5.3
@@ -486,6 +515,8 @@ let package = Package(
     └── LinuxMain.swift
 ```
 
+^We have extra files for cross platform needs, we can remove them
+
 ---
 
 # Testing a package
@@ -510,6 +541,8 @@ let package = Package(
         └── MyLibraryTests.swift
 ```
 
+^now here we use the usual test suite and API as any other Xcode project
+
 ---
 
 # Using our package
@@ -528,6 +561,8 @@ struct ContentView: View {
 }
 ```
 
+^Awesome! We now have our cool library and new view, it's time to put it on action!
+
 ---
 
 # [fit] Done! 🤩
@@ -540,6 +575,9 @@ struct ContentView: View {
 
 1. File > Swift Packages > Add Package Dependency
 2. Insert dependency .git URL and follow wizard
+
+^So now we've seen how we can create and use our own packages, but what if we want to used external ones?
+^2 steps
 
 ---
 
@@ -559,16 +597,28 @@ struct ContentView: View {
 
 ![inline original](images/package-add-3.png)
 
+^Xcode will take care of downloading and updating the package for us
+then we can use it like the package we created previously
+
 ---
+
+^I want to thank the organizers for this awesome opportunity
+thank you all for listening 
+please, go ahead create and use many packages in all your projects
+thank you!
+
+## <br>
 
 # [fit] Swift Package 
 # [fit] all the things! 📦
 
-## <br><br><br><br><br><br><br>
+## <br><br><br>
 
 ## __*Federico Zanetello*__
 
 ## ★★★★★ [**fivestars.blog**][fivestarsblog] *•* [**@zntfdr**][twitterHandle]
+
+^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭.
 
 [fivestarsblog]: http://fivestars.blog/
 [twitterHandle]: http://twitter.com/zntfdr
