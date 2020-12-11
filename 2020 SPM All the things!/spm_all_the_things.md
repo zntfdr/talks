@@ -97,7 +97,7 @@ Every package can have its own suit of tests
 
 ---
 
-# [fit] Done! 🤩
+###### [fit] Done! 🤩
 
 ![inline original](images/spm-how-to-3.png)
 
@@ -133,7 +133,7 @@ Click + on the `Frameworks, Libraries, and Embedded Content` section
 
 ---
 
-# [fit] Done! 🤩
+###### [fit] Done! 🤩
 
 ![inline original](images/spm-how-to-6.png)
 
@@ -612,7 +612,7 @@ struct ContentView: View {
 
 ---
 
-# [fit] Done! 🤩
+###### [fit] Done! 🤩
 
 ![inline original](images/package-add-5.png)
 
