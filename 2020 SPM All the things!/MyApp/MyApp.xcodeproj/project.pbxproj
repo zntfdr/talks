@@ -18,6 +18,7 @@
 		64618C6325837DB80088C411 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		64618C6525837DBB0088C411 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64618C6A25837DBB0088C411 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64618C7325837ECE0088C411 /* MyLibrary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MyLibrary; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +35,7 @@
 		64618C5525837DB80088C411 = {
 			isa = PBXGroup;
 			children = (
+				64618C7325837ECE0088C411 /* MyLibrary */,
 				64618C6025837DB80088C411 /* MyApp */,
 				64618C5F25837DB80088C411 /* Products */,
 			);
