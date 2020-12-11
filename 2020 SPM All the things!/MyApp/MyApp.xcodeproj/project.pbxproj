@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		64618C6225837DB80088C411 /* MyAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64618C6125837DB80088C411 /* MyAppApp.swift */; };
 		64618C6425837DB80088C411 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64618C6325837DB80088C411 /* ContentView.swift */; };
 		64618C6625837DBB0088C411 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64618C6525837DBB0088C411 /* Assets.xcassets */; };
+		64618C79258380570088C411 /* MyLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 64618C78258380570088C411 /* MyLibrary */; };
+		64618C7D2583818F0088C411 /* AStack in Frameworks */ = {isa = PBXBuildFile; productRef = 64618C7C2583818F0088C411 /* AStack */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64618C79258380570088C411 /* MyLibrary in Frameworks */,
+				64618C7D2583818F0088C411 /* AStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +42,7 @@
 				64618C7325837ECE0088C411 /* MyLibrary */,
 				64618C6025837DB80088C411 /* MyApp */,
 				64618C5F25837DB80088C411 /* Products */,
+				64618C75258380360088C411 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +65,13 @@
 			path = MyApp;
 			sourceTree = "<group>";
 		};
+		64618C75258380360088C411 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -76,6 +88,10 @@
 			dependencies = (
 			);
 			name = MyApp;
+			packageProductDependencies = (
+				64618C78258380570088C411 /* MyLibrary */,
+				64618C7C2583818F0088C411 /* AStack */,
+			);
 			productName = MyApp;
 			productReference = 64618C5E25837DB80088C411 /* MyApp.app */;
 			productType = "com.apple.product-type.application";
@@ -103,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 64618C5525837DB80088C411;
+			packageReferences = (
+				64618C7B2583818F0088C411 /* XCRemoteSwiftPackageReference "AStack" */,
+			);
 			productRefGroup = 64618C5F25837DB80088C411 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -314,6 +333,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		64618C7B2583818F0088C411 /* XCRemoteSwiftPackageReference "AStack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zntfdr/AStack";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		64618C78258380570088C411 /* MyLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MyLibrary;
+		};
+		64618C7C2583818F0088C411 /* AStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64618C7B2583818F0088C411 /* XCRemoteSwiftPackageReference "AStack" */;
+			productName = AStack;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 64618C5625837DB80088C411 /* Project object */;
 }

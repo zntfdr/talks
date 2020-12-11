@@ -67,6 +67,12 @@ Every package can have its own suit of tests
 
 ---
 
+# [fit] MyApp
+
+![inline original](images/spm-how-to-0.png)
+
+---
+
 # [fit] Create a Swift Package
 
 1. Open your project
@@ -109,6 +115,7 @@ we need to tell Xcode that we want to add this new package as a dependency to ou
 ^two steps
 
 ---
+
 
 # [fit] Add Package to your App (1/2)
 
@@ -593,9 +600,21 @@ struct ContentView: View {
 
 ---
 
-# [fit] Done! 🤩
+# [fit] Adding an External Package (2/2)
 
 ![inline original](images/package-add-3.png)
+
+---
+
+# [fit] Adding an External Package (2/2)
+
+![inline original](images/package-add-4.png)
+
+---
+
+# [fit] Done! 🤩
+
+![inline original](images/package-add-5.png)
 
 ^Xcode will take care of downloading and updating the package for us
 then we can use it like the package we created previously
