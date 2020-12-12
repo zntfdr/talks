@@ -319,6 +319,8 @@ public struct MyCoolView: View {
 }
 ```
 
+![right original 110%](images/demo-0.png)
+
 ^now we can now go back to our view and everything will build fine
 ^But this view is not really cool yet, what about adding an image?
 
@@ -387,6 +389,8 @@ public struct MyCoolView: View {
   }
 }
 ```
+
+![right original 110%](images/demo.png)
 
 ^all right, now we have a cool view. 
 ^but it's only cool if you speak English, what about localization?
@@ -472,6 +476,28 @@ let package = Package(
 
 ---
 
+# Add localization
+
+```swift
+import SwiftUI
+
+public struct MyCoolView: View {
+
+  public init() {}
+
+  public var body: some View {
+    VStack {
+      Image("coolImage", bundle: .module)
+      Text("cool_view_text", bundle: .module)
+    }
+  }
+}
+```
+
+![right original 110%](images/demo-1.png)
+
+---
+
 # Testing a package
 
 [.code-highlight: 15]
@@ -552,6 +578,27 @@ let package = Package(
 
 ---
 
+# Testing a package
+
+```swift
+import XCTest
+@testable import MyLibrary
+
+final class MyLibraryTests: XCTestCase {
+    func testExample() {
+      XCTAssertEqual(..., "Hello, World!")
+    }
+}
+
+```
+
+---
+
+# [fit] Using our 
+# [fit] package
+
+---
+
 # Using our package
 
 [.code-highlight: all]
@@ -574,7 +621,23 @@ struct ContentView: View {
 
 # [fit] Done! 🤩
 
+```swift
+import MyLibrary
+import SwiftUI
+
+struct ContentView: View {
+  var body: some View {
+    MyCoolView()
+  }
+}
+```
+
 ![right original 110%](images/demo.png)
+
+---
+
+# [fit] External 
+# [fit] packages
 
 ---
 
@@ -618,6 +681,29 @@ struct ContentView: View {
 
 ^Xcode will take care of downloading and updating the package for us
 then we can use it like the package we created previously
+
+---
+
+# [fit] Adding an External Package
+
+[.code-highlight: 2, 7, 10]
+
+```swift
+import MyLibrary
+import AStack
+import SwiftUI
+
+struct ContentView: View {
+  var body: some View {
+    AHStack {
+      MyCoolView()
+      AnotherCoolView()
+    }
+  }
+}
+```
+
+![right original 110%](images/demo-2.png)
 
 ---
 
