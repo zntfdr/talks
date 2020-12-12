@@ -712,6 +712,8 @@ thank you all for listening
 please, go ahead create and use many packages in all your projects
 thank you!
 
+^I will share slides and the cool app project soon on Twitter and Github
+
 ## <br>
 
 # [fit] Swift Package 
@@ -722,8 +724,6 @@ thank you!
 ## __*Federico Zanetello*__
 
 ## ★★★★★ [**fivestars.blog**][fivestarsblog] *•* [**@zntfdr**][twitterHandle]
-
-^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭.
 
 [fivestarsblog]: http://fivestars.blog/
 [twitterHandle]: http://twitter.com/zntfdr
