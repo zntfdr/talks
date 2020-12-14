@@ -13,7 +13,7 @@ build-lists: true
 
 ## ★★★★★ [**fivestars.blog**][fivestarsblog] *•* [**@zntfdr**][twitterHandle]
 
-^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭.
+^Hi! My name is .. and I'm iOS Developer living and working here in Bangkok.
 
 ---
 
@@ -26,8 +26,8 @@ build-lists: true
 
 # [fit] Bangkok Metro 🚇
 
-^I have a blog called .., where I share about interesting things on SwiftUI and other things
-^I'm also part of the wwdc notes, a community driven collection of wwdc notes from all years.
+^I also have a blog called .., where I share interesting things on SwiftUI and other things
+^I'm part of the wwdc notes community, which is a community effort on writing notes for all wwdc sessions from all years.
 ^Lastly I'm also a indie developer building Bangkok metro, I know some of you use it daily, thank you very much for that!
 
 ---
@@ -186,13 +186,13 @@ If something is not declared here, it doesn't exist.
 [.code-highlight: 6]
 ^we have the name
 
-[.code-highlight: 8]
+[.code-highlight: 7-9]
 ^then we have the products, declaration, which is what this package exposes
 
 [.code-highlight: 10]
 ^Its dependencies.
 
-[.code-highlight: 12-13]
+[.code-highlight: 11-14]
 ^The package targets: A target is the basic building block of a Swift package.
 ^A target may depend on other targets within the same package and on products vended by the package's dependencies.
 
@@ -498,6 +498,11 @@ public struct MyCoolView: View {
 
 ---
 
+# [fit] Testing our 
+# [fit] package
+
+---
+
 # Testing a package
 
 [.code-highlight: 15]
@@ -686,11 +691,30 @@ then we can use it like the package we created previously
 
 # [fit] Adding an External Package
 
-[.code-highlight: 2, 7, 10]
+[.code-highlight: 1, 7, 10]
 
 ```swift
-import MyLibrary
 import AStack
+import MyLibrary
+import SwiftUI
+
+struct ContentView: View {
+  var body: some View {
+    AHStack {
+      MyCoolView()
+      AnotherCoolView()
+    }
+  }
+}
+```
+
+---
+
+# [fit] Adding an External Package
+
+```swift
+import AStack
+import MyLibrary
 import SwiftUI
 
 struct ContentView: View {
