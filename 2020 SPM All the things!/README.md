@@ -7,4 +7,4 @@ With this year support of assets and binaries, there’s never been a better tim
 20 minutes talk.
 
 # Slides
-[![SpeakerDeck Presentation](https://speakerd.s3.amazonaws.com/presentations/)](https://speakerdeck.com/zntfdr/swift-package-all-things)
+[![SpeakerDeck Presentation](https://files.speakerdeck.com/presentations/15624bc82397487ab499481ba40f6d6f/slide_0.jpg)](https://speakerdeck.com/zntfdr/swift-package-all-the-things)
