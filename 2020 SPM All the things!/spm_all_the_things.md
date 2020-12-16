@@ -34,13 +34,13 @@ build-lists: true
 
 # [fit] What's a Swift Package?
 
-- Reusable component
+- New way to build frameworks
+- Swift project since 2015
+- Xcode 11 ❤️ iOS Apps
 - Swift, Objective-C, Objective-C++, C, or C++
 - Can bundle code, binaries, assets, ...
 
 ^in short it's the new way to build frameworks
-SPM has been out since 2015
-Xcode 11 add iOS support
 
 ---
 
