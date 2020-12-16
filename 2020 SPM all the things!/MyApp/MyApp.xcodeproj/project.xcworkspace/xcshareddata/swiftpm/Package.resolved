@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AStack",
+        "repositoryURL": "https://github.com/zntfdr/AStack",
+        "state": {
+          "branch": null,
+          "revision": "707855e3bab6ef8cdf2c628ac4e9323d6ca8be3a",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
