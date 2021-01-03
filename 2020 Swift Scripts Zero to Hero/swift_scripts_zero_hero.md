@@ -123,7 +123,7 @@ all files within that folder belongs to that specific target, and every file can
 ^Then we have a second, separate target for tests. This target depends on the package that we want to test.
 
 ```swift
-// swift-tools-version:5.2
+// swift-tools-version:5.3
 
 import PackageDescription
 
@@ -441,7 +441,7 @@ let package = Package(
     name: "hello",
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser.git",
-                 from: "0.0.1"),
+                 from: "0.3.0"),
     ],
     targets: [
         .target(
@@ -540,7 +540,7 @@ let package = Package(
     name: "hello",
     dependencies: [
         .package(url: "https://github.com/apple/swift-tools-support-core.git",
-                 from: "0.0.1"),
+                 from: "0.1.1"),
     ],
     targets: [
         .target(
@@ -595,7 +595,7 @@ for i in 0..<100 {
 }
 
 animation.complete(success: true)
-print("Hello UIKonf! 🎉")
+print("Hello iOS SG Conf! 🎉")
 ```
 
 [.column]
