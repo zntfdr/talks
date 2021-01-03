@@ -680,6 +680,12 @@ $ hello
 
 ![50%](images/macBook-air.png)
 
+---
+
+What about @main? Coming to Swift 5.4: https://github.com/apple/swift-evolution/blob/main/proposals/0294-package-executable-targets.md
+
+For the moment, SPM uses the presence of `main.swift` to determine if a target is an executable.
+
 -->
 
 ---
