@@ -12,20 +12,45 @@ build-lists: true
 
 ★★★★★ [**fivestars.blog**][fivestarsblog] *•* [**@zntfdr**][twitterHandle]
 
-^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭, in here it's ... which is well past my usual bed time, however today I'm very very pleased to be with all of you for this awesome conference.
+^Hi! My name is .. and I'm iOS Developer living and working here in 🇹🇭
 
-^My presentation topic is Swift scripting, and you might be wondering, we're iOS Developers at UIKonf, ...
+^I'm also the person behind fivestars.blog, where I share articles around swift SwiftUI and more.
+
+^Today we're here to talk about Swift scripting, and you might be wondering...
 
 ---
 
 # [fit] WHY? 🤔
 
-^..why should we care about Swift scripting?
-^As developers we use tons of scripts everyday: fastlane, swiftlint, XcodeGen, sourcery you name it.
-^Those are great, however our need for automation doesn't end there, there are always plenty of opportunities to make our projects and our flows even better. That's why Swift scripting is important.
+^we're iOS Developers at iOS Conf SG, why should we care about Swift scripting?
+
+---
+
+[.build-lists: false]
+
+# Faster Flows/Automation
+
+- fastlane
+- swiftlint
+- XcodeGen
+- sourcery
+- ..and more
+
+^As developers we use tons of scripts everyday:
+^Those are great, however there are always plenty of opportunities to make our projects and our flows even better/more automated. That's why Swift scripting is important.
+
+---
+
+[.build-lists: false]
+
+# Swift?
+
+- Familiarity
+- Maintainability
+- no "context" (language) switching
+- ..and more
 
 ^Why Swift? The main reason is familiarity: 
-
 ^.. for you, as writing a script is very similar to write an app or a library. 
 ^.. for your team, even if you're familiar with  etc, if you're adding a script in your team project, chances are everybody knows Swift, while you might be the only one familiar with python or other.
 
@@ -43,8 +68,8 @@ hello
 ```
 
 ^Today we're going to build a script called hello. 
-^Its main function is to greet you. 
-^I know it sounds simple, however we will see many ways to do.
+Its main function is to greet you. 
+It sounds simple, however we will see many ways to do.
 
 ---
 
@@ -56,27 +81,26 @@ $ cd hello
 $ swift package init --type executable
 ```
 
-^Note that creating a package from Xcode defaults to creating a library, not an executable.
-^A target is considered as an executable if it contains a file named main.swift. The package manager will compile that file into a binary executable.
+^Creating a package from Xcode defaults to creating a library, not an executable.
+
+<!-- ^A target is considered as an executable if it contains a file named main.swift. The package manager will compile that file into a binary executable. -->
 
 ---
 
-# The Package Structure
+# The Package Tree
 
 [.code-highlight: all]
 ^Once we execute the last command a bunch of files are created in the current directory, this is the complete structure.
-I'm going to highlight the main components here.
 
 [.code-highlight: 7-11]
 ^The `Tests` folder contains our test targets.
 
 [.code-highlight: 4-6]
-^The `Sources` folder contains our real targets. 
+^The `Sources` folder contains our product targets. 
 
 [.code-highlight: 5, 8]
 ^Each target representation is a folder:
 all files within that folder belongs to that specific target, and every file can access to all other declarations within that folder.
-^As you can see we have one target, hello, in our sources folder and one target, helloTests, in the test folders.
 
 [.code-highlight: 2]
 ^Lastly, we have the most important file, the `Package.swift` declaration. Let's look at that.
@@ -144,10 +168,9 @@ let package = Package(
 
 ---
 
-# The Package Structure
+# The Package Tree
 
 [.code-highlight: 6]
-^Lastly, we have the most important file, the `Package.swift` declaration. Let's look at that.
 
 ```shell
 ├── .gitignore
@@ -167,6 +190,8 @@ let package = Package(
 
 # main.swift
 
+^Awesome, this does exactly what we need.
+
 ```swift
 print("Hello, world!")
 ```
@@ -175,23 +200,19 @@ print("Hello, world!")
 
 # Build Run Test
 
-[.code-highlight: all]
-^build: download, resolve and compile dependencies
-^run: will build if needed
-
 ```shell
 $ swift build hello
 $ swift run hello
 $ swift test
 ```
 
+^Two ways, the first via terminal
+- build: download, resolve and compile dependencies
+- run: will build if needed
+
 ---
 
 # Build Run Test
-
-[.code-highlight: all]
-^build: download, resolve and compile dependencies
-^run: will build if needed
 
 ```shell
 $ swift build hello
@@ -210,22 +231,19 @@ $ swift test
 ^I'm not going to show you how to write scripts, because that's like saying I'm going to teach you to develop an app:
 you already know how to code apps, therefore you know how to code scripts.
 
-<!--
 ---
 
-^ Well...
+^ Well...The truth is that there's a big difference between building apps and scripts, which is in the interface.
 
 ### *Almost
--->
 
 ---
 
 # [fit] GUI -> TUI
 
-^The truth is..
 ^scripts are apps without a GUI, a Graphical User Interface, but with a TUI, Text User Interface.
 
-^Which means that the way we interact with them is different, the way the data flows is different, so I hope you're ready because from now on is all code!
+^The way we interact with them is different, the way the data flows is different
 
 ---
 
@@ -429,6 +447,8 @@ RunLoop.current.run()
 
 # [fit] Argument
 # [fit] Parser
+
+^These kind of interactions are a chore, they aren't part of our script code logic.
 
 ---
 
