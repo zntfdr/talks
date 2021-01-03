@@ -595,7 +595,7 @@ for i in 0..<100 {
 }
 
 animation.complete(success: true)
-print("Hello iOS SG Conf! 🎉")
+print("Hello iOS Conf SG! 😁")
 ```
 
 [.column]
