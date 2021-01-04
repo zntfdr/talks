@@ -28,7 +28,7 @@ build-lists: true
 
 [.build-lists: false]
 
-# Faster Flows/Automation
+# Automation
 
 - fastlane
 - swiftlint
@@ -135,15 +135,13 @@ all files within that folder belongs to that specific target, and every file can
 [.code-highlight: 7-8]
 ^Its dependencies.
 
-[.code-highlight: 9, 16]
+[.code-highlight: 9-16]
 ^The package targets: A target is the basic building block of a Swift package.
 ^Each target contains a set of source files that are compiled into a module or test suite.
 ^A target may depend on other targets within the same package and on products vended by the package's dependencies.
 
-[.code-highlight: 10-12]
 ^For example here we have our main target, that currently has no dependencies and has name `toolName`.
 
-[.code-highlight: 13-15]
 ^Then we have a second, separate target for tests. This target depends on the package that we want to test.
 
 ```swift
@@ -445,10 +443,17 @@ RunLoop.current.run()
 ---
 -->
 
+![fill](images/fry.jpg)
+
+^now that we've seen all the different ways to handle interactions, let's take a step back:
+we want to build awesome scripts. Handling, parsing, validating data are chores and not part of the core logic of our script. Wouldn't it be great if somebody else takes care of all this hard work for us?
+
+---
+
 # [fit] Argument
 # [fit] Parser
 
-^These kind of interactions are a chore, they aren't part of our script code logic.
+^This is why the Swift team released a new library called Argument Parser, which in a matter of months has become the de facto standard.
 
 ---
 
@@ -725,7 +730,7 @@ For the moment, SPM uses the presence of `main.swift` to determine if a target i
 
 ---
 
-^I want to thank the UIKonf organizers for this awesome opportunity, thank you all for listening and I hope you enjoy the rest conference!
+^I want to thank the iOS Conf SG organizers for this awesome opportunity, thank you all for listening and please go ahead and build many awesome scripts, thank you!
 
 # [fit] Swift Scripts:
 
