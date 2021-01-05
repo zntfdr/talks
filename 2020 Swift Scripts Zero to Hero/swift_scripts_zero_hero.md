@@ -358,6 +358,8 @@ $ MYNAME=Federico swift run
 
 ---
 
+<!--
+
 # Pipeline Messages
 
 ^Another important aspect of scripting
@@ -398,8 +400,6 @@ $ printf Federico | swift run hello
 ```
 
 ---
-
-<!--
 
 # [fit] We're done! 
 # 🙌🏻
