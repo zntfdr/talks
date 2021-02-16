@@ -44,19 +44,7 @@ _Last restriction: parameters which follow a variadic parameter must be labeled_
 func foo(_ a: Int..., b: Double..., c: String...) { }
 ```
 
-^Only one variadic parameter is allowed per parameter list
-
----
-
-# [S-]()
-__title__
-_comment_
-
-```swift
-
-```
-
-^
+^Only one variadic parameter was allowed per parameter list, now we support multiple as long as all parameters which follow variadic parameters are labeled.
 
 ---
 
@@ -82,15 +70,9 @@ func outer(x: Int, y: String) {
 
 ---
 
-# [S-]()
-__title__
-_comment_
+# [fit] & more!
 
-```swift
-
-```
-
-^
+[https://github.com/apple/swift/blob/main/CHANGELOG.md](https://github.com/apple/swift/blob/main/CHANGELOG.md)
 
 ---
 
