@@ -18,10 +18,13 @@ build-lists: false
 [.text: #000]
 [.header-emphasis: #ffffff]
 
-^Hello everyone my name is .. and I'm the creator of fivestars.blog, most importantly for this talk, I've been shipping SwiftUI apps since the day iOS 13 came out, with navigation, deep link and many other feature users expect from any modern app.
+^Hello everyone my name is .. and I'm the creator of fivestars.blog.
+^In my website I take deep dives into inner workings and behind the scenes of what is Swift and iOS development today.
+^In this talk I'd like to take a different path, and instead, share with you some of the lessons I've learned during the past three years in building and shipping SwiftUI apps.
 
-^In my website I take deep dive into inner workings and behind the scenes of what is Swift and iOS development.
-^In this talk I'd like to take a different path, and instead, share with you some of the lessons I've learned during the past three years.
+<!-- most importantly for this talk, I've been shipping SwiftUI apps since the day iOS 13 came out, with navigation, deep link and many other feature users expect from any modern app.
+ -->
+
 ^Let's get started!
 
 ---
@@ -34,6 +37,7 @@ build-lists: false
 ^throw away your decade of experience
 ^hard truth is “seniors” have forgotten to keep learning
 ^to this day I receive applicants that use 7 years old collection apis instead of the 3 years old snapshots
+^It's a clear departure.
 
 ---
 
@@ -77,7 +81,7 @@ in SwiftUI a view model can't just reach for the view and change its properties 
 ^It’s like somebody fluent in one language is surprised that it cannot be as fluent in another one. 
 ^Yes, they share some grammars 
 ^SwiftUI doesn’t care about your 10 years of experience in UIKit
-^When people day it’s in possible, it means they haven’t figured it out and give up. 
+^When people say that something is impossible in SwiftUI, it means they haven’t figured it out and give up. 
 
 ---
 
@@ -94,13 +98,17 @@ in SwiftUI a view model can't just reach for the view and change its properties 
 
 # For example, in SwiftUI…
 
+- …all events are observed and delivered to views
 - …the coordinator architecture has the coordinator itself as a `View`[^1]
 - …some `View`s acts as containers/view models, where their view is another view[^2]
+
 
 
 [^1]: https://github.com/johnpatrickmorgan/FlowStacks
 
 [^2]: https://swiftwithmajid.com/2019/07/31/introducing-container-views-in-swiftui/
+
+^(for the first point) there's no delegate,
 
 ---
 
