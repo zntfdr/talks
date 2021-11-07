@@ -20,7 +20,7 @@ build-lists: false
 
 ^Hello everyone my name is .. and I'm the creator of fivestars.blog.
 ^In my website I take deep dives into inner workings and behind the scenes of what is Swift and iOS development today.
-^In this talk I'd like to take a different path, and instead, share with you some of the lessons I've learned during the past three years in building and shipping SwiftUI apps.
+^In this talk I'd like to take a different path, and instead, share with you some of the lessons I've learned during the past three years in building and shipping SwiftUI apps. Coming from a UIKit background.
 
 <!-- most importantly for this talk, I've been shipping SwiftUI apps since the day iOS 13 came out, with navigation, deep link and many other feature users expect from any modern app.
  -->
@@ -28,6 +28,8 @@ build-lists: false
 ^Let's get started!
 
 ---
+
+<!-- Lesson 1 -->
 
 # [fit] SwiftUI
 # [fit] is *not*
@@ -41,10 +43,25 @@ build-lists: false
 
 ---
 
-# [fit] View⠀⠀⠀⠀⠀⠀
-# [fit] Communication
-# [fit] is all ~~wrong~~ 
-# [fit] *different*
+[.text: #fff, text-scale(1.5)]
+
+# New way to make changes via state
+
+- @State 
+- @StateObject
+- @EnvironmentObject
+
+^SwiftUI is state driven, it automatically observe changes for us
+
+---
+
+[.text: #fff, text-scale(1.5)]
+
+# New View communication
+
+- Bindings
+- SwiftUI Environment
+- Closures
 
 <!-- # [fit] *State* 
 # is the new king -->
@@ -52,17 +69,6 @@ build-lists: false
 ^When learning SwiftUI from a UIKit background, one of the most perplexing and probably baffling challenges to learn/understand is how to make 
 ^how to make views change based on events happening on the view model:  
 in SwiftUI a view model can't just reach for the view and change its properties for example. Instead, the view <-> view-model communication happens via changes of states, 
-
----
-
-[.text: #fff, text-scale(1.5)]
-
-# The new way to view communication
-
-- Bindings
-- SwiftUI Environment
-- Environment objects
-- Closures
 
 ^instead of having view models telling views to change their color, the model will change its own state that is then observed by the view.
 ^Communication is just one of the many aspects that has completely evolved with SwiftUI.
@@ -85,6 +91,8 @@ in SwiftUI a view model can't just reach for the view and change its properties 
 
 ---
 
+<!-- Lesson 2 -->
+
 # [fit] *Everything* 
 # [fit] is a `View`,
 # [fit] *not every `View`*
@@ -96,19 +104,73 @@ in SwiftUI a view model can't just reach for the view and change its properties 
 
 [.text: #fff, text-scale(1.5)]
 
-# For example, in SwiftUI…
+# Events are observed and delivered to views
 
-- …all events are observed and delivered to views
-- …the coordinator architecture has the coordinator itself as a `View`[^1]
-- …some `View`s acts as containers/view models, where their view is another view[^2]
+[.column]
 
+- `onAppear`
+- `onDisappear`
+- `task`
+- `onReceive`
+- `onChange`
 
+[.column]
 
-[^1]: https://github.com/johnpatrickmorgan/FlowStacks
+- `onDrag`
+- `onDrop`
+- `onHover`
+- `onSubmit`
+- …
+
+^(for the first point) there's no delegate,
+^this comes as perplexing and, sometimes, even upsetting, but most business logic happens in views.
+^Most key events are delivered to views
+
+---
+
+# `View`s can be containers[^2]
+
+[.code: auto(1)]
+
+```swift
+struct FSView: View {
+  @StateObject var model = FSModel()
+
+  var body: some View {
+    FSList(elements: model.elements) // Actual UI
+      .onAppear(perform: model.onAppear) 
+      // 👆🏻 forwards business logic to the view model
+  }
+}
+```
 
 [^2]: https://swiftwithmajid.com/2019/07/31/introducing-container-views-in-swiftui/
 
-^(for the first point) there's no delegate,
+---
+
+[.code: auto(1), text-scale(1.5)]
+
+# SwiftUI coordinator architecture[^1]
+
+```swift
+struct FlowCoordinator: View {
+  @State private var flow = NFlow<Screen>(root: .firstScreen)
+  var onCompletion: () -> Void
+
+  var body: some View {
+    NStack($flow) { screen in
+      switch screen {
+        case .firstScreen:
+          FirstScreen(onCompletion: { flow.push(.secondScreen) })
+        case .secondScreen:
+          SecondScreen(onCompletion: onCompletion)
+      }
+    }
+  }
+}
+```
+
+[^1]: https://github.com/johnpatrickmorgan/FlowStacks
 
 ---
 
@@ -146,7 +208,18 @@ in SwiftUI a view model can't just reach for the view and change its properties 
 [^1]: https://feedbackassistant.apple.com
 
 ^The SwiftUI team listens to the community feedback, I've never received as many responses to all my feedback as after SwiftUI
-^File as many as possible as early as possible, with your scenario and reproduction example
+
+---
+
+[.background-color: #ae52d8]
+[.text: #fff, text-scale(1.5)]
+
+# Feedback Assistant pro tips
+
+- File as many feedbacks as possible
+- File as early as possible (during beta period)
+- Describe your scenario (for suggestions)
+- Add reproduction code (for bugs)
 
 ---
 
