@@ -36,10 +36,19 @@ build-lists: false
 # [fit] UIKit 2
 
 ^The first lesson is that..
-^throw away your decade of experience
-^hard truth is “seniors” have forgotten to keep learning
-^to this day I receive applicants that use 7 years old collection apis instead of the 3 years old snapshots
-^It's a clear departure.
+^It doesn't matter if you're just getting started with iOS (or macOS) development, or if you have over a decade of experience.
+^SwiftUI is a complete paradigm shift.
+^While knowledge of previous UI frameworks gives us very good insights on how things work behind the scenes, it's not really helpful when we move to SwiftUI.
+^Actually, it might even be a disadvantage, as we come with a big set of expectations that are simply not true in SwiftUI.
+
+---
+
+# [fit] SwiftUI Views 
+# [fit] are *recipes*
+
+^In SwiftUI we give up full control of what a view does. 
+^Most things become implementations details 
+^We declare how a SwiftUI view looks and behaves, but we don't actually do the cooking, SwiftUI takes care of that
 
 ---
 
@@ -47,11 +56,16 @@ build-lists: false
 
 # New way to make changes via state
 
+- @AppStorage
+- @SceneStorage
 - @State 
 - @StateObject
 - @EnvironmentObject
 
-^SwiftUI is state driven, it automatically observe changes for us
+^Another important lesson is that SwiftUI is state-driven
+^We don't tell our views to subscribe and unsubscribe to things, SwiftUI does this automatically
+^These are some of the property wrappers that we can use to change state in SwiftUI.
+^The curious part is that most of the properties declared this way can only be changed within the view that declares them, so how can a view change something that belongs to another view?
 
 ---
 
@@ -82,11 +96,13 @@ in SwiftUI a view model can't just reach for the view and change its properties 
 # [fit] to *struggle* when 
 # [fit] moving to SwiftUI
 
-^If you're not struggling, you're probably doing it wrong
+^If it isn't clear by now, let me say that again: SwiftUI is a massive shift from AppKit and UIKit.
+^If you're not struggling when moving from UIKit, you're probably doing it wrong
 ^This is such an important point that I've made a slide to further enphatized it.
 ^It’s like somebody fluent in one language is surprised that it cannot be as fluent in another one. 
 ^Yes, they share some grammars 
 ^SwiftUI doesn’t care about your 10 years of experience in UIKit
+^All of us is still figuring it out
 ^When people say that something is impossible in SwiftUI, it means they haven’t figured it out and give up. 
 
 ---
@@ -200,7 +216,7 @@ struct FlowCoordinator: View {
 # [fit] Feedback ⠀⠀⠀⠀⠀
 # [fit] Assistant[^1] ⠀⠀⠀⠀ ⠀
 # [fit] is your ⠀⠀ ⠀⠀
-# [fit] *new friend* ⠀ ⠀⠀
+# [fit] *(new) friend* ⠀
 
 ![135% original](images/splashfa.png)
 
@@ -216,10 +232,12 @@ struct FlowCoordinator: View {
 
 # Feedback Assistant pro tips
 
-- File as many feedbacks as possible
-- File as early as possible (during beta period)
-- Describe your scenario (for suggestions)
+- File as many as possible
+- File as early as possible
+- Describe your case (for suggestions)
 - Add reproduction code (for bugs)
+
+^File as early as possible (during beta period)
 
 ---
 
