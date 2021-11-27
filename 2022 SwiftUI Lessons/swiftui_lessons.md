@@ -35,6 +35,16 @@ build-lists: false
 # [fit] is *not*
 # [fit] UIKit 2
 
+---
+
+# SwiftUI is not UIKit 2
+
+- Complete paradigm shift
+- We're all starting from scratch
+- knowledge of earlier UI framework is:
+  - 👍🏻 insightful, but not helpful
+  - 😮 might even be a disadvantage 
+
 ^The first lesson is that..
 ^It doesn't matter if you're just getting started with iOS (or macOS) development, or if you have over a decade of experience.
 ^SwiftUI is a complete paradigm shift.
@@ -46,9 +56,18 @@ build-lists: false
 # [fit] SwiftUI Views 
 # [fit] are *recipes*
 
-^In SwiftUI we give up full control of what a view does. 
-^Most things become implementations details 
-^We declare how a SwiftUI view looks and behaves, but we don't actually do the cooking, SwiftUI takes care of that
+---
+
+[.text: #fff, text-scale(1.5)]
+
+# SwiftUI Views are recipes
+
+- we declare how a view looks and behaves
+- ...but do no need to manage transitions
+- we give up full control of what a view does
+- most things we're used to (in UIKit/AppKit) become implementation details
+
+^we don't actually do the cooking, SwiftUI takes care of that
 
 ---
 
@@ -79,7 +98,7 @@ build-lists: false
 
 <!-- # [fit] *State* 
 # is the new king -->
-
+^Responder chain, delegate pattern
 ^When learning SwiftUI from a UIKit background, one of the most perplexing and probably baffling challenges to learn/understand is how to make 
 ^how to make views change based on events happening on the view model:  
 in SwiftUI a view model can't just reach for the view and change its properties for example. Instead, the view <-> view-model communication happens via changes of states, 
@@ -97,6 +116,18 @@ in SwiftUI a view model can't just reach for the view and change its properties 
 # [fit] moving to SwiftUI
 
 ^If it isn't clear by now, let me say that again: SwiftUI is a massive shift from AppKit and UIKit.
+
+---
+
+[.text: #fff, text-scale(1.5)]
+
+# The SwiftUI struggle
+
+- you will be struggling coming from AppKit/UIKit
+- ...until it just clicks.
+- all of us is still figuring it out
+- when people say that something is impossible in SwiftUI, it means they haven’t figured it out and give up. 
+
 ^If you're not struggling when moving from UIKit, you're probably doing it wrong
 ^This is such an important point that I've made a slide to further enphatized it.
 ^It’s like somebody fluent in one language is surprised that it cannot be as fluent in another one. 
@@ -115,6 +146,7 @@ in SwiftUI a view model can't just reach for the view and change its properties 
 # [fit] is a view. 
 
 ^Think like flow stacks as coordinator, containers..
+^Good bye to concepts like UIViewControllers and other architectures like routers
 
 ---
 
@@ -193,7 +225,7 @@ struct FlowCoordinator: View {
 # [fit] SwiftUI is 
 # [fit] _slow_
 
-^if we’re not careful. 
+^*if we’re not careful. 
 ^Use your architecture or the Observing repository to avoid doing stuff
 ^SwiftUI is lazy, it won’t compute things unless we ask for, e.g. think preference keys propagation
 
@@ -223,6 +255,8 @@ struct FlowCoordinator: View {
 
 [^1]: https://feedbackassistant.apple.com
 
+^SwiftUI is still very new, new patterns have been introduced at every major iOS release, and old patterns have been deprecated.
+^Things have and will change for a few more years.
 ^The SwiftUI team listens to the community feedback, I've never received as many responses to all my feedback as after SwiftUI
 
 ---
@@ -234,8 +268,10 @@ struct FlowCoordinator: View {
 
 - File as many as possible
 - File as early as possible
+- Follow-up when new SDKs are out
 - Describe your case (for suggestions)
 - Add reproduction code (for bugs)
+- Bonus: add a video
 
 ^File as early as possible (during beta period)
 

@@ -1,7 +1,7 @@
 # Abstract
 
 Apple's introduction of SwiftUI brought a massive paradigm shift on native iOS and macOS app development.
-In this talk, I share the most important lessons learned from building apps in SwiftUI for the past three years, coming from a UIKit developer's perspective.
+In this talk, I share the most important lessons learned from building and shipping a dozen apps in SwiftUI for the past three years, coming from a UIKit developer's perspective and reaching hundreds of thousands of users.
 
 20 minutes talk.
 
