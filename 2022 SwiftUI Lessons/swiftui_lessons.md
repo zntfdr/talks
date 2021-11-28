@@ -387,6 +387,7 @@ struct FlowCoordinator: View {
 ---
 
 [.text: #fff, text-scale(1.5)]
+[.build-lists: true]
 
 # SwiftUI is slow*
 
