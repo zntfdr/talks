@@ -8,13 +8,12 @@ build-lists: false
 
 # [fit] *SwiftUI*
 # [fit] _**Lessons**_
+## For UI/AppKit developers
+
+__*Federico Zanetello*__
+★★★★★ [_fivestars.blog_](http://fivestars.blog) *•* [_@zntfdr_](http://twitter.com/zntfdr)
 
 ![100% original](images/splash.jpg)
-
-## <br>
-## __*Federico Zanetello*__
-
-★★★★★ [_fivestars.blog_](http://fivestars.blog) *•* [_@zntfdr_](http://twitter.com/zntfdr)
 
 [.header-strong: #000]
 [.text-emphasis: #000]
@@ -358,14 +357,14 @@ struct ContainerView: View {
 
 ```swift
 struct FlowCoordinator: View {
-  @State private var flow = NFlow<Screen>(root: .firstScreen)
+  @State private var routes: Routes<Screen> = [.push(.firstScreen)]
   var onCompletion: () -> Void
 
   var body: some View {
-    NStack($flow) { screen in
+    Router($routes) { screen, _  in
       switch screen {
         case .firstScreen:
-          FirstScreen(onCompletion: { flow.push(.secondScreen) })
+          FirstScreen(onCompletion: { routes.push(.secondScreen) })
         case .secondScreen:
           SecondScreen(onCompletion: onCompletion)
       }
@@ -394,9 +393,11 @@ struct FlowCoordinator: View {
 - *SwiftUI is as performant as our code makes it so:
   - The more parameters/states/dependencies a view has, the less performance we might get[^γ]
   - Isolate state as much as possible[^δ]
+  - Publish only relevant changes
   - Make each view observe as little as possible[^ε]
 
 ^it won’t compute things unless we tell SwiftUI so, from our views definition, e.g. think preference keys propagation
+^no every change in our model need to tell SwiftUI to re-evaluate our views
 
 [^γ]: https://www.fivestars.blog/articles/app-state/
 
@@ -426,6 +427,7 @@ struct FlowCoordinator: View {
 
 [.background-color: #ae52d8]
 [.text: #fff, text-scale(1.5)]
+[.build-lists: true]
 
 # Feedback Assistant pro tips
 
@@ -438,7 +440,6 @@ struct FlowCoordinator: View {
 
 ^File as early as possible (during beta period)
 
----
 <!-- 
 # [fit] Is SwiftUI 
 # [fit] *production-ready*? 
@@ -452,15 +453,35 @@ struct FlowCoordinator: View {
 
 --- -->
 
+---
+
+# [fit] UIKit/Appkit
+# [fit] are *not*
+# [fit] going anywhere 🤗
+
+---
+
+# UIKit/Appkit are not going anywhere 🤗
+
+- SwiftUI is just another tool in our belt
+- it's ok to mix and match!
+- `UIViewRepresentable` `NSViewRepresentable`
+- `UIViewControllerRepresentable` `NSViewControllerRepresentable
+`
+- `UIHostingController` `NSHostingController`
+
+^we have plenty of bridges to bring AppkIt and UIKit to SwiftUI, and SwiftUI to AppKit and UIKit
+
+---
+
 # [fit] *SwiftUI*
 # [fit] _**Lessons**_
+## For UI/AppKit developers
+
+__*Federico Zanetello*__
+★★★★★ [_fivestars.blog_](http://fivestars.blog) *•* [_@zntfdr_](http://twitter.com/zntfdr)
 
 ![100% original](images/splash.jpg)
-
-## <br>
-## __*Federico Zanetello*__
-
-★★★★★ [_fivestars.blog_](http://fivestars.blog) *•* [_@zntfdr_](http://twitter.com/zntfdr)
 
 [.header-strong: #000]
 [.text-emphasis: #000]
