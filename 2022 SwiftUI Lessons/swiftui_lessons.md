@@ -25,7 +25,7 @@ __*Federico Zanetello*__
 
 ^In my website I take deep dives into inner workings and behind the scenes of what is Swift and iOS development today.  
 
-^However, in this talk I'd like to take a different approach, and instead, I'm happy to share with you some of the lessons I've learned during the past three years of building and shipping SwiftUI apps. From the perspective of a UIKit and AppKit developer.  
+^However, in this talk I'd like to take a different approach, and instead, I'm happy to share with you some of the lessons I've learned during the past three years of transitioning while building and shipping SwiftUI apps. From the perspective of a UIKit and AppKit developer.  
 
 ^Let's get started!
 
@@ -45,18 +45,19 @@ __*Federico Zanetello*__
 
 [.build-lists: true]
 
-# SwiftUI is not UIKit 2
+# SwiftUI is not UIKit/AppKit 2
 
 - Complete paradigm shift (imperative ➡️ declarative)
 - We're all starting from scratch
 - Knowledge of earlier UI framework is:
-  - 👍🏻 insightful, but not helpful
-  - 😮 might even be a disadvantage 
+  - 👍🏻 insightful
+  - 😕 not helpful
+  - 😮 might even be a disadvantage (!!!)
 
 ^With SwiftUI, things are just done in a complete different way.  
-Most importantly, we moved from imperative SDKs to a declarative one.  
+Most importantly, we moved from multiple imperative SDKs to a single declarative one.  
 
-^It doesn't matter if we're just getting started with iOS (or macOS) development, or if we have over a decade of experience. We're all stating from scratch.  
+^It doesn't matter if we're just getting started with building apps for Apple platforms, or if we have over a decade of experience. We're all stating from scratch.  
 
 ^While knowledge of previous UI frameworks gives us very good insights on how things work behind the scenes, it's not really helpful when we move to SwiftUI.  
 
@@ -69,7 +70,11 @@ Most importantly, we moved from imperative SDKs to a declarative one.
 # [fit] SwiftUI Views 
 # [fit] are *recipes*
 
-^Unlike previous frameworks, in SwiftUI we no longer own views. Instead, our declarations are more like recipes...
+^Lesson number two, because of SwiftUI declarative nature. 
+
+^We no longer own views. 
+
+^Instead, our code looks more like recipes...
 
 ---
 
@@ -78,15 +83,15 @@ Most importantly, we moved from imperative SDKs to a declarative one.
 
 # SwiftUI Views are recipes
 
-- we declare how views look and behave...
+- where we declare how views look and behave...
 - ...but no longer manage transitions
 - we give up full control on views
 
-^..where we specify the ingredients,  
+^..where we specify the ingredients, such as the view behavior and look
 
-^but it's SwiftUI that does the cooking
+^but it's SwiftUI that does the cooking, such as all the transitions
 
-^Most things we're used to in UIKit/AppKit become implementation details
+^Most things we're used to do in UIKit/AppKit become implementation details that we no longer need to take care of
 
 ^let's make an example of this
 
@@ -98,18 +103,23 @@ Most importantly, we moved from imperative SDKs to a declarative one.
 # New way to make changes via state
 
 [.code-highlight: all]
-^In earlier frameworks, if we wanted to change the color of a view, all we needed was grab a reference of that view and set the color right there.  
+^Let's imagine that we want to change the background color of our screen.
+
+^previously, we'd probably grab the view on the back and set its background color
 
 ^Now, SwiftUI is state-driven. We no longer make such direct changes ourselves.  
 
 [.code-highlight: 2]
-^Instead, we use a few special property wrappers like `@State` shown here
+^Instead, we use properties associated with special property wrappers like `@State` shown here
 
 [.code-highlight: 2, 6]
 ^...and make our view observe and react to that state.  
 
 [.code-highlight: 8-12]
 ^In this case we change our color via a button defined right here in the view  
+
+[.code-highlight: all]
+^Note that backgroundColor is a property that I defined, there's no default background color property that we can reach and set in SwiftUI.
 
 [.code-highlight: all]
 ^Something that might be curious coming from earlier frameworks is that only this view and nobody else can directly change its own state. How can other views or models change the state belonging to other views?
@@ -145,16 +155,16 @@ struct FSView: View {
 
 [.code-highlight: all]
 ^In order to answer that question, we need to look at the new communication patterns in SwiftUI.
-One of the most ways in SwiftUI is via bindings, shown here in this example
+One of the most common ways to do so in SwiftUI is via bindings, shown here in this example
 
 [.code-highlight: 2]
 ^Like before, we have a state owned by a view.
 
 [.code-highlight: 7]
-^However, we now share it with another view, which can both read and write that state.
+^However, we now share it with another view, which can both read and write that state. This is possible by a binding, that we enable thanks to the dollar sign here, which is also what this Toggle view expects as a parameter.
 
 [.code-highlight: all]
-^It's important to understand that we still only have one state, and only our original view is the the sole owner of it, however we can now share such state with as many views as we want. 
+^It's important to understand that we still only have one state, and our original view is the the sole owner of it. However, we can now share this state with as many views as we want with this new pattern.  
 
 ```swift
 struct FSView: View {
@@ -208,10 +218,10 @@ struct FSView: View {
 
 # [fit] It's *expected* 
 # [fit] to *struggle* when 
-# [fit] moving to SwiftUI
+# [fit] learning SwiftUI
 
 ^all of the concepts we've seen so far are alien to anyone coming from previous UI frameworks. 
-^So let me be clear...
+^So let me be clear...with lesson number 3:
 
 ---
 
@@ -221,19 +231,19 @@ struct FSView: View {
 # The SwiftUI struggle
 
 - even simple things are going to be hard 
-- all of us is still figuring it out
+- all of us are still figuring it out
 - when people say something is impossible in SwiftUI, it means they haven’t figured it out yet 
 - the struggle is real...until things will \*just\* click
 
 ^even things like presenting a sheet or popping to the root of a navigation stack, become hard.  
-Because we've been working with a different mindset all this time.
+Because we've been working with a different tool and mindset all this time.
 
-^To be clear, the SDK is still very new and patterns are still evolving.  
-You're not alone, we're all still figuring out things.  
+^The SDK is still very new and patterns are still evolving.  
+You're not alone, we're all still figuring things out, including the SwiftUI team at Apple.  
 
 ^A word of caution, don't believe everything you read online
 
-^things will be hard first, until we start thinking the swiftui way, then things will just click and then there's no way back.
+^things will be hard first, until we start thinking the swiftui way, then things will just click and then there's no way back, things will just click
 
 ---
 
@@ -246,7 +256,9 @@ You're not alone, we're all still figuring out things.
 
 ^Moving on to the next lesson, it's important to understand that pretty much everything in SwiftUI is a view, but not every view is a view.  
 
-^Concepts like UIViewControllers, delegates and similar do not exist in SwiftUI. For example..
+^Concepts like UIViewControllers, delegates and similar do not exist in SwiftUI. 
+
+^With that being said..as an example, it shouldn't be surprising that...
 
 ---
 
@@ -271,13 +283,15 @@ You're not alone, we're all still figuring out things.
 - `onSubmit`
 - …
 
-^For example...it shouldn't be surprising that all sort of key events are now delivered directly to views.
+^...all sort of key events are now delivered directly to views.
 
 ^...Things like appear and disappear events  
 
-^...state changes events
+^...state changes notifications
 
 ^...and many more like drag and drop, hover etcetera
+
+^This might sounds upsetting at first. We all know what happens when we put all our presentation and business logic in a single view controller.
 
 ^However, just because things are delivered to views, it doesn't mean that we cannot properly separate and define different entities with clear and distinct responsibilities. For example...
 
@@ -292,7 +306,7 @@ You're not alone, we're all still figuring out things.
 ^It's a typical view declaration, with a body and everything
 
 [.code-highlight: 2]
-^It comes with a model, where our view core logic will reside
+^It comes with a model, where our the business logic will reside
 
 [.code-highlight: 5-9]
 ^Note how this view has no UI.
@@ -301,10 +315,12 @@ You're not alone, we're all still figuring out things.
 ^Instead, the view declaration is delegated to and implemented by another view, FSListView in this example
 
 [.code-highlight: 7,9]
-^and, most importantly, we forward the business logic events to the container model, which is where we gathered all the state knowledge and decide what's next.
+^and, most importantly, we forward the business logic events to our model, which is where we gather the view state knowledge to decide what's next.
 
 [.code-highlight: all]
-^Containers are just one example...another one most of us are familiar with is the coordinator pattern.
+^Containers are just one example...
+
+^Something else most of us are probably familiar with is the coordinator pattern.
 
 [.code: auto(1)]
 
@@ -330,7 +346,7 @@ struct ContainerView: View {
 
 
 [.code-highlight: all]
-^In the coordinator pattern our app flow logic is extracted away from view controllers and brought to a coordinator entity that has no UI knowledge, but knows and controls the overall app state.  
+^In the coordinator pattern our app flow logic is extracted away from view controllers and brought to a coordinator entity that defines no UI, but knows and controls the overall app state and flow.  
 
 [.code-highlight: 1, 5, 14, 15]
 ^Similarly to container views, in SwiftUI even coordinators are views.
@@ -352,6 +368,8 @@ struct ContainerView: View {
 
 [.code-highlight: all]
 ^Once again, like before, this view doesn't declare any UI whatsoever, instead, it's a container that receive events and decide what to show next.
+
+^In conclusion, despite seemingly only having views at our disposal, it's still possible to separate entities and responsibilities in Swiftui.
 
 # SwiftUI coordinator architecture[^β]
 
@@ -380,8 +398,13 @@ struct FlowCoordinator: View {
 # [fit] SwiftUI is 
 # [fit] _slow_*
 
-^Another important lesson in SwiftUI is that it's slow....with a huge asterisk.
-^With SwiftUI all sort of optimizations become implementation details, meaning that our apps might get faster just by building them with newer SDKs. However, there's a limit to how much we get for free.
+^Let's move to our fifth and important lesson: SwiftUI is slow....with a huge asterisk.
+
+^With SwiftUI all sort of optimizations become implementation details that are not managed by us. 
+
+^meaning that our apps might get faster just by building them with a newer Xcode. 
+
+^However, there's a limit to how much we can get for free.
 
 ---
 
@@ -397,7 +420,10 @@ struct FlowCoordinator: View {
   - Make each view observe as little as possible[^ε]
 
 ^it won’t compute things unless we tell SwiftUI so, from our views definition, e.g. think preference keys propagation
+
 ^no every change in our model need to tell SwiftUI to re-evaluate our views
+
+^Yes, SwiftUI is clever, but it still needs our help.
 
 [^γ]: https://www.fivestars.blog/articles/app-state/
 
@@ -414,14 +440,13 @@ struct FlowCoordinator: View {
 
 ![135% original](images/splashfa.png)
 
-
 [^λ]: https://feedbackassistant.apple.com
 
-^The last lesson I want to leave you today is that SwiftUI is still very new, new patterns have been introduced at every major iOS release, and old patterns have been deprecated.  
+^Moving to the next lesson...SwiftUI is still very new, new patterns have been introduced at every major iOS release, and old patterns have been deprecated.  
 
 ^Things have and will change for a few more years.  
 
-^Similar to Swift evolution, the SwiftUI team listens to the community feedback: I've never received as many responses, and closed so many tickets, as when I send feedback on SwiftUI.
+^Similar to Swift evolution, the SwiftUI team listens to the community feedback: I've never received as many responses, and closed so many tickets, as when I send feedback to Apple on SwiftUI.
 
 ---
 
@@ -459,18 +484,28 @@ struct FlowCoordinator: View {
 # [fit] are *not*
 # [fit] going anywhere 🤗
 
+^Before leaving you today, I want my last lesson to also be a reassurance for everyone. That is..
+
+^UIKit and AppKit are here to stay.
+
 ---
 
 # UIKit/Appkit are not going anywhere 🤗
 
 - SwiftUI is just another tool in our belt
 - it's ok to mix and match!
-- `UIViewRepresentable` `NSViewRepresentable`
-- `UIViewControllerRepresentable` `NSViewControllerRepresentable
-`
-- `UIHostingController` `NSHostingController`
+  - `UIViewRepresentable` `NSViewRepresentable`
+  - `UIViewControllerRepresentable` `NSViewControllerRepresentable`
+  - `UIHostingController` `NSHostingController`
+- Feel free to experiment!
 
 ^we have plenty of bridges to bring AppkIt and UIKit to SwiftUI, and SwiftUI to AppKit and UIKit
+
+^..and SwiftUI itself relies heavily on previous frameworks
+
+^Similarly to having an app with a mix of Swift and Objective-C, we can build apps that use both frameworks, it's not a all or nothing.
+
+^Last but not least: don't forget to experiment, I promise it's going to be fun!
 
 ---
 
@@ -488,6 +523,8 @@ __*Federico Zanetello*__
 [.text-strong: #000]
 [.text: #000]
 [.header-emphasis: #ffffff]
+
+^Thank you for joining this session and I wish you a great rest of the conference!
 
 <!-- 
 More ideas:
