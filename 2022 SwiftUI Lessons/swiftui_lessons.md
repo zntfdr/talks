@@ -182,39 +182,6 @@ struct FSView: View {
 
 ![right autoplay loop 50%](videos/toggle.mp4)
 
-<!-- # [fit] *State* 
-# is the new king -->
-<!-- ---
-
-# New View communication
-
-[.text: #fff, text-scale(1.5)]
-[.build-lists: true]
-
-[.code-highlight: all]
-
-[.code-highlight: 2, 8-12]
-
-- Closures
-
-```swift
-struct FSView: View {
-  @State var backgroundColor: Color = .white
-
-  var body: some View {
-    ZStack {
-      backgroundColor.ignoresSafeArea()
-
-      Button("Change background color") {
-        backgroundColor = [.brown, .cyan, .indigo, .mint, .teal]
-          .filter { $0 != backgroundColor }
-          .randomElement()!
-      }
-    }
-  }
-}
-``` -->
-
 ---
 
 # [fit] It's *expected* 
@@ -480,19 +447,6 @@ struct FlowCoordinator: View {
 
 ^File as early as possible, don't wait until the next release to see if maybe it's fixed (during beta period)
 
-<!-- 
-# [fit] Is SwiftUI 
-# [fit] *production-ready*? 
-
----
-
-# [fit] Are *you* ready 
-# [fit] to ship
-# [fit] *production-quality*
-# [fit] SwiftUI code?
-
---- -->
-
 ---
 
 # [fit] UIKit/Appkit
@@ -552,9 +506,4 @@ __*Federico Zanetello*__
 More ideas:
 
 - To truly understand SwiftUI, you need to truly understand Swift. Property wrappers, async/await, callable as function in env values
-
-- We don’t set or change how things look/behave. Instead we change their declarate
-- Overlay/background are your friends, Spacer + stacks are enemies
-- Everything is a state, SwiftUI changes 
-- Create raw views to avoid unnecessary redraws when a @State/etc will trigger the body redraw will be triggered,
  -->
