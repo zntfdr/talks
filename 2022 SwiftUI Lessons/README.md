@@ -6,4 +6,5 @@ In this talk, I share the most important lessons learned from building and shipp
 20 minutes talk.
 
 # Slides
-[![SpeakerDeck Presentation](https://speakerd.s3.amazonaws.com/presentations/.../slide_0.jpg?...)](https://speakerdeck.com/zntfdr/swiftui-lessons)
+
+[![SpeakerDeck Presentation](https://files.speakerdeck.com/presentations/f90f2695dfbb4b7fb696f968f1d76541/slide_0.jpg)](https://speakerdeck.com/zntfdr/swiftui-lessons)
